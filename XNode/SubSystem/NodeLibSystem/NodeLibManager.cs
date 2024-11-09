@@ -70,6 +70,7 @@ namespace XNode.SubSystem.NodeLibSystem
                 nameof(Flow_Switch) => new Flow_Switch(),
 
                 nameof(Func_Compare) => new Func_Compare(),
+                nameof(Func_BinOP) => new Func_BinOP(),
                 nameof(Func_NumberToRatio) => new Func_NumberToRatio(),
                 nameof(Func_RatioToInt) => new Func_RatioToInt(),
                 nameof(Func_SendNetMessage) => new Func_SendNetMessage(),
@@ -120,6 +121,7 @@ namespace XNode.SubSystem.NodeLibSystem
             _nodeLibRoot.CreateFile(事件节点, "按键", "nt", new NodeType<Event_Keyboard>());
 
             _nodeLibRoot.CreateFile(运算函数, "关系运算", "nt", new NodeType<Func_Compare>());
+            _nodeLibRoot.CreateFile(运算函数, "四则运算", "nt", new NodeType<Func_BinOP>());
             _nodeLibRoot.CreateFile(转换器, "比例转整数", "nt", new NodeType<Func_RatioToInt>());
             _nodeLibRoot.CreateFile(转换器, "数值转比例", "nt", new NodeType<Func_NumberToRatio>());
             _nodeLibRoot.CreateFile(函数节点, "发送网络消息", "nt", new NodeType<Func_SendNetMessage>());
