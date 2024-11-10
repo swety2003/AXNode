@@ -13,7 +13,7 @@ namespace XLib.Base
     /// <summary>
     /// 高精度定时器
     /// </summary>
-    public sealed class HighPrecisionTimer : IComponent, IDisposable
+    public sealed class HighPrecisionTimerW : IComponent, IHighPrecisionTimer
     {
         // 系统定时器回调
         private delegate void TimerCallback(int id, int msg, int user, int param1, int param2);
@@ -37,12 +37,12 @@ namespace XLib.Base
         #region 构造、析构方法
 
         // 静态构造方法
-        static HighPrecisionTimer()
+        static HighPrecisionTimerW()
         {
             _ = timeGetDevCaps(ref _caps, Marshal.SizeOf(_caps));
         }
 
-        public HighPrecisionTimer()
+        public HighPrecisionTimerW()
         {
             IsRunning = false;
 
@@ -52,12 +52,12 @@ namespace XLib.Base
             _timerCallback = new TimerCallback(TimerEventCallback);
         }
 
-        public HighPrecisionTimer(IContainer container) : this()
+        public HighPrecisionTimerW(IContainer container) : this()
         {
             container.Add(this);
         }
 
-        ~HighPrecisionTimer()
+        ~HighPrecisionTimerW()
         {
             _ = timeKillEvent(_timerID);
         }
