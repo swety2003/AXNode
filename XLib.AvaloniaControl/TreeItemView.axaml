@@ -1,0 +1,31 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="XLib.AvaloniaControl.TreeItemView">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <!-- <StyleInclude Source="BaseStyleSet.axaml"/> -->
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <!-- 外框 -->
+    <Border x:Name="Back" PointerEntered="Back_OnPointerEntered" PointerCaptureLost="Back_OnPointerCaptureLost" PointerPressed="Back_OnPointerPressed">
+        <!-- 内容 -->
+        <Grid x:Name="MainGrid">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="23"/>
+                <ColumnDefinition Width="23"/>
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <!-- 箭头 -->
+            <ToggleButton x:Name="Toggle"/>
+            <!-- 图标 -->
+            <Image x:Name="Image_Icon" Width="15" Height="15" Grid.Column="1"/>
+            <!-- 标题 -->
+            <TextBlock x:Name="TB_Title" Text="标题" Grid.Column="2" Foreground="White" Margin="6,0,5,0" FontSize="12" VerticalAlignment="Center"/>
+        </Grid>
+    </Border>
+</UserControl>
