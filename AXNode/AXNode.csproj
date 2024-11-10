@@ -1,0 +1,44 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <OutputType>WinExe</OutputType>
+        <TargetFramework>net8.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <BuiltInComInteropSupport>true</BuiltInComInteropSupport>
+        <ApplicationManifest>app.manifest</ApplicationManifest>
+        <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Avalonia" Version="11.1.0"/>
+        <PackageReference Include="Avalonia.Desktop" Version="11.1.0"/>
+        <PackageReference Include="Avalonia.Themes.Fluent" Version="11.1.0"/>
+        <PackageReference Include="Avalonia.Fonts.Inter" Version="11.1.0"/>
+        <!--Condition below is needed to remove Avalonia.Diagnostics package from build output in Release configuration.-->
+        <PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" Version="11.1.0"/>
+        <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\XLib.Animate\XLib.Animate.csproj" />
+      <ProjectReference Include="..\XLib.AvaloniaControl\XLib.AvaloniaControl.csproj" />
+      <ProjectReference Include="..\XLib.Avalonia\XLib.Avalonia.csproj" />
+      <ProjectReference Include="..\XLib.Base\XLib.Base.csproj" />
+      <ProjectReference Include="..\XLib.Drawing\XLib.Drawing.csproj" />
+      <ProjectReference Include="..\XLib.Math\XLib.Math.csproj" />
+      <ProjectReference Include="..\XLib.Node\XLib.Node.csproj" />
+    </ItemGroup>
+
+
+    <ItemGroup>
+      <AvaloniaResource Include="Assets\Cursor\CanNotMove.cur" />    
+      <AvaloniaResource Include="Assets\Cursor\*.cur" />
+      <AvaloniaResource Include="Assets\Font\simsun.ttc" />
+      <AvaloniaResource Include="Assets\Icon15\*.png" />
+      <AvaloniaResource Include="Assets\Icon16\Node\*.png" />
+      <AvaloniaResource Include="Assets\Icon16\*.png" />
+      <AvaloniaResource Include="SubSystem\NodeEditSystem\Control\Image\*.png" />
+      <AvaloniaResource Include="SubSystem\WindowSystem\Image\*.png" />
+    </ItemGroup>
+
+
+</Project>

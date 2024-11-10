@@ -1,0 +1,42 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="XLib.AvaloniaControl.TreeView">
+	<Grid x:Name="MainGrid" Background="Transparent" PointerPressed="MainGrid_OnPointerPressed">
+		<!-- <Grid.Resources> -->
+		<!-- 	<ResourceDictionary> -->
+		<!-- 			 -->
+		<!-- 		<Style Selector="#MainScrollBar:pointerover" > -->
+		<!-- 			<Style.Animations> -->
+		<!-- 				<Animation Duration="0:0:0.5"> -->
+		<!-- 					<KeyFrame Cue="100%">  -->
+		<!-- 						<Setter  Property="Opacity" Value="1.0"/> -->
+		<!-- 					</KeyFrame> -->
+		<!-- 				</Animation> -->
+		<!-- 			</Style.Animations> -->
+		<!-- 		</Style> -->
+		<!-- 		<Style Selector="#MainScrollBar"> -->
+		<!-- 			<Style.Animations> -->
+		<!-- 				<Animation Delay="0:0:2" Duration="0:0:0.5"> -->
+		<!-- 					<KeyFrame Cue="100%">  -->
+		<!-- 						<Setter Property="Opacity" Value="0.0"/> -->
+		<!-- 					</KeyFrame> -->
+		<!-- 				</Animation> -->
+		<!-- 			</Style.Animations> -->
+		<!-- 		</Style> -->
+		<!-- 	</ResourceDictionary> -->
+		<!-- </Grid.Resources> -->
+		<!-- 项列表 -->
+		<Grid Margin="10" ClipToBounds="True">
+			<StackPanel x:Name="ItemBox" Orientation="Vertical"/>
+			<!-- 目标框 -->
+			<Border x:Name="TargetBorder" BorderBrush="#55AAFF" BorderThickness="1" Height="23" VerticalAlignment="Top" IsHitTestVisible="False" IsVisible="False"/>
+		</Grid>
+		<!-- 滚动条 -->
+		<ScrollBar x:Name="MainScrollBar" Orientation="Vertical" HorizontalAlignment="Right" Tag="0" Width="5" Opacity="0"
+                   SmallChange="1" ViewportSize="0" Minimum="0" Maximum="0"
+                   ValueChanged="MainScrollBar_OnValueChanged"/>
+	</Grid>
+</UserControl>

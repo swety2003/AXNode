@@ -1,0 +1,29 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="AXNode.MainWindow"
+        Title="AXNode" KeyDown="XMainWindow_PreviewKeyDown" KeyUp="XMainWindow_PreviewKeyUp">
+    <Grid RowDefinitions="Auto,*">
+        <Grid>
+            <UniformGrid>
+                <Button Click="Button_OnClick">Load</Button>
+                <Image Stretch="None" Source="avares://AXNode/Assets/Icon16/Node/Function.png"></Image>
+            </UniformGrid>
+        </Grid>
+        <Canvas Tag="测试画板" IsVisible="False" ZIndex="10" Grid.Row="1" Background="Yellow" Width="300" Height="400">
+            <Path Stroke="Red" StrokeThickness="2">
+                <Path.Data>
+                    <PathGeometry>
+                        <PathFigure IsClosed="False">
+                            <BezierSegment Point1="1,1"  Point2="112,412" Point3="432,524" IsStroked="True"/>
+                        </PathFigure>
+                    </PathGeometry>
+                    
+                </Path.Data>
+            </Path>
+        </Canvas>
+        <Grid Grid.Row="1" Background="Transparent" x:Name="MainGrid"/>
+    </Grid>
+</Window>
