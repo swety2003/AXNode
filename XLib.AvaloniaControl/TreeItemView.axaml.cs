@@ -11,6 +11,16 @@ public partial class TreeItemView : UserControl
     public TreeItemView()
     {
         InitializeComponent();
+        Toggle.Checked += (_, _) =>
+        {
+            if (Instance != null) Instance.IsExpanded = true;
+            OnItemExpand?.Invoke();
+        };
+        Toggle.Unchecked += (_, _) =>
+        {
+            if (Instance != null) Instance.IsExpanded = false;
+            OnItemFurl?.Invoke();
+        };
     }
 
     #region 属性

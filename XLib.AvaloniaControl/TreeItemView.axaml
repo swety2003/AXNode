@@ -12,7 +12,7 @@
         </ResourceDictionary>
     </UserControl.Resources>
     <!-- 外框 -->
-    <Border x:Name="Back" PointerEntered="Back_OnPointerEntered" PointerCaptureLost="Back_OnPointerCaptureLost" PointerPressed="Back_OnPointerPressed">
+    <Border Padding="0 10" x:Name="Back" PointerEntered="Back_OnPointerEntered" PointerCaptureLost="Back_OnPointerCaptureLost" PointerPressed="Back_OnPointerPressed">
         <!-- 内容 -->
         <Grid x:Name="MainGrid">
             <Grid.ColumnDefinitions>
@@ -21,7 +21,7 @@
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
             <!-- 箭头 -->
-            <ToggleButton x:Name="Toggle"/>
+            <ToggleButton IsHitTestVisible="False" x:Name="Toggle"/>
             <!-- 图标 -->
             <Image x:Name="Image_Icon" Width="15" Height="15" Grid.Column="1"/>
             <!-- 标题 -->

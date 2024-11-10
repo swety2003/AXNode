@@ -60,6 +60,8 @@ public partial class MainWindow : Window
         AddHandler(PointerMovedEvent, (sender, args) =>
         {
             Mouse.RegisterPointerEventArgs(args);
+            Mouse.RegisterDirectlyOver(args);
+            
         }, RoutingStrategies.Tunnel);
     }
 

@@ -531,7 +531,7 @@ public partial class TreeView : UserControl
     /// </summary>
     private Cursor LoadCursor(string cursorPath)
     {
-        var uri = new Uri($"avares://XNode/{cursorPath}");
+        var uri = new Uri($"avares://AXNode/{cursorPath}");
         var bmp = new Bitmap(AssetLoader.Open(uri));
         return new Cursor(bmp,new PixelPoint());
     }
@@ -541,7 +541,7 @@ public partial class TreeView : UserControl
     /// </summary>
     private void MatchControlList()
     {
-        _dataWindow.WindowHeight = (int)(MainGrid.Height - 20) / _controlHeight + 1;
+        _dataWindow.WindowHeight = (int)(MainGrid.Bounds.Height - 20) / _controlHeight + 1;
         while (_controlList.Count < _dataWindow.WindowHeight)
         {
             TreeItemView control = new TreeItemView();
@@ -755,13 +755,8 @@ public partial class TreeView : UserControl
     {
         // 获取鼠标命中的界面元素
         Control? element = Mouse.DirectlyOver as Control;
-        while (element != null)
-        {
-            // 如果为“IDropable”对象，则返回
-            if (element is IDropable dropable) return dropable;
-            // 否则继续向上查找
-            element = VisualTreeHelper.GetParent(element);
-        }
+
+        if (element is IDropable dropable) return dropable;
 
         return null;
     }

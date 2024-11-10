@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using Avalonia.Controls;
 using XLib.Base;
 using XLib.Base.UIComponent;
@@ -9,6 +11,7 @@ using AXNode.SubSystem.NodeEditSystem.Define;
 using AXNode.SubSystem.NodeEditSystem.Panel.Component;
 using AXNode.SubSystem.NodeEditSystem.Define;
 using AXNode.SubSystem.NodeEditSystem.Panel.Component;
+using XLib.AvaloniaControl;
 
 namespace AXNode.SubSystem.NodeEditSystem.Panel;
 
@@ -23,7 +26,11 @@ public partial class EditPanel : UserControl, IDropable
 
     #region 构造方法
 
-    public EditPanel() => InitializeComponent();
+    public EditPanel()
+    {
+        InitializeComponent();
+        Mouse.InitDropable(this);
+    }
 
     #endregion
 

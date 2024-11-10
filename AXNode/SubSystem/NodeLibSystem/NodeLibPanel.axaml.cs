@@ -17,8 +17,8 @@ namespace AXNode.SubSystem.NodeLibSystem
 
         public void Init()
         {
-            // NodePresetTree.Init();
-            // NodePresetTree.SetTreeRoot(new TreeItem(NodeLibManager.Instance.Root));
+            NodePresetTree.Init();
+            NodePresetTree.SetTreeRoot(new TreeItem(NodeLibManager.Instance.Root));
             LoadNodeLib(NodeLibManager.Instance.Root, null);
         }
 
@@ -81,9 +81,9 @@ namespace AXNode.SubSystem.NodeLibSystem
             {
                 Icon = ImageResManager.Instance.GetIcon15(icon + ".png"),
             };
-            // if (parent == null) NodePresetTree.TreeRoot.AddItem(treeItem);
-            // else parent.AddItem(treeItem);
-            // NodePresetTree.Update();
+            if (parent == null) NodePresetTree.TreeRoot.AddItem(treeItem);
+            else parent.AddItem(treeItem);
+            NodePresetTree.Update();
             return treeItem;
         }
 

@@ -4,24 +4,44 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:AXNode.SubSystem.NodeEditSystem.Control"
+             BorderBrush="Gray"
+             BorderThickness="1"
              mc:Ignorable="d">
+    <UserControl.Styles>
+        <Style Selector="Button.icon:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="Background" Value="#404040"></Setter>
+
+        </Style>
+        <Style Selector="Button.icon:pressed /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="Background" Value="Transparent"></Setter>
+
+        </Style>
+        <Style Selector="Button.icon">
+            <Setter Property="Content" Value="122"></Setter>
+            <Setter Property="CornerRadius" Value="0"></Setter>
+            <Setter Property="Height" Value="27"></Setter>
+            <Setter Property="Width" Value="27"></Setter>
+            <Setter Property="Margin" Value="0"></Setter>
+            <Setter Property="Background" Value="#202020"></Setter>
+        </Style>
+    </UserControl.Styles>
     <Grid Background="#101010">
-        <StackPanel x:Name="Stack_ToolBar" Orientation="Horizontal" Margin="1">
-            <Button x:Name="Tool_Start"  Height="27" Width="27" Margin="0,0,0,0">
+        <UniformGrid x:Name="Stack_ToolBar" Rows="1" Margin="1">
+            <Button Classes="icon" x:Name="Tool_Start">
                 <Button.Content>
                     <Image Source="Image/Start.png" Height="15" Width="15"/>
                 </Button.Content>
             </Button>
-            <Button x:Name="Tool_Stop"  Height="27" Width="27" Margin="1,0,0,0">
+            <Button Classes="icon" x:Name="Tool_Stop" >
                 <Button.Content>
                     <Image Source="Image/Stop.png" Height="15" Width="15"/>
                 </Button.Content>
             </Button>
-            <Button x:Name="Tool_Delete"  Tag="删除节点" Height="27" Width="27" Margin="1,0,0,0">
+            <Button Classes="icon" x:Name="Tool_Delete"  Tag="删除节点">
                 <Button.Content>
                     <Image Source="Image/Delete.png" Height="15" Width="15"/>
                 </Button.Content>
             </Button>
-        </StackPanel>
+        </UniformGrid>
     </Grid>
 </UserControl>

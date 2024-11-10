@@ -100,7 +100,7 @@ namespace AXNode.SubSystem.ResourceSystem
         //     new Bitmap(size, size, 96, 96, PixelFormats.Bgr32, null, iconData, size * 4);        
         private Bitmap CreateSource(int size, byte[] iconData) => 
             new Bitmap(PixelFormat.Bgra8888,
-                AlphaFormat.Opaque,
+                AlphaFormat.Premul,
                 System.Runtime.InteropServices.Marshal.UnsafeAddrOfPinnedArrayElement(iconData, 0),
                 new PixelSize(size,size),
                 new Vector(96,96) ,size*4);

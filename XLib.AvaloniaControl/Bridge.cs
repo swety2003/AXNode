@@ -1,6 +1,7 @@
 ﻿using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Input;
+using XLib.Base;
 
 namespace XLib.AvaloniaControl;
 
@@ -21,7 +22,32 @@ public static class Mouse
         // return Pointer.GetCurrentPoint(c).Position;
     }
 
-    public static Control DirectlyOver => throw new NotImplementedException();
+    public static Control DirectlyOver {get; private set;}
+    
+    private static IDropable? _control;
+
+    public static void InitDropable(IDropable? control)
+    {
+        _control = control;
+    }
+    
+    public static void RegisterDirectlyOver(PointerEventArgs p)
+    {
+        if (_control is Control c)
+        {
+            var point = p.GetPosition(c);
+            if (c.Bounds.Contains(point))
+            {
+                DirectlyOver = c;
+            }
+            else
+            {
+                DirectlyOver = null;
+            }
+
+        }
+        
+    }
 
     public static void ReleaseMouseCapture(this Control control)
     {
