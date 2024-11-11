@@ -86,14 +86,14 @@ namespace AXNode.SubSystem.NodeEditSystem.Panel.Component
 
         #region 公开方法
 
-        public void HandleKeyDown(KeyEventArgs e)
+        public async void HandleKeyDown(KeyEventArgs e)
         {
             if (e.Key == Key.Delete)
             {
                 List<NodeView> cardList = GetComponent<CardComponent>().SelectedCardList;
                 if (cardList.Count == 0) return;
 
-                bool? delete = WM.ShowAsk("确定删除选中节点吗？", "确定", false, TipLevel.Warning);
+                bool? delete = await WM.ShowAsk("确定删除选中节点吗？", "确定", false, TipLevel.Warning);
                 if (delete != true) return;
 
                 DeleteNode(cardList);
@@ -117,7 +117,7 @@ namespace AXNode.SubSystem.NodeEditSystem.Panel.Component
         public void HandleDrop(List<ITreeItem> itemList)
         {
             // 获取屏幕坐标
-            var screenPoint = Mouse.GetPosition(_host.OperateArea);
+            var screenPoint = Mouse.GetPosition(_host.OperateArea,true);
             // 获取节点组件
             var component = GetComponent<NodeComponent>();
             // 放下节点

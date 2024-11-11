@@ -1,38 +1,55 @@
 ﻿<xw:XDialog x:Class="AXNode.SubSystem.WindowSystem.AskDialog"
             xmlns="https://github.com/avaloniaui"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:AXNode.SubSystem.WindowSystem"
-        xmlns:xw="clr-namespace:XLib.Avalonia.WindowDefine;assembly=XLib.Avalonia"
-        FontFamily="../../Assets/Font/#新宋体" WindowStartupLocation="CenterOwner" ShowInTaskbar="False"
-        mc:Ignorable="d" 
-        Title="提示" Height="151" Width="514">
+            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+            xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+            xmlns:local="clr-namespace:AXNode.SubSystem.WindowSystem"
+            xmlns:xw="clr-namespace:XLib.Avalonia.WindowDefine;assembly=XLib.Avalonia"
+            WindowStartupLocation="CenterOwner" ShowInTaskbar="False"
+            mc:Ignorable="d"
+            Background="#101010"
+            Title="提示" Height="151" Width="514">
     <Grid x:Name="BackGrid">
         <Grid Background="Transparent" Margin="20,10,20,20">
             <Grid.RowDefinitions>
-                <RowDefinition Height="35"/>
+                <RowDefinition Height="35" />
                 <RowDefinition />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="35"/>
-                <ColumnDefinition Width="20"/>
+                <ColumnDefinition Width="35" />
+                <ColumnDefinition Width="20" />
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
             <!-- 图标 -->
-            <Image x:Name="Icon_Info" Source="Image/Info.png" Width="35" Height="35"/>
-            <Image x:Name="Icon_Break" Source="Image/Break.png" Width="35" Height="35" IsVisible="False"/>
-            <Image x:Name="Icon_Warning" Source="Image/Warning.png" Width="35" Height="35" IsVisible="False"/>
-            <Image x:Name="Icon_Error" Source="Image/Error.png" Width="35" Height="35" IsVisible="False"/>
+            <Image x:Name="Icon_Info" Source="Image/Info.png" Width="35" Height="35" />
+            <Image x:Name="Icon_Break" Source="Image/Break.png" Width="35" Height="35" IsVisible="False" />
+            <Image x:Name="Icon_Warning" Source="Image/Warning.png" Width="35" Height="35" IsVisible="False" />
+            <Image x:Name="Icon_Error" Source="Image/Error.png" Width="35" Height="35" IsVisible="False" />
             <!-- 文本 -->
-            <TextBlock x:Name="TipTextBlock" Background="Transparent" Foreground="White" Grid.Column="2" Grid.RowSpan="2"
-           HorizontalAlignment="Stretch" TextWrapping="Wrap" Margin="0,4,0,45"/>
+            <TextBlock x:Name="TipTextBlock" Background="Transparent" Foreground="White" Grid.Column="2"
+                       Grid.RowSpan="2"
+                       HorizontalAlignment="Stretch" TextWrapping="Wrap" Margin="0,4,0,45" />
             <!-- 按钮 -->
-            <StackPanel Grid.Row="1" Height="25" HorizontalAlignment="Right" VerticalAlignment="Bottom" Orientation="Horizontal" Grid.ColumnSpan="3">
-                <Button x:Name="Yes" Content="是(_Y)" IsDefault="True" Width="100"/>
-                <Button x:Name="No" Content="否(_N)" Width="100" Margin="10,0,0,0"/>
-                <Button x:Name="Cancel" Content="取消"  IsCancel="True" Width="100" Margin="10,0,0,0"/>
-            </StackPanel>
+            <UniformGrid Rows="1" Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Bottom"
+                         Grid.ColumnSpan="3">
+                <UniformGrid.Styles>
+                    <Style Selector="Button">
+                        <Setter Property="Foreground" Value="White"></Setter>
+                        <Setter Property="Width" Value="100"></Setter>
+                        <Setter Property="Margin" Value="10 0"></Setter>
+                        <Setter Property="CornerRadius" Value="0"></Setter>
+                        <Setter Property="BorderBrush" Value="#606060"></Setter>
+                    </Style>
+                    <Style Selector="Button:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+                        <Setter Property="Background" Value="#404040"></Setter>
+                        <Setter Property="Foreground" Value="White"></Setter>
+                    </Style>
+                </UniformGrid.Styles>
+                
+                <Button x:Name="Yes" Content="是(_Y)" IsDefault="True"  />
+                <Button x:Name="No" Content="否(_N)" />
+                <Button x:Name="Cancel" Content="取消" IsCancel="True"   />
+            </UniformGrid>
         </Grid>
     </Grid>
 </xw:XDialog>

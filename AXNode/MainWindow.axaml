@@ -4,14 +4,43 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="AXNode.MainWindow"
+        Background="#101010"
         Title="AXNode" KeyDown="XMainWindow_PreviewKeyDown" KeyUp="XMainWindow_PreviewKeyUp">
     <Grid RowDefinitions="Auto,*">
-        <Grid>
-            <UniformGrid>
-                <Button Click="Button_OnClick">Load</Button>
-                <Image Stretch="None" Source="avares://AXNode/Assets/Icon16/Node/Function.png"></Image>
-            </UniformGrid>
-        </Grid>
+        
+        <Menu Background="#303030" Grid.ColumnSpan="3">
+            <Menu.Styles>
+                <Style Selector="Image.icon">
+                    <Setter Property="Stretch" Value="None"></Setter>
+                </Style>
+                <Style Selector="MenuItem">
+                    <Setter Property="Background" Value="#303030"></Setter>
+                </Style>
+                <Style Selector="MenuItem:pointerover /template/ Border#PART_LayoutRoot:pointerover">
+                    <Setter Property="Background" Value="#404040"></Setter>
+                </Style>
+                <Style Selector="MenuItem:pressed /template/ Border#PART_LayoutRoot:pointerover">
+                    <Setter Property="Background" Value="#101010"></Setter>
+                </Style>
+            </Menu.Styles>
+            <MenuItem Tag="NewProject" Click="MenuItem_OnClick">
+                <MenuItem.Header>
+                    <Image Classes="icon"  Source="avares://AXNode/Assets/Icon16/NewFile.png"/>
+                </MenuItem.Header>
+            </MenuItem>
+            <MenuItem Tag="OpenProject" Click="MenuItem_OnClick">
+                
+                <MenuItem.Header><Image Classes="icon" Source="avares://AXNode/Assets/Icon16/OpenFile.png"/></MenuItem.Header>
+            </MenuItem>
+            <MenuItem Tag="SaveProject" Click="MenuItem_OnClick">
+                <MenuItem.Header><Image Classes="icon" Source="avares://AXNode/Assets/Icon16/Save.png"/></MenuItem.Header>
+            </MenuItem >
+            <Separator Width="1" Height="16" Background="#80FFFFFF" VerticalAlignment="Stretch"></Separator>
+            <MenuItem Tag="Undo" Click="MenuItem_OnClick">
+                <MenuItem.Header><Image Classes="icon" Source="avares://AXNode/Assets/Icon16/Undo.png"/></MenuItem.Header></MenuItem>
+            <MenuItem Tag="Redo" Click="MenuItem_OnClick">
+                <MenuItem.Header><Image Classes="icon" Source="avares://AXNode/Assets/Icon16/Redo.png"/></MenuItem.Header></MenuItem>
+        </Menu>
         <Canvas Tag="测试画板" IsVisible="False" ZIndex="10" Grid.Row="1" Background="Yellow" Width="300" Height="400">
             <Path Stroke="Red" StrokeThickness="2">
                 <Path.Data>

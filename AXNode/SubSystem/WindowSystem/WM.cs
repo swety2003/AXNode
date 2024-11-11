@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Media;
+using System.Threading.Tasks;
 using System.Windows;
 using Avalonia.Controls;
+using Avalonia.Threading;
 using XLib.Avalonia.WindowDefine;
 using AXNode.SubSystem.WindowSystem;
 
@@ -64,7 +66,7 @@ namespace AXNode.SubSystem.WindowSystem
         /// <summary>
         /// 显示询问框
         /// </summary>
-        public static bool? ShowAsk(string message, string yesText = "是", bool useCancel = true, TipLevel level = TipLevel.Info)
+        public static async Task<bool?> ShowAsk(string message, string yesText = "是", bool useCancel = true, TipLevel level = TipLevel.Info)
         {
             AskDialog dialog = new AskDialog
             {
@@ -75,9 +77,11 @@ namespace AXNode.SubSystem.WindowSystem
             };
             // if (level is TipLevel.Info or TipLevel.Warning) SystemSounds.Asterisk.Play();
             // else SystemSounds.Hand.Play();
-            dialog.ShowDialog(Main);
-
+            
             bool? result = null;
+            
+            await dialog.ShowDialog(Main);
+
             if (dialog.Result == AskResult.Yes) result = true;
             else if (dialog.Result == AskResult.No) result = false;
             return result;

@@ -1,10 +1,14 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Windows;
 using Avalonia.Controls;
+using Avalonia.Input;
 using Avalonia.Interactivity;
 using XLib.Node;
 using AXNode.SubSystem.NodeEditSystem.Define;
 using AXNode.SubSystem.ProjectSystem;
+using XLib.Base;
+using XLib.Base.VirtualDisk;
 
 namespace AXNode
 {
@@ -23,6 +27,7 @@ namespace AXNode
         {
             InitializeComponent();
             Loaded += CoreEditer_Loaded;
+
         }
 
         #endregion

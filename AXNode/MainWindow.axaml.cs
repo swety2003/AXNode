@@ -1,4 +1,5 @@
 using System;
+using System.Threading.Tasks;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Input;
@@ -43,6 +44,7 @@ public partial class MainWindow : Window
     protected override void OnLoaded(RoutedEventArgs e)
     {
         base.OnLoaded(e);
+        Closing += OnClosing;
         WindowLoaded();
         AddHandler(KeyDownEvent, (sender, args) =>
         {
@@ -57,11 +59,11 @@ public partial class MainWindow : Window
         
     }
 
-    protected override void OnUnloaded(RoutedEventArgs e)
+    private async void OnClosing(object? sender, WindowClosingEventArgs e)
     {
-        ReadyClose();
-        base.OnUnloaded(e);
+        e.Cancel = await ReadyClose() == true;
     }
+
 
     #region XMainWindow 方法
 
@@ -75,7 +77,8 @@ public partial class MainWindow : Window
         WM.Main = this;
 
         // 初始化工具栏
-        InitToolBar();
+        // InitToolBar();
+        
         // 加载核心编辑器
         LoadCoreEditer();
 
@@ -83,12 +86,12 @@ public partial class MainWindow : Window
         EM.Instance.Add(EventType.Project_Changed, UpdateTitle);
     }
 
-    protected bool ReadyClose()
+    protected async Task<bool> ReadyClose()
     {
         // 项目未保存
         if (!ProjectManager.Instance.Saved)
         {
-            bool? result = WM.ShowAsk("当前项目未保存，是否保存？");
+            bool? result = await WM.ShowAsk("当前项目未保存，是否保存？");
             // 保存
             if (result == true)
             {
@@ -130,11 +133,9 @@ public partial class MainWindow : Window
     private void RecoverWindowState()
     {
         WindowState = CacheManager.Instance.Cache.MainWindow.State;
-        Width = CacheManager.Instance.Cache.MainWindow.Width;
-        Height = CacheManager.Instance.Cache.MainWindow.Height;
+        var screenFromVisual = this.Screens.ScreenFromVisual(this);
         // 居中窗口
-        // Left = (SystemParameters.WorkArea.Width - Width) / 2;
-        // Top = (SystemParameters.WorkArea.Height - Height) / 2;
+        Bounds = new Rect((screenFromVisual.WorkingArea.Width - Width) / 2, (screenFromVisual.WorkingArea.Height - Height) / 2, CacheManager.Instance.Cache.MainWindow.Width, CacheManager.Instance.Cache.MainWindow.Height);
     }
 
     /// <summary>
@@ -142,6 +143,7 @@ public partial class MainWindow : Window
     /// </summary>
     private void ListenWindowState()
     {
+        
         // StateChanged += (s, e) =>
         // {
         //     if (WindowState is WindowState.Normal or WindowState.Maximized)
@@ -159,41 +161,6 @@ public partial class MainWindow : Window
         };
     }
 
-    /// <summary>
-    /// 初始化工具栏
-    /// </summary>
-    private void InitToolBar()
-    {
-        // 获取工具栏
-        // if (GetTemplateChild("TopToolBar") is ToolBar bar)
-        // {
-        //     _toolBar = bar;
-        //     bar.ToolStyle = (Style)App.Current.FindResource("ToolBarButton");
-        //     // 填充工具按钮
-        //     bar.AddSplit(new Thickness(0, 5, 5, 5));
-        //     bar.AddTool(GetToolIcon("NewFile"), "NewProject", "新建项目");
-        //     bar.AddTool(GetToolIcon("OpenFile"), "OpenProject", "打开项目");
-        //     bar.AddTool(GetToolIcon("Save"), "SaveProject", "保存项目");
-        //     bar.AddTool(GetToolIcon("SaveAs"), "SaveAs", "另存为项目");
-        //     bar.AddSplit();
-        //     bar.AddTool(GetToolIcon("Undo"), "Undo", "撤销");
-        //     bar.AddTool(GetToolIcon("Redo"), "Redo", "重做");
-        //     bar.AddSplit();
-        //     bar.AddTool(GetToolIcon("Console"), "Console", "控制台");
-        //     bar.AddTool(GetToolIcon("ClearConsole"), "ClearConsole", "清空控制台");
-        //     // 监听工具栏
-        //     bar.ToolClick += ToolBar_ToolClick;
-        //     // 禁用工具栏
-        //     // _toolBar.DisableAllTool();
-        //     _toolBar.EnableTool("Console");
-        //     _toolBar.EnableTool("ClearConsole");
-        // }
-    }
-
-    /// <summary>
-    /// 获取工具图标
-    /// </summary>
-    private IImage GetToolIcon(string name) => ImageResManager.Instance.GetAssetsImage($"Icon16/{name}.png");
 
     /// <summary>
     /// 工具栏.单击工具
@@ -287,9 +254,9 @@ public partial class MainWindow : Window
 
     #endregion
 
-    private void Button_OnClick(object? sender, RoutedEventArgs e)
-    {
-        ProjectManager.Instance.OpenProject();
 
+    private void MenuItem_OnClick(object? sender, RoutedEventArgs e)
+    {
+        ToolBar_ToolClick((sender as MenuItem).Tag.ToString());
     }
 }

@@ -46,12 +46,12 @@ namespace AXNode.SubSystem.ProjectSystem
         /// <summary>
         /// 新建项目
         /// </summary>
-        public void NewProject()
+        public async void NewProject()
         {
             // 当前项目未保存
             if (!_saved)
             {
-                bool? result = WM.ShowAsk("当前项目未保存，是否保存？");
+                bool? result = await WM.ShowAsk("当前项目未保存，是否保存？");
                 // 取消操作
                 if (result == null) return;
                 // 保存项目
@@ -66,12 +66,12 @@ namespace AXNode.SubSystem.ProjectSystem
         /// <summary>
         /// 打开项目
         /// </summary>
-        public void OpenProject()
+        public async void OpenProject()
         {
             // 当前项目未保存
             if (!_saved)
             {
-                bool? result = WM.ShowAsk("当前项目未保存，是否保存？");
+                bool? result = await WM.ShowAsk("当前项目未保存，是否保存？");
                 // 取消操作
                 if (result == null) return;
                 // 保存项目

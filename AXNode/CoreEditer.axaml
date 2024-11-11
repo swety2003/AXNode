@@ -7,18 +7,17 @@
              xmlns:nesp="clr-namespace:AXNode.SubSystem.NodeEditSystem.Panel"
              xmlns:nls="clr-namespace:AXNode.SubSystem.NodeLibSystem"
              mc:Ignorable="d"
-             d:FontFamily="NSimSun"
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
+    <Grid RowDefinitions="Auto,*">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition Width="2"/>
             <ColumnDefinition Width="300"/>
         </Grid.ColumnDefinitions>
-        <Grid x:Name="LeftPanel" Background="#262626">
+        <Grid Grid.Row="1" x:Name="LeftPanel" Background="#262626">
             <nesp:EditPanel x:Name="Panel_NodeEditer"/>
         </Grid>
-        <Grid x:Name="RightPanel" Background="#262626" Grid.Column="2">
+        <Grid Grid.Row="1" x:Name="RightPanel" Background="#262626" Grid.Column="2">
             <nls:NodeLibPanel x:Name="Panel_NodeLib"/>
         </Grid>
     </Grid>

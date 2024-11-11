@@ -14,11 +14,14 @@ public static class Keyboard
 public static class Mouse
 {
     public static PointerEventArgs? _pointerEventArgs { get; private set; }
+    public static DragEventArgs? _dragEventArgs { get; private set; }
     public static void RegisterPointerEventArgs(PointerEventArgs pointerEventArgs) => _pointerEventArgs = pointerEventArgs;
+    public static void RegisterDragEventArgs(DragEventArgs e) => _dragEventArgs = e;
     public static IPointer Pointer => _pointerEventArgs.Pointer;
-    public static Point GetPosition(Control c)
+    public static Point GetPosition(Control c,bool drag = false)
     {
-        return _pointerEventArgs.GetPosition(c);
+        
+        return drag? _dragEventArgs.GetPosition(c): _pointerEventArgs.GetPosition(c);
         // return Pointer.GetCurrentPoint(c).Position;
     }
 

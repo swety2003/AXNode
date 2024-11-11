@@ -1,7 +1,12 @@
-﻿using Avalonia.Controls;
+﻿using System.Threading.Tasks;
+using Avalonia;
+using Avalonia.Controls;
+using Avalonia.Controls.ApplicationLifetimes;
+using Avalonia.Platform.Storage;
 using Microsoft.Win32;
 using XLib.Base;
 using AXNode.SubSystem.OptionSystem;
+using AXNode.SubSystem.WindowSystem;
 
 namespace AXNode.SubSystem.ProjectSystem
 {
@@ -22,28 +27,53 @@ namespace AXNode.SubSystem.ProjectSystem
         /// </summary>
         public string OpenReadProjectDialog()
         {
-            // OpenFileDialog dialog = new OpenFileDialog
-            // {
-            //     InitialDirectory = OptionManager.Instance.ProjectPath,
-            //     Filter = _projectFilter.ToString(),
-            // };
-            // return dialog.ShowDialog() == true ? dialog.FileName : "";
-            return @"C:\Users\swety\Desktop\新建节点项目_01.xnode";
+            var file = "";
+            Task.Run(async () =>
+            {
+
+                var topLevel = TopLevel.GetTopLevel(WM.Main);
+                var files = await topLevel.StorageProvider.OpenFilePickerAsync(new FilePickerOpenOptions
+                {
+                    Title = "Open XNode File",
+                    AllowMultiple = false,
+                    FileTypeFilter = new []{  new FilePickerFileType("XNode文件") { Patterns = new[] { "*.xnode" } }}
+
+                });
+                
+                if (files.Count >= 1)
+                {
+                    file = files[0].TryGetLocalPath();
+                }
+            }).Wait();
+            
+            return file;
         }
 
         /// <summary>
         /// 打开保存项目对话框
         /// </summary>
         public string OpenSaveProjectDialog(string fileName)
-        {
-            // SaveFileDialog dialog = new SaveFileDialog
-            // {
-            //     InitialDirectory = OptionManager.Instance.ProjectPath,
-            //     FileName = $"{fileName}.xnode",
-            //     Filter = _projectFilter.ToString(),
-            // };
-            // return dialog.ShowDialog() == true ? dialog.FileName : "";
-            return "";
+        {            
+            var file = "";
+
+            Task.Run(async () =>
+            {
+                var topLevel = TopLevel.GetTopLevel(WM.Main);
+
+                // 启动异步操作以打开对话框。
+                var _file = await topLevel.StorageProvider.SaveFilePickerAsync(new FilePickerSaveOptions
+                {
+                    Title = "Save XNode File",
+                    FileTypeChoices = new []{  new FilePickerFileType("XNode文件") { Patterns = new[] { "*.xnode" } }}
+                    
+                });
+
+                if (_file is not null)
+                {
+                    file = _file.Path.AbsolutePath;
+                }
+            });
+            return file;
 
         }
 

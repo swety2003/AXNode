@@ -6,6 +6,9 @@
              xmlns:avaloniaControl="clr-namespace:XLib.AvaloniaControl;assembly=XLib.AvaloniaControl"
              xmlns:base="clr-namespace:XLib.Base;assembly=XLib.Base"
              mc:Ignorable="d"
+Name="root"
+             xmlns:i="clr-namespace:Avalonia.Xaml.Interactivity;assembly=Avalonia.Xaml.Interactivity"
+             xmlns:interactivity="clr-namespace:AXNode.Interactivity"
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid Background="#181818" RowDefinitions="Auto,*">
         
@@ -21,13 +24,42 @@
                 </Button.Content>
             </Button>
         </StackPanel>
-        <TreeView x:Name="NodePresetTree">
+        <TreeView Grid.Row="1" x:Name="NodePresetTree"  >
+            <TreeView.Resources>
+                <SolidColorBrush x:Key="TreeViewItemForeground">White</SolidColorBrush>
+            </TreeView.Resources>
+            <TreeView.ItemContainerTheme>
+                <ControlTheme TargetType="TreeViewItem" BasedOn="{StaticResource {x:Type TreeViewItem}}">
+
+                    <Setter Property="Padding" Value="0"></Setter>
+                </ControlTheme>
+            </TreeView.ItemContainerTheme>
             <TreeView.DataTemplates>
                 <TreeDataTemplate DataType="base:ITreeItem" ItemsSource="{Binding Childs}">
-                    <TextBlock Text="{Binding Name}"></TextBlock>
+                    <Grid DragDrop.AllowDrop="True" ColumnDefinitions="32,auto" Background="#01000000" PointerPressed="InputElement_OnPointerPressed">
+                        <Grid.Styles>
+                                <Style Selector="Image.folder">
+                                    <Setter Property="Source" Value="avares://AXNode/Assets/Icon15/Folder.png"></Setter>
+                                </Style>
+                                <Style Selector="Image">
+                                    <Setter Property="Source" Value="avares://AXNode/Assets/Icon15/File.png"></Setter>
+                                </Style>
+                        </Grid.Styles>
+                        <Image Stretch="None">
+                            <i:Interaction.Behaviors>
+                                <DataTriggerBehavior Binding="{Binding IsFolder}" Value="True">
+                                    <AddClassAction ClassName="folder"></AddClassAction>
+                                </DataTriggerBehavior>
+                                <DataTriggerBehavior Binding="{Binding IsFolder}" Value="False">
+                                    <RemoveClassAction ClassName="folder"></RemoveClassAction>
+                            
+                                </DataTriggerBehavior>
+                            </i:Interaction.Behaviors>
+                        </Image>
+                        <TextBlock Grid.Column="1" Foreground="White" Text="{Binding Name}"></TextBlock>
+                    </Grid>
                 </TreeDataTemplate>
             </TreeView.DataTemplates>
         </TreeView>
-        <avaloniaControl:TreeView Grid.Row="1" x:Name="NodePresetTree1" MoveItem="False" MultiSelect="False" DragFileOnly="True"/>
     </Grid>
 </UserControl>

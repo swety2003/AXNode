@@ -103,41 +103,49 @@ namespace AXNode.SubSystem.NodeLibSystem
         {
             // 创建根文件夹
             Folder 内置节点 = _nodeLibRoot.CreateFolder("内置节点".PackToList());
+            Root.Childs.Add(内置节点);
+
             // 创建一级文件夹
             Folder 驱动节点 = _nodeLibRoot.CreateFolder(内置节点, "驱动节点".PackToList());
             Folder 事件节点 = _nodeLibRoot.CreateFolder(内置节点, "事件节点".PackToList());
             Folder 函数节点 = _nodeLibRoot.CreateFolder(内置节点, "函数节点".PackToList());
             Folder 流控制节点 = _nodeLibRoot.CreateFolder(内置节点, "流控制节点".PackToList());
             Folder 数据节点 = _nodeLibRoot.CreateFolder(内置节点, "数据节点".PackToList());
+            内置节点.Childs.Add(驱动节点);
+            内置节点.Childs.Add(事件节点);
+            内置节点.Childs.Add(函数节点);
+            内置节点.Childs.Add(流控制节点);
+            内置节点.Childs.Add(数据节点);
             // 创建二级文件夹
             Folder 运算函数 = _nodeLibRoot.CreateFolder(函数节点.Path.AppendElement("运算函数"));
             Folder 转换器 = _nodeLibRoot.CreateFolder(函数节点.Path.AppendElement("转换器"));
             Folder 执行控制 = _nodeLibRoot.CreateFolder(函数节点.Path.AppendElement("执行控制"));
             // 创建文件
-            _nodeLibRoot.CreateFile(数据节点, "整数", "nt", new NodeType<Data_Int>());
-            _nodeLibRoot.CreateFile(数据节点, "小数", "nt", new NodeType<Data_Double>());
-            _nodeLibRoot.CreateFile(数据节点, "字符串", "nt", new NodeType<Data_String>());
+            
+            数据节点.Childs.Add(_nodeLibRoot.CreateFile(数据节点, "整数", "nt", new NodeType<Data_Int>()));
+            数据节点.Childs.Add(_nodeLibRoot.CreateFile(数据节点, "小数", "nt", new NodeType<Data_Double>()));
+            数据节点.Childs.Add(_nodeLibRoot.CreateFile(数据节点, "字符串", "nt", new NodeType<Data_String>()));
 
-            _nodeLibRoot.CreateFile(驱动节点, "帧驱动器", "nt", new NodeType<FrameDriver>());
-            _nodeLibRoot.CreateFile(驱动节点, "定时驱动器", "nt", new NodeType<TimerDriver>());
+            驱动节点.Childs.Add(_nodeLibRoot.CreateFile(驱动节点, "帧驱动器", "nt", new NodeType<FrameDriver>()));
+            驱动节点.Childs.Add(_nodeLibRoot.CreateFile(驱动节点, "定时驱动器", "nt", new NodeType<TimerDriver>()));
 
-            _nodeLibRoot.CreateFile(事件节点, "按键", "nt", new NodeType<Event_Keyboard>());
+            事件节点.Childs.Add(_nodeLibRoot.CreateFile(事件节点, "按键", "nt", new NodeType<Event_Keyboard>()));
 
-            _nodeLibRoot.CreateFile(运算函数, "关系运算", "nt", new NodeType<Func_Compare>());
-            _nodeLibRoot.CreateFile(运算函数, "四则运算", "nt", new NodeType<Func_BinOP>());
-            _nodeLibRoot.CreateFile(转换器, "比例转整数", "nt", new NodeType<Func_RatioToInt>());
-            _nodeLibRoot.CreateFile(转换器, "数值转比例", "nt", new NodeType<Func_NumberToRatio>());
-            _nodeLibRoot.CreateFile(函数节点, "发送网络消息", "nt", new NodeType<Func_SendNetMessage>());
-            _nodeLibRoot.CreateFile(函数节点, "日志", "nt", new NodeType<Func_Log>());
+            运算函数.Childs.Add(_nodeLibRoot.CreateFile(运算函数, "关系运算", "nt", new NodeType<Func_Compare>()));
+            运算函数.Childs.Add(_nodeLibRoot.CreateFile(运算函数, "四则运算", "nt", new NodeType<Func_BinOP>()));
+            转换器.Childs.Add(_nodeLibRoot.CreateFile(转换器, "比例转整数", "nt", new NodeType<Func_RatioToInt>()));
+            转换器.Childs.Add(_nodeLibRoot.CreateFile(转换器, "数值转比例", "nt", new NodeType<Func_NumberToRatio>()));
+            函数节点.Childs.Add(_nodeLibRoot.CreateFile(函数节点, "发送网络消息", "nt", new NodeType<Func_SendNetMessage>()));
+            函数节点.Childs.Add(_nodeLibRoot.CreateFile(函数节点, "日志", "nt", new NodeType<Func_Log>()));
 
-            _nodeLibRoot.CreateFile(执行控制, "多线程执行", "nt", new NodeType<Func_CreateThread>());
-            _nodeLibRoot.CreateFile(执行控制, "延迟执行", "nt", new NodeType<Func_Delay>());
-            _nodeLibRoot.CreateFile(执行控制, "暂停执行", "nt", new NodeType<Func_Sleep>());
+            执行控制.Childs.Add(_nodeLibRoot.CreateFile(执行控制, "多线程执行", "nt", new NodeType<Func_CreateThread>()));
+            执行控制.Childs.Add(_nodeLibRoot.CreateFile(执行控制, "延迟执行", "nt", new NodeType<Func_Delay>()));
+            执行控制.Childs.Add(_nodeLibRoot.CreateFile(执行控制, "暂停执行", "nt", new NodeType<Func_Sleep>()));
 
-            _nodeLibRoot.CreateFile(流控制节点, "判断", "nt", new NodeType<Flow_If>());
-            _nodeLibRoot.CreateFile(流控制节点, "计数循环", "nt", new NodeType<Flow_LoopByCount>());
-            _nodeLibRoot.CreateFile(流控制节点, "条件循环", "nt", new NodeType<Flow_While>());
-            _nodeLibRoot.CreateFile(流控制节点, "选择执行", "nt", new NodeType<Flow_Switch>());
+            流控制节点.Childs.Add(_nodeLibRoot.CreateFile(流控制节点, "判断", "nt", new NodeType<Flow_If>()));
+            流控制节点.Childs.Add(_nodeLibRoot.CreateFile(流控制节点, "计数循环", "nt", new NodeType<Flow_LoopByCount>()));
+            流控制节点.Childs.Add(_nodeLibRoot.CreateFile(流控制节点, "条件循环", "nt", new NodeType<Flow_While>()));
+            流控制节点.Childs.Add(_nodeLibRoot.CreateFile(流控制节点, "选择执行", "nt", new NodeType<Flow_Switch>()));
         }
 
         /// <summary>

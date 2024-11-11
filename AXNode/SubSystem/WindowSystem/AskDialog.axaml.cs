@@ -77,39 +77,39 @@ namespace AXNode.SubSystem.WindowSystem
             // Border? titleBorder = GetTemplateChild("TitleBorder") as Border;
             // Border? clientBorder = GetTemplateChild("ClientBorder") as Border;
             // // 设置提示图标
-            // Icon_Info.Visibility = Visibility.Collapsed;
-            // Icon_Warning.Visibility = Visibility.Collapsed;
-            // Icon_Error.Visibility = Visibility.Collapsed;
-            // switch (Level)
-            // {
-            //     case TipLevel.Info:
-            //         Icon_Info.Visibility = Visibility.Visible;
-            //         _currentBrush = _info;
-            //         break;
-            //     case TipLevel.Break:
-            //         Title = "中断";
-            //         Icon_Break.Visibility = Visibility.Visible;
-            //         _currentBrush = _break;
-            //         break;
-            //     case TipLevel.Warning:
-            //         Title = "警告";
-            //         Icon_Warning.Visibility = Visibility.Visible;
-            //         _currentBrush = _warning;
-            //         break;
-            //     case TipLevel.Error:
-            //         Title = "错误";
-            //         Icon_Error.Visibility = Visibility.Visible;
-            //         _currentBrush = _error;
-            //         break;
-            // }
+            Icon_Info.IsVisible = false;
+            Icon_Warning.IsVisible  = false;
+            Icon_Error.IsVisible  = false;
+            switch (Level)
+            {
+                case TipLevel.Info:
+                    Icon_Info.IsVisible  = true;
+                    _currentBrush = _info;
+                    break;
+                case TipLevel.Break:
+                    Title = "中断";
+                    Icon_Break.IsVisible  = true;
+                    _currentBrush = _break;
+                    break;
+                case TipLevel.Warning:
+                    Title = "警告";
+                    Icon_Warning.IsVisible  = true;
+                    _currentBrush = _warning;
+                    break;
+                case TipLevel.Error:
+                    Title = "错误";
+                    Icon_Error.IsVisible  = true;
+                    _currentBrush = _error;
+                    break;
+            }
             // // 设置边框颜色
             // titleBorder.BorderBrush = _currentBrush;
             // clientBorder.BorderBrush = _currentBrush;
             // // 设置提示文本
-            // TipTextBlock.Inlines.Add(new Run(Message) { Foreground = _tip });
-            // if (!UseCancel) Cancel.Visibility = Visibility.Collapsed;
+            TipTextBlock.Inlines.Add(new Run(Message) { Foreground = _tip });
+            if (!UseCancel) Cancel.IsVisible  = false;
             // // 设置“是”按钮文本
-            // Yes.Content = YesText + "(_Y)";
+            Yes.Content = YesText + "(_Y)";
         }
 
         private void AskDialog_KeyDown(object? sender, KeyEventArgs e)

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Avalonia.Controls;
+using Avalonia.Input;
 using XLib.Base;
 using XLib.Base.UIComponent;
 using XLib.Base.VirtualDisk;
@@ -29,7 +30,27 @@ public partial class EditPanel : UserControl, IDropable
     public EditPanel()
     {
         InitializeComponent();
-        Mouse.InitDropable(this);
+        // Mouse.InitDropable(this);
+        
+        DragDrop.SetAllowDrop(this, true);
+        this.AddHandler(DragDrop.DropEvent,((sender, args) =>
+        {
+            Mouse.RegisterDragEventArgs(args);
+            if (args.Data.Get("object") is ITreeItem treeItem)
+            {
+                if (this is IDropable dropable)
+                {
+                    try
+                    {
+                        dropable.OnDrop(new List<ITreeItem>{ treeItem });
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine("拖动失败：" + ex.Message + ex.StackTrace);
+                    }
+                }
+            }
+        }));
     }
 
     #endregion
