@@ -13,13 +13,15 @@
             <ColumnDefinition Width="25"/>
         </Grid.ColumnDefinitions>
         <!-- 左引脚 -->
-        <Image x:Name="Icon_LeftPin" Width="11" Height="11" IsHitTestVisible="False"/>
+        <ContentPresenter VerticalAlignment="Center" Margin="8 0 0 0" IsHitTestVisible="False" x:Name="Icon_LeftPin" Grid.Column="0" />
         <!-- 左引脚区域 -->
         <Grid x:Name="LeftPinArea" Background="Transparent" Grid.Column="0" Width="17" Height="17"/>
         <!-- 函数名 -->
         <TextBlock x:Name="Block_ExecuteDesc" Text="函数描述" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1" Opacity="0.5" Margin="10,0"/>
         <!-- 右引脚 -->
-        <Image x:Name="Icon_RightPin" Width="11" Height="11" Grid.Column="2" IsHitTestVisible="False"/>
+        <ContentPresenter VerticalAlignment="Center" Margin="6 0 0 0"   x:Name="Icon_RightPin" Grid.Column="2" IsHitTestVisible="False">
+            
+        </ContentPresenter>
         <!-- 右引脚区域 -->
         <Grid x:Name="RightPinArea" Background="Transparent" Grid.Column="2" Width="17" Height="17"/>
     </Grid>

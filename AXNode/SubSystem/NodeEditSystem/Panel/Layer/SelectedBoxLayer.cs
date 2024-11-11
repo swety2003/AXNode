@@ -14,13 +14,13 @@ namespace AXNode.SubSystem.NodeEditSystem.Panel.Layer
     {
         public List<TargetBox> BoxList { get; set; } = new List<TargetBox>();
 
-        protected override void OnUpdate()
+        public override void Render(DrawingContext context)
         {
             foreach (var box in BoxList)
             {
                 List<Point> pointList = box.GetPointList(15);
                 for (int index = 0; index < pointList.Count / 2; index++)
-                    _dc.DrawLine(_pen, pointList[index * 2], pointList[index * 2 + 1]);
+                    context.DrawLine(_pen, pointList[index * 2], pointList[index * 2 + 1]);
             }
         }
 

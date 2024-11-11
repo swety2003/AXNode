@@ -18,9 +18,9 @@ namespace AXNode.SubSystem.NodeEditSystem.Control
         public override void Init()
         {
             if (Instance == null) return;
-            Icon_LeftPin.Source = PinIconManager.Instance.ExecutePin_Null;
+            Icon_LeftPin.Content = PinIconManager.Instance.ExecutePin_Null;
             Block_ExecuteDesc.Text = Instance.ExecuteDesc;
-            Icon_RightPin.Source = PinIconManager.Instance.ExecutePin_Null;
+            Icon_RightPin.Content = PinIconManager.Instance.ExecutePin_Null;
 
             LeftPinArea.PointerEntered += LeftPinArea_MouseEnter;
             RightPinArea.PointerEntered += RightPinArea_MouseEnter;
@@ -58,10 +58,10 @@ namespace AXNode.SubSystem.NodeEditSystem.Control
 
         public override void UpdatePinIcon()
         {
-            if (Instance.InputPin.SourceList.Count == 0) Icon_LeftPin.Source = PinIconManager.Instance.ExecutePin_Null;
-            else Icon_LeftPin.Source = PinIconManager.Instance.ExecutePin;
-            if (Instance.OutputPin.TargetList.Count == 0) Icon_RightPin.Source = PinIconManager.Instance.ExecutePin_Null;
-            else Icon_RightPin.Source = PinIconManager.Instance.ExecutePin;
+            if (Instance.InputPin.SourceList.Count == 0) Icon_LeftPin.Content = PinIconManager.Instance.ExecutePin_Null;
+            else Icon_LeftPin.Content = PinIconManager.Instance.ExecutePin;
+            if (Instance.OutputPin.TargetList.Count == 0) Icon_RightPin.Content = PinIconManager.Instance.ExecutePin_Null;
+            else Icon_RightPin.Content = PinIconManager.Instance.ExecutePin;
         }
     }
 }

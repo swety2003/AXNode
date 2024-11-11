@@ -27,14 +27,6 @@ namespace AXNode.SubSystem.NodeEditSystem.Panel.Layer
 
         #region 公开方法
 
-        public override void Init()
-        {
-            // _normalLine.Freeze();
-            // _microLine.Freeze();
-            // _centerLine.Freeze();
-            // _centerList.Freeze();
-        }
-
         public void MoveLayer(Point offset)
         {
             _moveOffset = offset;
@@ -47,7 +39,10 @@ namespace AXNode.SubSystem.NodeEditSystem.Panel.Layer
             Update();
         }
 
-        protected override void OnUpdate() => DrawGrid();
+        public override void Render(DrawingContext context)
+        {
+            DrawGrid(context);
+        }
 
         /// <summary>
         /// 结束拖动时调用
@@ -81,8 +76,9 @@ namespace AXNode.SubSystem.NodeEditSystem.Panel.Layer
         /// <summary>
         /// 绘制网格
         /// </summary>
+        /// <param name="context"></param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        private void DrawGrid()
+        private void DrawGrid(DrawingContext context)
         {
             int line;
             int list;
@@ -101,30 +97,30 @@ namespace AXNode.SubSystem.NodeEditSystem.Panel.Layer
             _currentPen = _microLine;
             for (line = 0; line < GridLineCount; line++)
             for (subIndex = 1; subIndex < _subdivideHeight; subIndex++)
-                DrawHorizontalLine(line * _gridHeight + _gridHeight / _subdivideHeight * subIndex);
+                DrawHorizontalLine(context, line * _gridHeight + _gridHeight / _subdivideHeight * subIndex);
             for (list = 0; list < GridListCount; list++)
             for (subIndex = 1; subIndex < _subdivideWidth; subIndex++)
-                DrawVerticalLine(list * _gridWidth + _gridWidth / _subdivideWidth * subIndex);
+                DrawVerticalLine(context, list * _gridWidth + _gridWidth / _subdivideWidth * subIndex);
 
             // 绘制网格线
             _currentPen = _normalLine;
             for (line = 0; line < GridLineCount; line++)
             {
                 if (_drawStart.Y + line * _gridHeight == GridCenter.Y) continue;
-                DrawHorizontalLine(line * _gridHeight);
+                DrawHorizontalLine(context, line * _gridHeight);
             }
 
             for (list = 0; list < GridListCount; list++)
             {
                 if (_drawStart.X + list * _gridWidth == GridCenter.X) continue;
-                DrawVerticalLine(list * _gridWidth);
+                DrawVerticalLine(context, list * _gridWidth);
             }
 
             // 绘制中心线
             _currentPen = _centerLine;
-            DrawHorizontalLine((int)GridCenter.Y - (int)_drawStart.Y);
+            DrawHorizontalLine(context, (int)GridCenter.Y - (int)_drawStart.Y);
             _currentPen = _centerList;
-            DrawVerticalLine((int)GridCenter.X - (int)_drawStart.X);
+            DrawVerticalLine(context, (int)GridCenter.X - (int)_drawStart.X);
         }
 
         /// <summary>
@@ -164,22 +160,22 @@ namespace AXNode.SubSystem.NodeEditSystem.Panel.Layer
         /// 绘制水平线
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        private void DrawHorizontalLine(int y)
+        private void DrawHorizontalLine(DrawingContext context, int y)
         {
             int realy = (int)_drawStart.Y + y;
             if (realy < 0 || realy > Bounds.Height) return;
-            _dc.DrawLine(_currentPen, new Point(0, realy), new Point(Bounds.Width, realy));
+            context.DrawLine(_currentPen, new Point(0, realy), new Point(Bounds.Width, realy));
         }
 
         /// <summary>
         /// 绘制垂直线
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        private void DrawVerticalLine(int x)
+        private void DrawVerticalLine(DrawingContext context, int x)
         {
             int realx = (int)_drawStart.X + x;
             if (realx < 0 || realx > Bounds.Width) return;
-            _dc.DrawLine(_currentPen, new Point(realx, 0), new Point(realx, Bounds.Height));
+            context.DrawLine(_currentPen, new Point(realx, 0), new Point(realx, Bounds.Height));
         }
 
         #endregion

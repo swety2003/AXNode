@@ -17,14 +17,18 @@
         /// <summary>名称</summary>
         public string Name { get; set; } = "未命名文件夹";
 
+        public List<ITreeItem> Childs { get; set; } = new List<ITreeItem>();
+
         /// <summary>所在文件夹</summary>
         public Folder? Parent { get; set; } = null;
+        
+        
 
         /// <summary>文件夹列表</summary>
-        public List<Folder> FolderList { get; set; } = new List<Folder>();
+        public List<Folder> FolderList => Childs.OfType<Folder>().ToList();
 
         /// <summary>文件列表</summary>
-        public List<File> FileList { get; set; } = new List<File>();
+        public List<File> FileList => Childs.OfType<File>().ToList();
 
         /// <summary>路径</summary>
         public List<string> Path

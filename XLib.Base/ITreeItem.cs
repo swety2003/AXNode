@@ -7,6 +7,12 @@
         /// <summary>是否为文件夹</summary>
         public bool IsFolder { get; }
 
+        /// <summary>名称</summary>
+        string Name { get; set; }
+
+        /// <summary>文件列表</summary>
+        List<ITreeItem> Childs { get; set; }
+
         #endregion
 
         #region 方法

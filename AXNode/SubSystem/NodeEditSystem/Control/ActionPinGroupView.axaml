@@ -14,7 +14,10 @@
         <!-- 动作 -->
         <TextBlock x:Name="Title_Pin" Text="动作名称" Foreground="#C47EFF" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="26,0,0,0"/>
         <!-- 引脚 -->
-        <Image x:Name="Icon_Pin" Width="11" Height="11" Grid.Column="1" IsHitTestVisible="False"/>
+        <!-- <Image IsVisible="False" x:Name="Icon_Pin" Stretch="None" Grid.Column="1" IsHitTestVisible="False"/> -->
+
+        <ContentPresenter x:Name="Icon_Pin" IsHitTestVisible="False" VerticalAlignment="Center" Margin="6 0 0 0" Grid.Column="1">
+        </ContentPresenter>
         <!-- 引脚区域 -->
         <Grid x:Name="PinArea" Background="Transparent" Grid.Column="1" Width="17" Height="17"/>
     </Grid>

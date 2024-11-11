@@ -1,4 +1,8 @@
-﻿using Avalonia;
+﻿using System;
+using Avalonia;
+using Avalonia.Controls;
+using Avalonia.Input;
+using Avalonia.Interactivity;
 using Avalonia.Media;
 using Avalonia.Rendering;
 
@@ -9,20 +13,9 @@ namespace XLib.Avalonia.Drawing
     /// </summary>
     public abstract class VisualElement : Visual, ICustomHitTest
     {
-        private DrawingContext? _dc;
-        
-        public override void Render(DrawingContext context)
-        {
-            _dc = context;
-            OnUpdate(context);
-            base.Render(context);
-        }
-
         public void Update()
         {
             IsVisible = true;
-            if (_dc == null) return;
-            // OnUpdate(_dc);
             InvalidateVisual();
         }
     
@@ -31,12 +24,11 @@ namespace XLib.Avalonia.Drawing
             IsVisible = false;
             InvalidateVisual();
         }
-    
-        protected abstract void OnUpdate(DrawingContext context);
         
+        bool isHitted = false;
         public virtual bool HitTest(Point point)
         {
-            return false;
+            return isHitted;
         }
     }
 }

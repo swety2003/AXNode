@@ -20,15 +20,6 @@ namespace AXNode;
 
 public partial class MainWindow : Window
 {
-    //
-    // private void MainGrid_OnPointerPressed(object? sender, PointerPressedEventArgs e)
-    // {
-    //     LoadingLayer loadingLayer = new LoadingLayer { Margin = new Thickness(50) };
-    //     loadingLayer.Init();
-    //     MainGrid.Children.Add(loadingLayer);
-    //     loadingLayer.Start();
-    // }
-
     #region 属性
 
     /// <summary>核心编辑器实例</summary>
@@ -63,6 +54,7 @@ public partial class MainWindow : Window
             Mouse.RegisterDirectlyOver(args);
             
         }, RoutingStrategies.Tunnel);
+        
     }
 
     protected override void OnUnloaded(RoutedEventArgs e)

@@ -15,15 +15,10 @@ namespace XLib.Sample.Layer
     {
         public Point TargetPoint { get; set; } = new Point();
 
-        // public override void Init()
-        // {
-        //     _pen.Freeze();
-        // }
-
-        protected override void OnUpdate()
+        public override void Render(DrawingContext context)
         {
             Opacity = _opacity;
-            _dc.DrawEllipse(null, _pen, TargetPoint, _size / 2, _size / 2);
+            context.DrawEllipse(null, _pen, TargetPoint, _size / 2, _size / 2);
         }
 
         public double GetMotionProperty(string propertyName) => 0;

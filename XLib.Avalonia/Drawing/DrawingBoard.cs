@@ -65,11 +65,6 @@ namespace XLib.Avalonia.Drawing
         {
             // 置空命中元素
             _hitedElement = _elementList.FirstOrDefault(x => x.HitTest(point));
-            
-            // // 创建一个圆形命中检测区域
-            // GeometryHitTestParameters parameters = new GeometryHitTestParameters(new EllipseGeometry(point, 8, 8));
-            // // 执行命中检测
-            // VisualTreeHelper.HitTest(this, null, HitTestCallback, parameters);
             // 返回命中元素
             return _hitedElement;
         }

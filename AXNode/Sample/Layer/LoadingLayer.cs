@@ -49,14 +49,14 @@ namespace AXNode.Sample.Layer
         }
 
         // public override void Init() => _brush.Freeze();
-
-        protected override void OnUpdate()
+        public override void Render(DrawingContext context)
         {
-            DrawVertex(_dc, new Point(_x1 + _offset, 0), 4, _brush, null);
-            DrawVertex(_dc, new Point(_x2 + _offset, 0), 4, _brush, null);
-            DrawVertex(_dc, new Point(_x3 + _offset, 0), 4, _brush, null);
-            DrawVertex(_dc, new Point(_x4 + _offset, 0), 4, _brush, null);
-            DrawVertex(_dc, new Point(_x5 + _offset, 0), 4, _brush, null);
+            
+            DrawVertex(context, new Point(_x1 + _offset, 0), 4, _brush, null);
+            DrawVertex(context, new Point(_x2 + _offset, 0), 4, _brush, null);
+            DrawVertex(context, new Point(_x3 + _offset, 0), 4, _brush, null);
+            DrawVertex(context, new Point(_x4 + _offset, 0), 4, _brush, null);
+            DrawVertex(context, new Point(_x5 + _offset, 0), 4, _brush, null);
         }
 
         public double GetMotionProperty(string propertyName) => 0;

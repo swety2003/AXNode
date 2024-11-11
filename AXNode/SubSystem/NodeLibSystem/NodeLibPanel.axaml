@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns="https://github.com/avaloniaui"
              xmlns:avaloniaControl="clr-namespace:XLib.AvaloniaControl;assembly=XLib.AvaloniaControl"
+             xmlns:base="clr-namespace:XLib.Base;assembly=XLib.Base"
              mc:Ignorable="d"
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid Background="#181818" RowDefinitions="Auto,*">
@@ -20,6 +21,13 @@
                 </Button.Content>
             </Button>
         </StackPanel>
-        <avaloniaControl:TreeView Grid.Row="1" x:Name="NodePresetTree" MoveItem="False" MultiSelect="False" DragFileOnly="True"/>
+        <TreeView x:Name="NodePresetTree">
+            <TreeView.DataTemplates>
+                <TreeDataTemplate DataType="base:ITreeItem" ItemsSource="{Binding Childs}">
+                    <TextBlock Text="{Binding Name}"></TextBlock>
+                </TreeDataTemplate>
+            </TreeView.DataTemplates>
+        </TreeView>
+        <avaloniaControl:TreeView Grid.Row="1" x:Name="NodePresetTree1" MoveItem="False" MultiSelect="False" DragFileOnly="True"/>
     </Grid>
 </UserControl>

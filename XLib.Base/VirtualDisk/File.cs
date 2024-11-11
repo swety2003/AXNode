@@ -26,6 +26,8 @@
         /// <summary>名称</summary>
         public string Name { get; set; } = "未命名文件";
 
+        public List<ITreeItem> Childs { get; set; }
+
         /// <summary>扩展名</summary>
         public string Extension { get; set; } = "";
 

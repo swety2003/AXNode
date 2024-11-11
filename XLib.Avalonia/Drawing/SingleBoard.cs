@@ -10,31 +10,10 @@ namespace XLib.Avalonia.Drawing
     /// </summary>
     public abstract class SingleBoard : Control
     {
-        public SingleBoard()
-        {
-            // AddVisualChild(_visual);
-            // AddLogicalChild(_visual);
-        }
-
-        public Point Point { get; set; } = new Point();
-
-        // protected override int VisualChildrenCount => 1;
-        //
-        // protected override Visual GetVisualChild(int index) => _visual;
-
-        public virtual void Init() { }
-
-        public override void Render(DrawingContext context)
-        {
-            _dc = context;
-            if (IsEnabled) OnUpdate();
-            base.Render(context);
-        }
-
         public void Update()
         {
             IsVisible = true;
-            if (IsEnabled && _dc != null)
+            if (IsEnabled)
             {
                 InvalidateVisual();
             }
@@ -45,8 +24,6 @@ namespace XLib.Avalonia.Drawing
             IsVisible = false;
             InvalidateVisual();
         }
-
-        protected abstract void OnUpdate();
 
         /// <summary>
         /// 绘制顶点
@@ -59,7 +36,5 @@ namespace XLib.Avalonia.Drawing
             dc.DrawRectangle(brush, pen, new Rect(x, y, size, size));
         }
 
-        // private readonly DrawingVisual _visual = new DrawingVisual();
-        protected DrawingContext? _dc;
     }
 }

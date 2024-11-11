@@ -13,7 +13,7 @@ namespace AXNode.SubSystem.NodeEditSystem.Panel.Layer
     {
         public ConnectLine? Line { get; set; } = null;
 
-        protected override void OnUpdate()
+        public override void Render(DrawingContext context)
         {
             if (Line == null) return;
 
@@ -44,7 +44,7 @@ namespace AXNode.SubSystem.NodeEditSystem.Panel.Layer
             figure.Segments.Add(bs);
 
             // 绘制形状
-            _dc.DrawGeometry(null, _pen, geometry);
+            context.DrawGeometry(null, _pen, geometry);
         }
 
         #region 字段

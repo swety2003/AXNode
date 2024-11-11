@@ -20,7 +20,7 @@ namespace AXNode.SubSystem.NodeEditSystem.Control
             if (Instance == null) return;
             Title_Pin.Text = Instance.ActionName;
             Instance.ActionNameChanged = (name) => Title_Pin.Text = name;
-            Icon_Pin.Source = PinIconManager.Instance.ExecutePin_Null;
+            Icon_Pin.Content = PinIconManager.Instance.ExecutePin_Null;
 
             PinArea.PointerEntered += PinArea_MouseEnter;
             PinArea.PointerExited += PinArea_MouseLeave;
@@ -46,8 +46,8 @@ namespace AXNode.SubSystem.NodeEditSystem.Control
 
         public override void UpdatePinIcon()
         {
-            if (Instance.OutputPin.TargetList.Count == 0) Icon_Pin.Source = PinIconManager.Instance.ExecutePin_Null;
-            else Icon_Pin.Source = PinIconManager.Instance.ExecutePin;
+            if (Instance.OutputPin.TargetList.Count == 0) Icon_Pin.Content = PinIconManager.Instance.ExecutePin_Null;
+            else Icon_Pin.Content = PinIconManager.Instance.ExecutePin;
         }
     }
 }

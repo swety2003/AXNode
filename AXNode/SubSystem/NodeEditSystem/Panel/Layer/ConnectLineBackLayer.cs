@@ -11,12 +11,10 @@ namespace AXNode.SubSystem.NodeEditSystem.Panel.Layer
     public class ConnectLineBackLayer : SingleBoard
     {
         public Point Start { get; set; }
-
         public Point End { get; set; }
 
-        // public override void Init() => _pen.Freeze();
 
-        protected override void OnUpdate()
+        public override void Render(DrawingContext context)
         {
             // 计算连接线区域
             _left = Start.X;
@@ -45,7 +43,7 @@ namespace AXNode.SubSystem.NodeEditSystem.Panel.Layer
             (bs.Point1, bs.Point2,bs.Point3,bs.IsStroked) = (p1, p2,endPoint,true);
             figure.Segments.Add(bs);
 
-            _dc.DrawGeometry(null, _pen, geometry);
+            context.DrawGeometry(null, _pen, geometry);
         }
 
         private double _left = 0;
@@ -54,7 +52,7 @@ namespace AXNode.SubSystem.NodeEditSystem.Panel.Layer
         private double _bottom = 0;
 
         /// <summary>控制线最短长度</summary>
-        private readonly int _minLength = 40;
+        private const int _minLength = 40;
 
         private readonly Pen _pen = new Pen(new SolidColorBrush(Color.FromArgb(64, 255, 255, 255)), 5);
     }

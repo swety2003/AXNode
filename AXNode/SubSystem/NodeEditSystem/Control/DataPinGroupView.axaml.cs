@@ -2,6 +2,7 @@
 using System.Windows;
 using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Controls.Shapes;
 using Avalonia.Input;
 using Avalonia.Media;
 using Avalonia.Threading;
@@ -47,7 +48,7 @@ namespace AXNode.SubSystem.NodeEditSystem.Control
             // 设置图标
             else
             {
-                Icon_LeftPin.Source = GetDataPinIcon();
+                Icon_LeftPin.Content = GetDataPinIcon();
                 LeftPinArea.PointerEntered += LeftPinArea_MouseEnter;
                 LeftPinArea.PointerExited += PinArea_MouseLeave;
             }
@@ -61,7 +62,7 @@ namespace AXNode.SubSystem.NodeEditSystem.Control
             // 设置图标
             else
             {
-                Icon_RightPin.Source = GetDataPinIcon();
+                Icon_RightPin.Content = GetDataPinIcon();
                 RightPinArea.PointerEntered += RightPinArea_MouseEnter;
                 RightPinArea.PointerExited += PinArea_MouseLeave;
             }
@@ -86,9 +87,9 @@ namespace AXNode.SubSystem.NodeEditSystem.Control
         public override void UpdatePinIcon()
         {
             if (Instance.InputPin != null)
-                Icon_LeftPin.Source = GetDataPinIcon(Instance.InputPin.SourceList.Count > 0);
+                Icon_LeftPin.Content = GetDataPinIcon(Instance.InputPin.SourceList.Count > 0);
             if (Instance.OutputPin != null)
-                Icon_RightPin.Source = GetDataPinIcon(Instance.OutputPin.TargetList.Count > 0);
+                Icon_RightPin.Content = GetDataPinIcon(Instance.OutputPin.TargetList.Count > 0);
         }
 
         #endregion
@@ -127,13 +128,9 @@ namespace AXNode.SubSystem.NodeEditSystem.Control
             };
         }
 
-        private IImage? GetDataPinIcon(bool solid = false)
+        private Shape GetDataPinIcon(bool solid = false)
         {
-            return Instance.Type switch
-            {
-                "int" or "double" or "string" or "bool" or "byte[]" => PinIconManager.Instance.GetDataPinIcon(Instance.Type, solid),
-                _ => null,
-            };
+            return PinIconManager.Instance.GetDataPinIcon(Instance.Type, solid);
         }
 
         private void ValueChanged()

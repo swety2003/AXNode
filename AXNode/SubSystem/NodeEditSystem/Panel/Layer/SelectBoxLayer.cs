@@ -13,22 +13,15 @@ namespace AXNode.SubSystem.NodeEditSystem.Panel.Layer
         public Point Start { get; set; } = new Point();
 
         public Point End { get; set; } = new Point();
-
-        public override void Init()
+        public override void Render(DrawingContext context)
         {
-            // _border.Freeze();
-            // _blue.Freeze();
-            // _orange.Freeze();
-        }
-
-        protected override void OnUpdate()
-        {
+            base.Render(context);
             var start = new Point(Start.X + 0.5, Start.Y + 0.5);
             var end = new Point(End.X + 0.5, End.Y + 0.5);
             if (End.X >= Start.X)
-                _dc.DrawRectangle(_blue, _border, new Rect(start, end));
+                context.DrawRectangle(_blue, _border, new Rect(start, end));
             else
-                _dc.DrawRectangle(_orange, _border, new Rect(start, end));
+                context.DrawRectangle(_orange, _border, new Rect(start, end));
         }
 
         private readonly Pen _border = new Pen(new SolidColorBrush(Color.FromRgb(255, 255, 255)), 1);

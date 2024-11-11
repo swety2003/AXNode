@@ -17,13 +17,13 @@ namespace AXNode.SubSystem.NodeEditSystem.Panel.Layer
         /// <summary>悬停框</summary>
         public TargetBox? Box { get; set; } = null;
 
-        protected override void OnUpdate()
+        public override void Render(DrawingContext context)
         {
             if (Box == null) return;
 
             List<Point> pointList = Box.GetPointList(15);
             for (int index = 0; index < pointList.Count / 2; index++)
-                _dc.DrawLine(_pen, pointList[index * 2], pointList[index * 2 + 1]);
+                context.DrawLine(_pen, pointList[index * 2], pointList[index * 2 + 1]);
         }
 
         public double GetMotionProperty(string propertyName) => 0;

@@ -12,8 +12,9 @@ namespace AXNode.SubSystem.NodeEditSystem.Panel.Layer
 
         public override bool HitTest(Point point)
         {
+            
             // todo
-            return base.HitTest(point);
+            return false;
         }
 
         public PinBase StartPin { get; set; }
@@ -28,7 +29,7 @@ namespace AXNode.SubSystem.NodeEditSystem.Panel.Layer
 
         public bool IsData { get; set; } = false;
 
-        protected override void OnUpdate(DrawingContext context)
+        public override void Render(DrawingContext context)
         {
             // 计算连接线区域
             _left = Start.X;
@@ -57,7 +58,7 @@ namespace AXNode.SubSystem.NodeEditSystem.Panel.Layer
             (bs.Point1, bs.Point2,bs.Point3,bs.IsStroked) = (p1, p2, endPoint,true);
             figure.Segments.Add(bs);
 
-            Pen pen = new Pen(new SolidColorBrush(Color), 1);
+            // Pen pen = new Pen(new SolidColorBrush(Color), 1);
             // 绘制形状
             if (!IsData) context.DrawGeometry(null, _penExecute, geometry);
             else context.DrawGeometry(null, new Pen(new SolidColorBrush(Color), 1), geometry);

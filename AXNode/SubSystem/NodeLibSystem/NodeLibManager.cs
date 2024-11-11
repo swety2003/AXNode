@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using XLib.Base;
 using XLib.Base.Ex;
@@ -11,6 +12,7 @@ using AXNode.SubSystem.NodeLibSystem.Define.Events;
 using AXNode.SubSystem.NodeLibSystem.Define.Flows;
 using AXNode.SubSystem.NodeLibSystem.Define.Functions;
 using AXNode.SubSystem.OptionSystem;
+using File = XLib.Base.VirtualDisk.File;
 
 namespace AXNode.SubSystem.NodeLibSystem
 {
@@ -196,17 +198,17 @@ namespace AXNode.SubSystem.NodeLibSystem
         private void LoadFolder(Folder target, Folder oldFolder)
         {
             // 加载文件夹
-            foreach (var oldChild in oldFolder.FolderList)
+            foreach (var oldChild in oldFolder.Childs.Where(x=> x.IsFolder).Select(x=>x as Folder))
             {
                 // 创建子文件夹
                 Folder childFolder = new Folder(oldChild.Name, target);
                 // 添加子文件夹
-                target.FolderList.Add(childFolder);
+                target.Childs.Add(childFolder);
                 // 递归加载
                 LoadFolder(childFolder, oldChild);
             }
             // 加载文件
-            foreach (var oldFile in oldFolder.FileList)
+            foreach (var oldFile in oldFolder.Childs.Where(x=>!x.IsFolder).Select(x=>x as File))
             {
                 // 创建文件
                 _nodeLibRoot.CreateFile(target, oldFile.Name, oldFile.Extension, oldFile.Instance);

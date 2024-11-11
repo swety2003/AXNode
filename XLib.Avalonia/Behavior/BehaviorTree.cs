@@ -68,7 +68,7 @@ namespace XLib.Avalonia.Behavior
                 // 查找能引发行为的节点
                 var nextNode = _current.FindSubNode(name);
                 // 找到了，则引发；否则忽略
-                if (nextNode != null && nextNode.Enabled)
+                if (nextNode is { Enabled: true })
                 {
                     _current = nextNode;
                     _current.Action?.Invoke(args);

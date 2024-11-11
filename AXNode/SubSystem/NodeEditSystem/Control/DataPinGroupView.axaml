@@ -14,14 +14,17 @@
             <ColumnDefinition Width="25"/>
         </Grid.ColumnDefinitions>
         <!-- 左引脚 -->
-        <Image x:Name="Icon_LeftPin" Width="11" Height="11" IsHitTestVisible="False"/>
+        <!-- <Image x:Name="Icon_LeftPin" Width="11" Height="11" IsHitTestVisible="False"/> -->
+        <ContentPresenter x:Name="Icon_LeftPin" VerticalAlignment="Center" Margin="8 0 0 0" IsHitTestVisible="False"/>
         <!-- 左引脚区域 -->
         <Grid x:Name="LeftPinArea" Background="Transparent" Grid.Column="0" Width="17" Height="17"/>
         <!-- 数据 -->
         <TextBlock x:Name="Block_Name" Text="数据名称" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="1" Foreground="White" Margin="1,0,19,0"/>
         <TextBox x:Name="Input_Value"  Grid.Column="2" Margin="0,0,1,0"/>
         <!-- 右引脚 -->
-        <Image x:Name="Icon_RightPin" Width="11" Height="11" Grid.Column="3" IsHitTestVisible="False"/>
+        <ContentPresenter Grid.Column="3" x:Name="Icon_RightPin" VerticalAlignment="Center" Margin="6 0 0 0" IsHitTestVisible="False"/>
+        <!-- <Image x:Name="Icon_RightPin" Width="11" Height="11" Grid.Column="3" IsHitTestVisible="False"/> -->
+        
         <!-- 右引脚区域 -->
         <Grid x:Name="RightPinArea" Background="Transparent" Grid.Column="3" Width="17" Height="17"/>
     </Grid>
