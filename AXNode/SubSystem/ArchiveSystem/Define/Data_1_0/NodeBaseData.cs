@@ -2,7 +2,9 @@
 {
     public class NodeBaseData
     {
-        public NodeBaseData() { }
+        public NodeBaseData()
+        {
+        }
 
         public NodeBaseData(string data)
         {

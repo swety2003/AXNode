@@ -7,8 +7,8 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\XLib.Avalonia\XLib.Avalonia.csproj" />
-      <ProjectReference Include="..\XLib.Base\XLib.Base.csproj" />
+        <ProjectReference Include="..\XLib.Avalonia\XLib.Avalonia.csproj"/>
+        <ProjectReference Include="..\XLib.Base\XLib.Base.csproj"/>
     </ItemGroup>
 
 </Project>

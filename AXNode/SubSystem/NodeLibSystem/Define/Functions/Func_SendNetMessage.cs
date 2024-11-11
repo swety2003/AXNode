@@ -19,10 +19,12 @@ namespace AXNode.SubSystem.NodeLibSystem.Define.Functions
             SetViewProperty(NodeColorSet.Function, "Function", "发送网络消息");
 
             PinGroupList.Add(new ExecutePinGroup(this, "发送字符串至网络设备"));
-            PinGroupList.Add(new DataPinGroup(this, "string", "地址", "127.0.0.1:2400") { BoxWidth = 120, Readable = false, Writeable = false });
+            PinGroupList.Add(new DataPinGroup(this, "string", "地址", "127.0.0.1:2400")
+                { BoxWidth = 120, Readable = false, Writeable = false });
             PinGroupList.Add(new DataPinGroup(this, "string", "协议", "udp") { Readable = false, Writeable = false });
             PinGroupList.Add(new DataPinGroup(this, "bool", "字节模式", "False") { Readable = false, Writeable = false });
-            PinGroupList.Add(new DataPinGroup(this, "string", "消息", "Hello World") { BoxWidth = 200, Readable = false });
+            PinGroupList.Add(new DataPinGroup(this, "string", "消息", "Hello World")
+                { BoxWidth = 200, Readable = false });
 
             InitPinGroup();
         }
@@ -57,6 +59,7 @@ namespace AXNode.SubSystem.NodeLibSystem.Define.Functions
                     context = new SynchronizationContext();
                     SynchronizationContext.SetSynchronizationContext(context);
                 }
+
                 Task.Run(() => SendTcpMessageSync(address, messageByte, context));
             }
         }
@@ -115,7 +118,10 @@ namespace AXNode.SubSystem.NodeLibSystem.Define.Functions
                     byteArray[index] = Convert.ToByte(byteArraySource[index], 16);
                 return byteArray;
             }
-            catch (Exception) { }
+            catch (Exception)
+            {
+            }
+
             return null;
         }
 

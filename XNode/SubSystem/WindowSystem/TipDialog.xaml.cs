@@ -56,6 +56,7 @@ namespace XNode.SubSystem.WindowSystem
                     _currentBrush = _error;
                     break;
             }
+
             // 设置边框颜色
             titleBorder.BorderBrush = _currentBrush;
             clientBorder.BorderBrush = _currentBrush;

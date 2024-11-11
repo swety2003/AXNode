@@ -1,8 +1,8 @@
 ﻿<UserControl x:Class="AXNode.SubSystem.NodeEditSystem.Panel.EditPanel"
              xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:AXNode.SubSystem.NodeEditSystem.Panel"
              xmlns:xc="clr-namespace:XLib.AvaloniaControl;assembly=XLib.AvaloniaControl"
              xmlns:nesc="clr-namespace:AXNode.SubSystem.NodeEditSystem.Control"
@@ -12,23 +12,23 @@
         <!-- 编辑区 -->
         <Grid x:Name="OperateArea" Background="Transparent" Grid.Row="1" ClipToBounds="True" Focusable="True">
             <!-- 网格与连接线层 -->
-            <Grid x:Name="Layer_Base" IsHitTestVisible="False"/>
+            <Grid x:Name="Layer_Base" IsHitTestVisible="False" />
             <!-- 节点图层 -->
-            <Canvas x:Name="LayerBox_Node"/>
+            <Canvas x:Name="LayerBox_Node" />
             <!-- 悬停框与选中框层 -->
-            <Grid x:Name="Layer_Box" IsHitTestVisible="False"/>
+            <Grid x:Name="Layer_Box" IsHitTestVisible="False" />
             <!-- 临时图层：绘制临时连接线 -->
-            <Grid x:Name="Layer_Temp" IsHitTestVisible="False"/>
+            <Grid x:Name="Layer_Temp" IsHitTestVisible="False" />
             <!-- 信息图层 -->
-            <Grid x:Name="LayerBox_Info" IsHitTestVisible="False"/>
+            <Grid x:Name="LayerBox_Info" IsHitTestVisible="False" />
             <!-- 工具栏层 -->
-            <Canvas x:Name="LayerBox_ToolBar"/>
+            <Canvas x:Name="LayerBox_ToolBar" />
         </Grid>
         <!-- 属性面板 -->
         <Border x:Name="PropertyArea" Grid.Row="1" BorderBrush="#101010" BorderThickness="1" IsVisible="False"
                 HorizontalAlignment="Right" VerticalAlignment="Top" Margin="20">
             <Border BorderBrush="#5c5c5c" BorderThickness="1">
-                <nesc:NodePropertyPanel x:Name="PropertyPanel"/>
+                <nesc:NodePropertyPanel x:Name="PropertyPanel" />
             </Border>
         </Border>
     </Grid>

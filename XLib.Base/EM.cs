@@ -15,9 +15,13 @@
             _inited = true;
         }
 
-        public void Reset() { }
+        public void Reset()
+        {
+        }
 
-        public void Clear() { }
+        public void Clear()
+        {
+        }
 
         #endregion
 
@@ -104,28 +108,32 @@
         {
             if (_inited)
                 foreach (var item in _listenerDict[eventType])
-                    if (item is Action listener) listener?.Invoke();
+                    if (item is Action listener)
+                        listener?.Invoke();
         }
 
         protected void InnerInvoke<T1>(T eventType, T1 value1)
         {
             if (_inited)
                 foreach (var item in _listenerDict[eventType])
-                    if (item is Action<T1> listener) listener?.Invoke(value1);
+                    if (item is Action<T1> listener)
+                        listener?.Invoke(value1);
         }
 
         protected void InnerInvoke<T1, T2>(T eventType, T1 value1, T2 value2)
         {
             if (_inited)
                 foreach (var item in _listenerDict[eventType])
-                    if (item is Action<T1, T2> listener) listener?.Invoke(value1, value2);
+                    if (item is Action<T1, T2> listener)
+                        listener?.Invoke(value1, value2);
         }
 
         protected void InnerInvoke<T1, T2, T3>(T eventType, T1 value1, T2 value2, T3 value3)
         {
             if (_inited)
                 foreach (var item in _listenerDict[eventType])
-                    if (item is Action<T1, T2, T3> listener) listener?.Invoke(value1, value2, value3);
+                    if (item is Action<T1, T2, T3> listener)
+                        listener?.Invoke(value1, value2, value3);
         }
 
         #endregion
@@ -134,6 +142,7 @@
 
         /// <summary>已初始化</summary>
         private bool _inited = false;
+
         /// <summary>监听器表：事件类型 - 监听器列表</summary>
         private readonly Dictionary<T, List<Delegate>> _listenerDict = new Dictionary<T, List<Delegate>>();
 

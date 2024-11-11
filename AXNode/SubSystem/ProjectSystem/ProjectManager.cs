@@ -18,7 +18,10 @@ namespace AXNode.SubSystem.ProjectSystem
     {
         #region 单例
 
-        private ProjectManager() { }
+        private ProjectManager()
+        {
+        }
+
         public static ProjectManager Instance { get; } = new ProjectManager();
 
         #endregion
@@ -57,6 +60,7 @@ namespace AXNode.SubSystem.ProjectSystem
                 // 保存项目
                 else if (result == true) SaveProject();
             }
+
             // 关闭当前项目
             CloseProject();
             // 新建当前项目
@@ -77,6 +81,7 @@ namespace AXNode.SubSystem.ProjectSystem
                 // 保存项目
                 else if (result == true) SaveProject();
             }
+
             // 选择项目文件
             string filePath = FileTool.Instance.OpenReadProjectDialog();
             if (filePath == "") return;
@@ -86,6 +91,7 @@ namespace AXNode.SubSystem.ProjectSystem
                 WM.ShowTip($"项目“{CurrentProject.ProjectName}”已打开");
                 return;
             }
+
             // 读取存档文件
             ArchiveFile? file = ArchiveManager.Instance.ReadArchiveFile(filePath);
             if (file == null)
@@ -93,6 +99,7 @@ namespace AXNode.SubSystem.ProjectSystem
                 WM.ShowError($"项目文件“{filePath}”读取失败：无效的存档文件");
                 return;
             }
+
             // 关闭当前项目
             CloseProject();
             // 加载项目
@@ -124,6 +131,7 @@ namespace AXNode.SubSystem.ProjectSystem
                 // 创建空文本文件
                 File.WriteAllText(projectPath, "", Encoding.UTF8);
             }
+
             // 执行保存
             ExecuteSave();
             return true;
@@ -213,7 +221,9 @@ namespace AXNode.SubSystem.ProjectSystem
                 // 删除备份
                 if (backupPath != "" && File.Exists(backupPath)) File.Delete(backupPath);
             }
-            catch (Exception) { }
+            catch (Exception)
+            {
+            }
         }
 
         /// <summary>

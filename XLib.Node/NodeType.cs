@@ -35,6 +35,7 @@ public class NodeType<SourceType> : NodeType where SourceType : NodeBase, new()
             result.Init();
             return result;
         }
+
         throw new Exception($"无法将“{typeof(SourceType).Name}”转换为“{typeof(ResultType).Name}”");
     }
 }

@@ -7,7 +7,9 @@ namespace XLib.Base
     /// </summary>
     public class TreeNodePath
     {
-        public TreeNodePath() { }
+        public TreeNodePath()
+        {
+        }
 
         public TreeNodePath(string path, string split = "/")
         {
@@ -26,7 +28,11 @@ namespace XLib.Base
         }
 
         /// <summary>路径分割符</summary>
-        public string PathSplit { get => _split; set => _split = value; }
+        public string PathSplit
+        {
+            get => _split;
+            set => _split = value;
+        }
 
         /// <summary>节点列表</summary>
         public List<string> NodeList { get; set; } = new List<string>();

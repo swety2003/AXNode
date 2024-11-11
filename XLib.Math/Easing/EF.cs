@@ -9,6 +9,7 @@
 
         public static double InQuad(double t) => t * t;
         public static double OutQuad(double t) => 1 - InQuad(1 - t);
+
         public static double InOutQuad(double t)
         {
             if (t < 0.5) return InQuad(t * 2) / 2;
@@ -21,6 +22,7 @@
 
         public static double InCubic(double t) => t * t * t;
         public static double OutCubic(double t) => 1 - InCubic(1 - t);
+
         public static double InOutCubic(double t)
         {
             if (t < 0.5) return InCubic(t * 2) / 2;
@@ -33,6 +35,7 @@
 
         public static double InQuart(double t) => t * t * t * t;
         public static double OutQuart(double t) => 1 - InQuart(1 - t);
+
         public static double InOutQuart(double t)
         {
             if (t < 0.5) return InQuart(t * 2) / 2;
@@ -45,6 +48,7 @@
 
         public static double InQuint(double t) => t * t * t * t * t;
         public static double OutQuint(double t) => 1 - InQuint(1 - t);
+
         public static double InOutQuint(double t)
         {
             if (t < 0.5) return InQuint(t * 2) / 2;
@@ -64,11 +68,14 @@
         #region 振荡
 
         public static double InElastic(double t) => 1 - OutElastic(1 - t);
+
         public static double OutElastic(double t)
         {
             double p = 0.3;
-            return (double)System.Math.Pow(2, -10 * t) * (double)System.Math.Sin((t - p / 4) * (2 * System.Math.PI) / p) + 1;
+            return (double)System.Math.Pow(2, -10 * t) *
+                (double)System.Math.Sin((t - p / 4) * (2 * System.Math.PI) / p) + 1;
         }
+
         public static double InOutElastic(double t)
         {
             if (t < 0.5) return InElastic(t * 2) / 2;
@@ -80,6 +87,7 @@
         #region 弹跳
 
         public static double InBounce(double t) => 1 - OutBounce(1 - t);
+
         public static double OutBounce(double t)
         {
             double div = 2.75;
@@ -105,6 +113,7 @@
                 return mult * t * t + 0.984375;
             }
         }
+
         public static double InOutBounce(double t)
         {
             if (t < 0.5) return InBounce(t * 2) / 2;
@@ -120,7 +129,9 @@
             double s = 1.70158;
             return t * t * ((s + 1) * t - s);
         }
+
         public static double OutBack(double t) => 1 - InBack(1 - t);
+
         public static double InOutBack(double t)
         {
             if (t < 0.5) return InBack(t * 2) / 2;
@@ -133,6 +144,7 @@
 
         public static double InCirc(double t) => -((double)System.Math.Sqrt(1 - t * t) - 1);
         public static double OutCirc(double t) => 1 - InCirc(1 - t);
+
         public static double InOutCirc(double t)
         {
             if (t < 0.5) return InCirc(t * 2) / 2;

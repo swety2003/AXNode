@@ -54,6 +54,7 @@ namespace XLib.Avalonia.Drawing
                 VisualChildren.Remove(item);
                 LogicalChildren.Remove(item);
             }
+
             _hitedElement = null;
             _elementList.Clear();
         }
@@ -88,6 +89,7 @@ namespace XLib.Avalonia.Drawing
 
         /// <summary>可视元素列表</summary>
         protected List<VisualElement> _elementList = new List<VisualElement>();
+
         /// <summary>命中元素</summary>
         private VisualElement? _hitedElement = null;
 

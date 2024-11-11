@@ -47,7 +47,10 @@ namespace NodeLib.File.Define
 
                 GetPinGroup<ExecutePinGroup>().Execute();
             }
-            catch (Exception ex) { InvokeExecuteError(ex); }
+            catch (Exception ex)
+            {
+                InvokeExecuteError(ex);
+            }
         }
 
         public override string GetTypeString() => nameof(Func_GetFileMD5);

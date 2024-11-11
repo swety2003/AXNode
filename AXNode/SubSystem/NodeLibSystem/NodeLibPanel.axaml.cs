@@ -20,11 +20,11 @@ namespace AXNode.SubSystem.NodeLibSystem
         {
             NodePresetTree.ItemsSource = NodeLibManager.Instance.Root.Childs;
         }
-        
+
         private async void InputElement_OnPointerPressed(object? sender, PointerPressedEventArgs e)
         {
             DataObject obj = new DataObject();
-            obj.Set("object" , (sender as Control).DataContext);
+            obj.Set("object", (sender as Control).DataContext);
             await DragDrop.DoDragDrop(e, obj, DragDropEffects.Copy);
         }
     }

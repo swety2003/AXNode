@@ -16,7 +16,10 @@ namespace AXNode.SubSystem.ResourceSystem
     {
         #region 单例
 
-        private CursorManager() { }
+        private CursorManager()
+        {
+        }
+
         public static CursorManager Instance { get; } = new CursorManager();
 
         #endregion
@@ -96,7 +99,7 @@ namespace AXNode.SubSystem.ResourceSystem
         {
             var uri = new Uri($"avares://AXNode/{cursorPath}");
             var bmp = new Bitmap(AssetLoader.Open(uri));
-            return new Cursor(bmp,new PixelPoint());
+            return new Cursor(bmp, new PixelPoint());
         }
 
         #endregion

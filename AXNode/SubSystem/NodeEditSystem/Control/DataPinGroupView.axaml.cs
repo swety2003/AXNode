@@ -81,7 +81,7 @@ namespace AXNode.SubSystem.NodeEditSystem.Control
         public override Point GetPinOffset(NodeView card, int pinIndex)
         {
             if (pinIndex == 0) return LeftPinArea.TranslatePoint(new Point(3, 8), card) ?? throw new Exception();
-            return RightPinArea.TranslatePoint(new Point(14, 8), card)?? throw new Exception();
+            return RightPinArea.TranslatePoint(new Point(14, 8), card) ?? throw new Exception();
         }
 
         public override void UpdatePinIcon()

@@ -12,7 +12,9 @@ namespace AXNode.SubSystem.NodeEditSystem.Panel
 {
     public class SelectTool : ToolBase<InteractionComponent>
     {
-        public SelectTool(InteractionComponent host) : base(host) { }
+        public SelectTool(InteractionComponent host) : base(host)
+        {
+        }
 
         /// <summary>光标</summary>
         public Cursor Cursor { get; set; }
@@ -91,10 +93,7 @@ namespace AXNode.SubSystem.NodeEditSystem.Panel
                 ResetTree();
             });
             BackToRoot();
-            NewNode(Behaviors.Move, (_) =>
-            {
-                _host.DrawSelectBox();
-            });
+            NewNode(Behaviors.Move, (_) => { _host.DrawSelectBox(); });
             NewNode(Behaviors.LeftUp, (_) =>
             {
                 _host.EndDrawSelectBox();
@@ -124,6 +123,7 @@ namespace AXNode.SubSystem.NodeEditSystem.Panel
                     _host.SetTop();
                     _host.AddSelect();
                 }
+
                 // 开始拖动节点
                 _host.BeginDragNode();
                 _host.CaptureOperationLayer();
@@ -204,10 +204,7 @@ namespace AXNode.SubSystem.NodeEditSystem.Panel
                 ResetTree();
             });
             BackToRoot();
-            NewNode(Behaviors.Move, (_) =>
-            {
-                _host.DragViewport();
-            });
+            NewNode(Behaviors.Move, (_) => { _host.DragViewport(); });
             NewNode(Behaviors.MiddleUp, (_) =>
             {
                 _host.ReleaseOperationLayer();
@@ -232,10 +229,7 @@ namespace AXNode.SubSystem.NodeEditSystem.Panel
                 ResetTree();
             });
             BackToRoot();
-            NewNode(Behaviors.Move, (_) =>
-            {
-                _host.CancelBreakPin();
-            });
+            NewNode(Behaviors.Move, (_) => { _host.CancelBreakPin(); });
             NewNode(Behaviors.RightUp, (_) =>
             {
                 _host.HandleMouseMove();

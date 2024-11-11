@@ -107,27 +107,37 @@ public abstract class NodeBase
     /// <summary>
     /// 加载：加载至编辑器后调用
     /// </summary>
-    public virtual void Loaded() { }
+    public virtual void Loaded()
+    {
+    }
 
     /// <summary>
     /// 启用
     /// </summary>
-    public virtual void Enable() { }
+    public virtual void Enable()
+    {
+    }
 
     /// <summary>
     /// 禁用
     /// </summary>
-    public virtual void Disable() { }
+    public virtual void Disable()
+    {
+    }
 
     /// <summary>
     /// 卸载：从编辑器移除后调用
     /// </summary>
-    public virtual void Unloaded() { }
+    public virtual void Unloaded()
+    {
+    }
 
     /// <summary>
     /// 清理：删除节点时调用
     /// </summary>
-    public virtual void Clear() { }
+    public virtual void Clear()
+    {
+    }
 
     #endregion
 
@@ -177,6 +187,7 @@ public abstract class NodeBase
             if (pinGroup.GetInputPin() is PinBase inputPin) result.Add(inputPin);
             if (pinGroup.GetOutputPin() is PinBase outputPin) result.Add(outputPin);
         }
+
         return result;
     }
 
@@ -244,7 +255,9 @@ public abstract class NodeBase
     /// <summary>
     /// 加载参数表
     /// </summary>
-    public virtual void LoadParaDict(string version, Dictionary<string, string> paraDict) { }
+    public virtual void LoadParaDict(string version, Dictionary<string, string> paraDict)
+    {
+    }
 
     /// <summary>
     /// 获取属性表
@@ -254,7 +267,9 @@ public abstract class NodeBase
     /// <summary>
     /// 加载属性
     /// </summary>
-    public virtual void LoadPropertyDict(string version, Dictionary<string, string> propertyDict) { }
+    public virtual void LoadPropertyDict(string version, Dictionary<string, string> propertyDict)
+    {
+    }
 
     /// <summary>
     /// 克隆
@@ -325,7 +340,9 @@ public abstract class NodeBase
     /// <summary>
     /// 执行节点
     /// </summary>
-    protected virtual void ExecuteNode() { }
+    protected virtual void ExecuteNode()
+    {
+    }
 
     /// <summary>
     /// 获取引脚组

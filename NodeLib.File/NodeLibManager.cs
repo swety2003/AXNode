@@ -10,7 +10,10 @@ namespace NodeLib.File
     {
         #region 单例
 
-        private NodeLibManager() { }
+        private NodeLibManager()
+        {
+        }
+
         public static NodeLibManager Instance { get; } = new NodeLibManager();
 
         #endregion
@@ -36,7 +39,9 @@ namespace NodeLib.File
             LibHarddisk.CreateFile(LibHarddisk.Root, "计算文件摘要", "nt", new NodeType<Func_GetFileMD5>());
         }
 
-        public void Clear() { }
+        public void Clear()
+        {
+        }
 
         public NodeBase? CreateNode(string typeString)
         {

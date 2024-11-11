@@ -18,14 +18,15 @@ namespace XLib.Avalonia.Drawing
             IsVisible = true;
             InvalidateVisual();
         }
-    
+
         public void Clear()
         {
             IsVisible = false;
             InvalidateVisual();
         }
-        
+
         bool isHitted = false;
+
         public virtual bool HitTest(Point point)
         {
             return isHitted;

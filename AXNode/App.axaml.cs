@@ -11,10 +11,9 @@ public partial class App : Application
     public override void Initialize()
     {
         AvaloniaXamlLoader.Load(this);
-        
+
         // AnimationEngine.Instance.Start();
         Init();
-
     }
 
     public override void OnFrameworkInitializationCompleted()
@@ -26,7 +25,7 @@ public partial class App : Application
 
         base.OnFrameworkInitializationCompleted();
     }
-    
+
     private void Init()
     {
         // 初始化应用程序代理

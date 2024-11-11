@@ -54,7 +54,9 @@ namespace XNode.SubSystem.NodeEditSystem.Panel
 
         #region IDropable 方法
 
-        public void OnDrag(List<ITreeItem> fileList) { }
+        public void OnDrag(List<ITreeItem> fileList)
+        {
+        }
 
         public void OnDrop(List<ITreeItem> fileList)
         {
@@ -83,7 +85,8 @@ namespace XNode.SubSystem.NodeEditSystem.Panel
         public PinBase? FindPin(PinPath path)
         {
             foreach (var node in _nodeComponent.NodeList)
-                if (node.ID == path.NodeID) return node.FindPin(path.NodeVersion, path.GroupIndex, path.PinIndex);
+                if (node.ID == path.NodeID)
+                    return node.FindPin(path.NodeVersion, path.GroupIndex, path.PinIndex);
             return null;
         }
 
@@ -111,10 +114,13 @@ namespace XNode.SubSystem.NodeEditSystem.Panel
 
         /// <summary>绘图组件</summary>
         private DrawingComponent _drawingComponent;
+
         /// <summary>节点组件</summary>
         private NodeComponent _nodeComponent;
+
         /// <summary>卡片组件</summary>
         private CardComponent _cardComponent;
+
         /// <summary>交互组件</summary>
         private InteractionComponent _interactionComponent;
 

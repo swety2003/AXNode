@@ -39,19 +39,22 @@ namespace XLib.Avalonia.UI
         /// </summary>
         public void ApplyOffset()
         {
-            _real = new Point(_real.X+_offset.X,_real.Y + _offset.Y) ;
+            _real = new Point(_real.X + _offset.X, _real.Y + _offset.Y);
             _offset = new Point();
             OnOffsetChanged();
         }
 
         #endregion
 
-        protected virtual void OnOffsetChanged() { }
+        protected virtual void OnOffsetChanged()
+        {
+        }
 
         #region 字段
 
         /// <summary>真实坐标</summary>
         private Point _real = new Point();
+
         /// <summary>偏移坐标</summary>
         private Point _offset = new Point();
 

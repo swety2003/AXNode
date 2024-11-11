@@ -13,6 +13,7 @@ namespace AXNode.SubSystem.NodeEditSystem.Panel.Layer
         public Point Start { get; set; } = new Point();
 
         public Point End { get; set; } = new Point();
+
         public override void Render(DrawingContext context)
         {
             base.Render(context);

@@ -34,7 +34,9 @@ namespace XLib.Avalonia.WindowDefine
         /// <summary>
         /// 窗口已加载
         /// </summary>
-        protected virtual void XWindowLoaded() { }
+        protected virtual void XWindowLoaded()
+        {
+        }
 
         #endregion
 
@@ -54,6 +56,7 @@ namespace XLib.Avalonia.WindowDefine
                 //     icon.Source = bitmap;
                 // }
             }
+
             // 调用已加载
             XWindowLoaded();
         }

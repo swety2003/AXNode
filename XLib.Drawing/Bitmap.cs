@@ -17,8 +17,8 @@ namespace XLib.Drawing
             if (Width < 1 || Height < 1) throw new Exception("图片太小");
             _pixelArray = new Pixel[Width, Height];
             for (int x = 0; x < Width; x++)
-                for (int y = 0; y < Height; y++)
-                    _pixelArray[x, y] = new Pixel();
+            for (int y = 0; y < Height; y++)
+                _pixelArray[x, y] = new Pixel();
         }
 
         #endregion
@@ -130,8 +130,8 @@ namespace XLib.Drawing
         public void DrawRectangle(int x, int y, int width, int height, Pixel pixel)
         {
             for (int row = y; row <= height; row++)
-                for (int col = x; col <= width; col++)
-                    DrawPixel(col, row, pixel);
+            for (int col = x; col <= width; col++)
+                DrawPixel(col, row, pixel);
         }
 
         /// <summary>
@@ -163,6 +163,7 @@ namespace XLib.Drawing
                     result[index + 3] = _pixelArray[col, row].A;
                 }
             }
+
             return result;
         }
 

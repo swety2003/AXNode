@@ -66,7 +66,8 @@ namespace AXNode.SubSystem.WindowSystem
         /// <summary>
         /// 显示询问框
         /// </summary>
-        public static async Task<bool?> ShowAsk(string message, string yesText = "是", bool useCancel = true, TipLevel level = TipLevel.Info)
+        public static async Task<bool?> ShowAsk(string message, string yesText = "是", bool useCancel = true,
+            TipLevel level = TipLevel.Info)
         {
             AskDialog dialog = new AskDialog
             {
@@ -77,9 +78,9 @@ namespace AXNode.SubSystem.WindowSystem
             };
             // if (level is TipLevel.Info or TipLevel.Warning) SystemSounds.Asterisk.Play();
             // else SystemSounds.Hand.Play();
-            
+
             bool? result = null;
-            
+
             await dialog.ShowDialog(Main);
 
             if (dialog.Result == AskResult.Yes) result = true;

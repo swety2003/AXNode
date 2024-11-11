@@ -24,6 +24,7 @@ namespace XNode.AppTool
             ManagerList.Add(ResourceManager.Instance);
             ManagerList.Add(NodeLibManager.Instance);
         }
+
         public static SystemDataDelegate Instance { get; } = new SystemDataDelegate();
     }
 
@@ -43,6 +44,7 @@ namespace XNode.AppTool
             // 动画引擎
             ServiceList.Add(AnimationEngine.Instance);
         }
+
         public static SystemServiceDelegate Instance { get; } = new SystemServiceDelegate();
     }
 
@@ -56,6 +58,7 @@ namespace XNode.AppTool
             // 事件管理器
             ManagerList.Add(EM.Instance);
         }
+
         public static SystemToolDelegate Instance { get; } = new SystemToolDelegate();
     }
 }

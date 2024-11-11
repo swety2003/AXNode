@@ -1,8 +1,8 @@
 ﻿<UserControl x:Class="AXNode.SubSystem.NodeEditSystem.Control.HoverToolBar"
              xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:AXNode.SubSystem.NodeEditSystem.Control"
              BorderBrush="#404040"
              BorderThickness="1"
@@ -29,17 +29,17 @@
         <UniformGrid x:Name="Stack_ToolBar" Rows="1" Margin="1">
             <Button Classes="icon" x:Name="Tool_Start">
                 <Button.Content>
-                    <Image Source="Image/Start.png" Height="15" Width="15"/>
+                    <Image Source="Image/Start.png" Height="15" Width="15" />
                 </Button.Content>
             </Button>
-            <Button Classes="icon" x:Name="Tool_Stop" >
+            <Button Classes="icon" x:Name="Tool_Stop">
                 <Button.Content>
-                    <Image Source="Image/Stop.png" Height="15" Width="15"/>
+                    <Image Source="Image/Stop.png" Height="15" Width="15" />
                 </Button.Content>
             </Button>
-            <Button Classes="icon" x:Name="Tool_Delete"  Tag="删除节点">
+            <Button Classes="icon" x:Name="Tool_Delete" Tag="删除节点">
                 <Button.Content>
-                    <Image Source="Image/Delete.png" Height="15" Width="15"/>
+                    <Image Source="Image/Delete.png" Height="15" Width="15" />
                 </Button.Content>
             </Button>
         </UniformGrid>

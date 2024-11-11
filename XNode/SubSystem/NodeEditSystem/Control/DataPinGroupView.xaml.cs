@@ -3,6 +3,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Shapes;
 using XLib.Node;
 using XNode.SubSystem.NodeEditSystem.Define;
 using XNode.SubSystem.ResourceSystem;
@@ -45,7 +46,7 @@ namespace XNode.SubSystem.NodeEditSystem.Control
             // 设置图标
             else
             {
-                Icon_LeftPin.Source = GetDataPinIcon();
+                Icon_LeftPin.Content = GetDataPinIcon();
                 LeftPinArea.MouseEnter += LeftPinArea_MouseEnter;
                 LeftPinArea.MouseLeave += PinArea_MouseLeave;
             }
@@ -59,7 +60,7 @@ namespace XNode.SubSystem.NodeEditSystem.Control
             // 设置图标
             else
             {
-                Icon_RightPin.Source = GetDataPinIcon();
+                Icon_RightPin.Content = GetDataPinIcon();
                 RightPinArea.MouseEnter += RightPinArea_MouseEnter;
                 RightPinArea.MouseLeave += PinArea_MouseLeave;
             }
@@ -84,9 +85,9 @@ namespace XNode.SubSystem.NodeEditSystem.Control
         public override void UpdatePinIcon()
         {
             if (Instance.InputPin != null)
-                Icon_LeftPin.Source = GetDataPinIcon(Instance.InputPin.SourceList.Count > 0);
+                Icon_LeftPin.Content = GetDataPinIcon(Instance.InputPin.SourceList.Count > 0);
             if (Instance.OutputPin != null)
-                Icon_RightPin.Source = GetDataPinIcon(Instance.OutputPin.TargetList.Count > 0);
+                Icon_RightPin.Content = GetDataPinIcon(Instance.OutputPin.TargetList.Count > 0);
         }
 
         #endregion
@@ -125,11 +126,12 @@ namespace XNode.SubSystem.NodeEditSystem.Control
             };
         }
 
-        private BitmapSource? GetDataPinIcon(bool solid = false)
+        private Shape? GetDataPinIcon(bool solid = false)
         {
             return Instance.Type switch
             {
-                "int" or "double" or "string" or "bool" or "byte[]" => PinIconManager.Instance.GetDataPinIcon(Instance.Type, solid),
+                "int" or "double" or "string" or "bool" or "byte[]" => PinIconManager.Instance.GetDataPinIcon(
+                    Instance.Type, solid),
                 _ => null,
             };
         }

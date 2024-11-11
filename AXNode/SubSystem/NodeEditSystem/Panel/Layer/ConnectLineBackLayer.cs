@@ -40,7 +40,7 @@ namespace AXNode.SubSystem.NodeEditSystem.Panel.Layer
             // 设置起点并添加贝塞尔曲线
             figure.StartPoint = new Point(_left, _top);
             var bs = new BezierSegment();
-            (bs.Point1, bs.Point2,bs.Point3,bs.IsStroked) = (p1, p2,endPoint,true);
+            (bs.Point1, bs.Point2, bs.Point3, bs.IsStroked) = (p1, p2, endPoint, true);
             figure.Segments.Add(bs);
 
             context.DrawGeometry(null, _pen, geometry);

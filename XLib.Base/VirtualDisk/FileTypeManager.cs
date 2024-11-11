@@ -7,7 +7,10 @@
     {
         #region 单例
 
-        private FileTypeManager() { }
+        private FileTypeManager()
+        {
+        }
+
         public static FileTypeManager Instance { get; } = new FileTypeManager();
 
         #endregion

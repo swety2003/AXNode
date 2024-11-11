@@ -37,6 +37,7 @@ namespace AXNode.SubSystem.NodeEditSystem.Panel.Layer
                     Box.BoxOffset = value;
                     break;
             }
+
             Dispatcher.UIThread.Invoke(Update);
         }
 

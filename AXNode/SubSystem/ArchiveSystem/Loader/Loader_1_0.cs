@@ -19,12 +19,13 @@ namespace AXNode.SubSystem.ArchiveSystem.Loader
             }
             catch (Exception ex)
             {
-                #if DEBUG
-                    throw ex;
-                #endif
+#if DEBUG
+                throw ex;
+#endif
                 WM.ShowError("加载存档失败：" + ex.Message);
                 return false;
             }
+
             return true;
         }
 

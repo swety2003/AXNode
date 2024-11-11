@@ -10,7 +10,8 @@
         /// <summary>
         /// 添加组件
         /// </summary>
-        public TComponent? AddComponent<TComponent>(THost host, string name = "未命名组件") where TComponent : Component<THost>, new()
+        public TComponent? AddComponent<TComponent>(THost host, string name = "未命名组件")
+            where TComponent : Component<THost>, new()
         {
             // 宿主不能为空
             if (host == null) throw new ArgumentNullException(nameof(host));
@@ -141,6 +142,7 @@
                     continue;
                 }
             }
+
             // 清空核心组件引用
             _coreComponentList.Clear();
             // 清空全部组件引用
@@ -148,7 +150,9 @@
         }
 
         /// <summary>全部组件表</summary>
-        private readonly Dictionary<Type, Component<THost>> _allComponentDict = new Dictionary<Type, Component<THost>>();
+        private readonly Dictionary<Type, Component<THost>>
+            _allComponentDict = new Dictionary<Type, Component<THost>>();
+
         /// <summary>核心组件列表</summary>
         private readonly List<Component<THost>> _coreComponentList = new List<Component<THost>>();
     }

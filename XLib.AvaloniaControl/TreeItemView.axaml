@@ -12,20 +12,22 @@
         </ResourceDictionary>
     </UserControl.Resources>
     <!-- 外框 -->
-    <Border Padding="0 10" x:Name="Back" PointerEntered="Back_OnPointerEntered" PointerCaptureLost="Back_OnPointerCaptureLost" PointerPressed="Back_OnPointerPressed">
+    <Border Padding="0 10" x:Name="Back" PointerEntered="Back_OnPointerEntered"
+            PointerCaptureLost="Back_OnPointerCaptureLost" PointerPressed="Back_OnPointerPressed">
         <!-- 内容 -->
         <Grid x:Name="MainGrid">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="23"/>
-                <ColumnDefinition Width="23"/>
+                <ColumnDefinition Width="23" />
+                <ColumnDefinition Width="23" />
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
             <!-- 箭头 -->
-            <ToggleButton IsHitTestVisible="False" x:Name="Toggle"/>
+            <ToggleButton IsHitTestVisible="False" x:Name="Toggle" />
             <!-- 图标 -->
-            <Image x:Name="Image_Icon" Width="15" Height="15" Grid.Column="1"/>
+            <Image x:Name="Image_Icon" Width="15" Height="15" Grid.Column="1" />
             <!-- 标题 -->
-            <TextBlock x:Name="TB_Title" Text="标题" Grid.Column="2" Foreground="White" Margin="6,0,5,0" FontSize="12" VerticalAlignment="Center"/>
+            <TextBlock x:Name="TB_Title" Text="标题" Grid.Column="2" Foreground="White" Margin="6,0,5,0" FontSize="12"
+                       VerticalAlignment="Center" />
         </Grid>
     </Border>
 </UserControl>

@@ -20,6 +20,7 @@ namespace AXNode.SubSystem.ProjectSystem
             _projectFilter.TypeList.Add(new TypeInfo("节点项目", "xnode"));
             _projectFilter.TypeList.Add(new TypeInfo("节点项目", "json"));
         }
+
         public static FileTool Instance { get; } = new FileTool();
 
         /// <summary>
@@ -30,22 +31,20 @@ namespace AXNode.SubSystem.ProjectSystem
             var file = "";
             Task.Run(async () =>
             {
-
                 var topLevel = TopLevel.GetTopLevel(WM.Main);
                 var files = await topLevel.StorageProvider.OpenFilePickerAsync(new FilePickerOpenOptions
                 {
                     Title = "Open XNode File",
                     AllowMultiple = false,
-                    FileTypeFilter = new []{  new FilePickerFileType("XNode文件") { Patterns = new[] { "*.xnode" } }}
-
+                    FileTypeFilter = new[] { new FilePickerFileType("XNode文件") { Patterns = new[] { "*.xnode" } } }
                 });
-                
+
                 if (files.Count >= 1)
                 {
                     file = files[0].TryGetLocalPath();
                 }
             }).Wait();
-            
+
             return file;
         }
 
@@ -53,7 +52,7 @@ namespace AXNode.SubSystem.ProjectSystem
         /// 打开保存项目对话框
         /// </summary>
         public string OpenSaveProjectDialog(string fileName)
-        {            
+        {
             var file = "";
 
             Task.Run(async () =>
@@ -64,8 +63,7 @@ namespace AXNode.SubSystem.ProjectSystem
                 var _file = await topLevel.StorageProvider.SaveFilePickerAsync(new FilePickerSaveOptions
                 {
                     Title = "Save XNode File",
-                    FileTypeChoices = new []{  new FilePickerFileType("XNode文件") { Patterns = new[] { "*.xnode" } }}
-                    
+                    FileTypeChoices = new[] { new FilePickerFileType("XNode文件") { Patterns = new[] { "*.xnode" } } }
                 });
 
                 if (_file is not null)
@@ -74,7 +72,6 @@ namespace AXNode.SubSystem.ProjectSystem
                 }
             });
             return file;
-
         }
 
         private readonly FileFilter _projectFilter = new FileFilter();

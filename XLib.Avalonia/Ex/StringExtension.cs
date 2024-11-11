@@ -17,7 +17,10 @@ namespace XLib.Avalonia.Ex
                 byte b = Convert.ToByte(hexCode.Substring(4, 2), 16);
                 return Color.FromRgb(r, g, b);
             }
-            catch (Exception) { return Colors.Black; }
+            catch (Exception)
+            {
+                return Colors.Black;
+            }
         }
     }
 }

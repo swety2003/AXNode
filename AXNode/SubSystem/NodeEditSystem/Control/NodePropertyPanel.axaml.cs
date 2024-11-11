@@ -58,7 +58,8 @@ namespace AXNode.SubSystem.NodeEditSystem.Control
             }
         }
 
-        private void MainScrollBar_ValueChanged(object? sender, RangeBaseValueChangedEventArgs rangeBaseValueChangedEventArgs)
+        private void MainScrollBar_ValueChanged(object? sender,
+            RangeBaseValueChangedEventArgs rangeBaseValueChangedEventArgs)
         {
             MainStackPanel.Margin = new Thickness(0, -MainScrollBar.Value, 0, 0);
         }

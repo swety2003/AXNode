@@ -137,12 +137,16 @@ namespace XLib.Base
 
         // 系统定时器分辨率
         private static TimerCaps _caps;
+
         // 定时器间隔
         private int _interval = 1;
+
         // 定时器分辨率
         private readonly int _resolution;
+
         // 定时器回调
         private readonly TimerCallback _timerCallback;
+
         // 定时器编号
         private int _timerID;
 

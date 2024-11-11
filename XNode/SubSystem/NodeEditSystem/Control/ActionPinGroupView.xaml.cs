@@ -17,7 +17,7 @@ namespace XNode.SubSystem.NodeEditSystem.Control
             if (Instance == null) return;
             Title_Pin.Text = Instance.ActionName;
             Instance.ActionNameChanged = (name) => Title_Pin.Text = name;
-            Icon_Pin.Source = PinIconManager.Instance.ExecutePin_Null;
+            Icon_Pin.Content = PinIconManager.Instance.ExecutePin_Null;
 
             PinArea.MouseEnter += PinArea_MouseEnter;
             PinArea.MouseLeave += PinArea_MouseLeave;
@@ -39,12 +39,13 @@ namespace XNode.SubSystem.NodeEditSystem.Control
             HoveredPin = null;
         }
 
-        public override Point GetPinOffset(NodeView card, int pinIndex) => PinArea.TranslatePoint(new Point(14, 8), card);
+        public override Point GetPinOffset(NodeView card, int pinIndex) =>
+            PinArea.TranslatePoint(new Point(14, 8), card);
 
         public override void UpdatePinIcon()
         {
-            if (Instance.OutputPin.TargetList.Count == 0) Icon_Pin.Source = PinIconManager.Instance.ExecutePin_Null;
-            else Icon_Pin.Source = PinIconManager.Instance.ExecutePin;
+            if (Instance.OutputPin.TargetList.Count == 0) Icon_Pin.Content = PinIconManager.Instance.ExecutePin_Null;
+            else Icon_Pin.Content = PinIconManager.Instance.ExecutePin;
         }
     }
 }

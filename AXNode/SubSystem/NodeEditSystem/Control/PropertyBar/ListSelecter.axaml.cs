@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Windows.Input;
 using Avalonia.Controls;
@@ -22,9 +21,10 @@ namespace AXNode.SubSystem.NodeEditSystem.Control.PropertyBar
                 {
                     Content = item,
                 };
-                ToolTip.SetTip(boxItem,item);
+                ToolTip.SetTip(boxItem, item);
                 Box_ItemList.Items.Add(boxItem);
             }
+
             Box_ItemList.SelectedIndex = list.IndexOf(value);
         }
 

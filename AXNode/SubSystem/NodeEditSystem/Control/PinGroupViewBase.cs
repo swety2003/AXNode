@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using Avalonia;
 using Avalonia.Controls;
 using XLib.AvaloniaControl;
@@ -18,7 +17,9 @@ namespace AXNode.SubSystem.NodeEditSystem.Control
         /// <summary>
         /// 初始化
         /// </summary>
-        public virtual void Init() { }
+        public virtual void Init()
+        {
+        }
 
         /// <summary>
         /// 获取引脚区域控件
@@ -34,14 +35,15 @@ namespace AXNode.SubSystem.NodeEditSystem.Control
             Point offset = Mouse.GetPosition(pinArea);
             if (HoveredPin.Flow == PinFlow.Input)
             {
-                offset = new (3 - offset.X,offset.Y);
-                offset = new (offset.X,8 - offset.Y);
+                offset = new(3 - offset.X, offset.Y);
+                offset = new(offset.X, 8 - offset.Y);
             }
             else
             {
-                offset = new (14 - offset.X,offset.Y);
-                offset= new (offset.X,8 - offset.Y);
+                offset = new(14 - offset.X, offset.Y);
+                offset = new(offset.X, 8 - offset.Y);
             }
+
             return offset;
         }
 
@@ -53,6 +55,8 @@ namespace AXNode.SubSystem.NodeEditSystem.Control
         /// <summary>
         /// 更新引脚图标
         /// </summary>
-        public virtual void UpdatePinIcon() { }
+        public virtual void UpdatePinIcon()
+        {
+        }
     }
 }

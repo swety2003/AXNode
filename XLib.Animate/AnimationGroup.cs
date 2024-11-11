@@ -26,6 +26,7 @@ namespace XLib.Animate
                 double length = animation.GetTotalLength();
                 if (length > total) total = length;
             }
+
             return total;
         }
 
@@ -53,7 +54,7 @@ namespace XLib.Animate
             // 添加到动画组
             AnimationList.Add(animation);
         }
-        
+
         #endregion
 
         #region 私有方法

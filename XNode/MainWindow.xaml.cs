@@ -211,6 +211,7 @@ namespace XNode
                         OSTool.OpenConsole();
                         _consoleOpened = true;
                     }
+
                     break;
                 // 清空控制台
                 case "ClearConsole":

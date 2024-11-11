@@ -20,7 +20,10 @@ namespace AXNode.SubSystem.NodeLibSystem
     {
         #region 单例
 
-        private NodeLibManager() { }
+        private NodeLibManager()
+        {
+        }
+
         public static NodeLibManager Instance { get; } = new NodeLibManager();
 
         #endregion
@@ -43,9 +46,13 @@ namespace AXNode.SubSystem.NodeLibSystem
             LoadOutsideNodeLib();
         }
 
-        public void Reset() { }
+        public void Reset()
+        {
+        }
 
-        public void Clear() { }
+        public void Clear()
+        {
+        }
 
         #endregion
 
@@ -121,7 +128,7 @@ namespace AXNode.SubSystem.NodeLibSystem
             Folder 转换器 = _nodeLibRoot.CreateFolder(函数节点.Path.AppendElement("转换器"));
             Folder 执行控制 = _nodeLibRoot.CreateFolder(函数节点.Path.AppendElement("执行控制"));
             // 创建文件
-            
+
             数据节点.Childs.Add(_nodeLibRoot.CreateFile(数据节点, "整数", "nt", new NodeType<Data_Int>()));
             数据节点.Childs.Add(_nodeLibRoot.CreateFile(数据节点, "小数", "nt", new NodeType<Data_Double>()));
             数据节点.Childs.Add(_nodeLibRoot.CreateFile(数据节点, "字符串", "nt", new NodeType<Data_String>()));
@@ -174,6 +181,7 @@ namespace AXNode.SubSystem.NodeLibSystem
                     }
                 }
             }
+
             // 遍历节点库
             foreach (var libPair in NodeLibDict)
             {
@@ -197,6 +205,7 @@ namespace AXNode.SubSystem.NodeLibSystem
             {
                 if (fileInfo.Extension == ".dll") result.Add(fileInfo.FullName);
             }
+
             return result;
         }
 
@@ -206,7 +215,7 @@ namespace AXNode.SubSystem.NodeLibSystem
         private void LoadFolder(Folder target, Folder oldFolder)
         {
             // 加载文件夹
-            foreach (var oldChild in oldFolder.Childs.Where(x=> x.IsFolder).Select(x=>x as Folder))
+            foreach (var oldChild in oldFolder.Childs.Where(x => x.IsFolder).Select(x => x as Folder))
             {
                 // 创建子文件夹
                 Folder childFolder = new Folder(oldChild.Name, target);
@@ -215,8 +224,9 @@ namespace AXNode.SubSystem.NodeLibSystem
                 // 递归加载
                 LoadFolder(childFolder, oldChild);
             }
+
             // 加载文件
-            foreach (var oldFile in oldFolder.Childs.Where(x=>!x.IsFolder).Select(x=>x as File))
+            foreach (var oldFile in oldFolder.Childs.Where(x => !x.IsFolder).Select(x => x as File))
             {
                 // 创建文件
                 _nodeLibRoot.CreateFile(target, oldFile.Name, oldFile.Extension, oldFile.Instance);

@@ -7,10 +7,13 @@
     {
         /// <summary>空白处</summary>
         Space,
+
         /// <summary>节点</summary>
         Node,
+
         /// <summary>引脚</summary>
         Pin,
+
         /// <summary>连接线</summary>
         ConnectLine,
     }
@@ -22,6 +25,7 @@
     {
         /// <summary>框选</summary>
         Box,
+
         /// <summary>交叉</summary>
         Cross
     }

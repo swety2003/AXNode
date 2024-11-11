@@ -66,7 +66,8 @@ namespace AXNode.SubSystem.NodeEditSystem.Panel.Component
         public Point ScreenToWorld(Point screenPoint)
         {
             // 转世界坐标
-            Point worldPoint = new Point(screenPoint.X - _gridLayer.GridCenter.X, screenPoint.Y - _gridLayer.GridCenter.Y);
+            Point worldPoint = new Point(screenPoint.X - _gridLayer.GridCenter.X,
+                screenPoint.Y - _gridLayer.GridCenter.Y);
             // 对齐至网格
             double x = Math.Round(worldPoint.X / _gridLayer.CellWidth) * _gridLayer.CellWidth;
             double y = Math.Round(worldPoint.Y / _gridLayer.CellHeight) * _gridLayer.CellHeight;
@@ -102,7 +103,8 @@ namespace AXNode.SubSystem.NodeEditSystem.Panel.Component
         /// <summary>
         /// 获取选择方式
         /// </summary>
-        public SelectType GetSelectType() => _selectBoxLayer.End.X < _selectBoxLayer.Start.X ? SelectType.Cross : SelectType.Box;
+        public SelectType GetSelectType() =>
+            _selectBoxLayer.End.X < _selectBoxLayer.Start.X ? SelectType.Cross : SelectType.Box;
 
         /// <summary>
         /// 更新选中框
@@ -120,6 +122,7 @@ namespace AXNode.SubSystem.NodeEditSystem.Panel.Component
                 };
                 _selectedBoxLayer.BoxList.Add(box);
             }
+
             _selectedBoxLayer.Update();
         }
 
@@ -155,6 +158,7 @@ namespace AXNode.SubSystem.NodeEditSystem.Panel.Component
             {
                 _tempLineLayer.Line.End = new Point(end.X, end.Y);
             }
+
             _tempLineLayer.Update();
         }
 
@@ -372,16 +376,22 @@ namespace AXNode.SubSystem.NodeEditSystem.Panel.Component
 
         /// <summary>网格图层</summary>
         private GridLayer? _gridLayer;
+
         /// <summary>连接线背景图层</summary>
         private ConnectLineBackLayer? _lineBackLayer;
+
         /// <summary>连接线图层</summary>
         private ConnectLineLayer? _connectLineLayer;
+
         /// <summary>悬停框图层</summary>
         private HoverBoxLayer? _hoverBoxLayer;
+
         /// <summary>选框图层</summary>
         private SelectBoxLayer? _selectBoxLayer;
+
         /// <summary>选中框图层</summary>
         private SelectedBoxLayer? _selectedBoxLayer;
+
         /// <summary>临时连接线图层</summary>
         private TempConnectLineLayer? _tempLineLayer;
 

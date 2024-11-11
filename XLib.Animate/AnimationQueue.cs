@@ -46,6 +46,7 @@ namespace XLib.Animate
                 // 切换
                 _current = _next;
             }
+
             // 驱动当前动画
             _current?.Drive(time - _timeDict[_current].Left);
             _prevTime = time;
@@ -73,6 +74,7 @@ namespace XLib.Animate
                 current += itemLength;
                 _totalLength += itemLength;
             }
+
             // 设置第一个动画
             _current = GetAnimation(0);
             // 驱动至初始状态
@@ -89,7 +91,8 @@ namespace XLib.Animate
         private IAnimation? GetAnimation(double time)
         {
             foreach (var item in _timeDict)
-                if (item.Value.Left <= time && time < item.Value.Right) return item.Key;
+                if (item.Value.Left <= time && time < item.Value.Right)
+                    return item.Key;
             return null;
         }
 
@@ -115,11 +118,13 @@ namespace XLib.Animate
 
         /// <summary>动画时间表</summary>
         private readonly Dictionary<IAnimation, Range> _timeDict = new Dictionary<IAnimation, Range>();
+
         /// <summary>总时长</summary>
         private double _totalLength = 0;
 
         /// <summary>当前动画</summary>
         private IAnimation? _current = null;
+
         /// <summary>下一个动画</summary>
         private IAnimation? _next = null;
 

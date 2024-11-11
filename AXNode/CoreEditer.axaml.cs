@@ -27,7 +27,6 @@ namespace AXNode
         {
             InitializeComponent();
             Loaded += CoreEditer_Loaded;
-
         }
 
         #endregion

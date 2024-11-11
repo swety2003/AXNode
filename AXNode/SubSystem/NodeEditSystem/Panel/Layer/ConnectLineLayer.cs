@@ -32,8 +32,10 @@ namespace AXNode.SubSystem.NodeEditSystem.Panel.Layer
                     lineIndex = index;
                     break;
                 }
+
                 index++;
             }
+
             // 移除连接线
             if (lineIndex != -1)
             {

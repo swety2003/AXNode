@@ -16,7 +16,9 @@ public abstract class PinGroupBase
     /// <summary>引脚组索引</summary>
     public int Index => OwnerNode.PinGroupList.IndexOf(this);
 
-    public virtual void Init() { }
+    public virtual void Init()
+    {
+    }
 
     /// <summary>
     /// 获取输入引脚
@@ -194,9 +196,13 @@ public class DataPinGroup : PinGroupBase
 
 public class TDataPinGroup<TData> : DataPinGroup
 {
-    public TDataPinGroup(NodeBase node) : base(node) { }
+    public TDataPinGroup(NodeBase node) : base(node)
+    {
+    }
 
-    public TDataPinGroup(NodeBase node, string type, string name, string value) : base(node, type, name, value) { }
+    public TDataPinGroup(NodeBase node, string type, string name, string value) : base(node, type, name, value)
+    {
+    }
 
     public TData? Data { get; set; }
 }

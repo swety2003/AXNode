@@ -1,5 +1,6 @@
 ﻿using Avalonia.Media;
 using XLib.Avalonia.Ex;
+
 namespace AXNode.SubSystem.NodeEditSystem.Define
 {
     /// <summary>

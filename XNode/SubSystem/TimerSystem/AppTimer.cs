@@ -16,6 +16,7 @@ namespace XNode.SubSystem.TimerSystem
             _timer.Interval = TimeSpan.FromMilliseconds(1000.0 / 30.0);
             _timer.Tick += Timer_Tick;
         }
+
         public static AppTimer Instance { get; } = new AppTimer();
 
         #endregion
@@ -76,6 +77,7 @@ namespace XNode.SubSystem.TimerSystem
 
         /// <summary>定时器</summary>
         private readonly DispatcherTimer _timer = new DispatcherTimer(DispatcherPriority.Background);
+
         /// <summary>定时器处理器列表</summary>
         private List<ITimerHandler> _handlerList = new List<ITimerHandler>();
 

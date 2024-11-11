@@ -109,7 +109,8 @@ namespace AXNode.SubSystem.NodeEditSystem.Panel.Component
 
         #region 节点事件
 
-        private void Node_PinBreaked(PinBase start, PinBase end) => GetComponent<DrawingComponent>().RemoveConnectLine(start, end);
+        private void Node_PinBreaked(PinBase start, PinBase end) =>
+            GetComponent<DrawingComponent>().RemoveConnectLine(start, end);
 
         #endregion
 
@@ -120,6 +121,7 @@ namespace AXNode.SubSystem.NodeEditSystem.Panel.Component
 
         /// <summary>节点字典</summary>
         private readonly Dictionary<int, NodeBase> _nodeDict = new Dictionary<int, NodeBase>();
+
         /// <summary>节点列表</summary>
         private List<NodeBase> _nodeList = new List<NodeBase>();
 

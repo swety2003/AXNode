@@ -9,6 +9,7 @@ namespace AXNode.SubSystem.ResourceSystem
     {
         /// <summary>执行引脚</summary>
         Execute,
+
         /// <summary>数据引脚</summary>
         Data
     }
@@ -20,6 +21,7 @@ namespace AXNode.SubSystem.ResourceSystem
     {
         /// <summary>空心</summary>
         Hollow,
+
         /// <summary>实心</summary>
         Solid,
     }
@@ -41,6 +43,7 @@ namespace AXNode.SubSystem.ResourceSystem
                 if (style == PinStyle.Hollow) return DrawExecutePinIcon(r, g, b).GetPixelData();
                 return DrawSolidExecutePinIcon(r, g, b).GetPixelData();
             }
+
             if (style == PinStyle.Hollow) return DrawDataPinIcon(r, g, b).GetPixelData();
             return DrawSolidDataPinIcon(r, g, b).GetPixelData();
         }

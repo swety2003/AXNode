@@ -8,7 +8,10 @@ namespace XNode.SubSystem.ControlSystem
     {
         #region 单例
 
-        private ControlEngine() { }
+        private ControlEngine()
+        {
+        }
+
         public static ControlEngine Instance { get; } = new ControlEngine();
 
         #endregion

@@ -6,7 +6,9 @@ namespace XLib.AvaloniaControl.Tool
 {
     public class SelectTool : ToolBase<TreeView>
     {
-        public SelectTool(TreeView host) : base(host) { }
+        public SelectTool(TreeView host) : base(host)
+        {
+        }
 
         public override void Init()
         {
@@ -61,7 +63,8 @@ namespace XLib.AvaloniaControl.Tool
         private bool FolderSelected()
         {
             foreach (var item in _host.SelectedItemList)
-                if (item.IsFolder) return true;
+                if (item.IsFolder)
+                    return true;
             return false;
         }
     }

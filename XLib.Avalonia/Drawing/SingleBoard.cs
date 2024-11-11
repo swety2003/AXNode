@@ -35,6 +35,5 @@ namespace XLib.Avalonia.Drawing
             double y = point.Y - size / 2;
             dc.DrawRectangle(brush, pen, new Rect(x, y, size, size));
         }
-
     }
 }

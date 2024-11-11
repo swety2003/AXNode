@@ -60,7 +60,8 @@ namespace AXNode.SubSystem.NodeEditSystem.Control
         {
             if (Instance.InputPin.SourceList.Count == 0) Icon_LeftPin.Content = PinIconManager.Instance.ExecutePin_Null;
             else Icon_LeftPin.Content = PinIconManager.Instance.ExecutePin;
-            if (Instance.OutputPin.TargetList.Count == 0) Icon_RightPin.Content = PinIconManager.Instance.ExecutePin_Null;
+            if (Instance.OutputPin.TargetList.Count == 0)
+                Icon_RightPin.Content = PinIconManager.Instance.ExecutePin_Null;
             else Icon_RightPin.Content = PinIconManager.Instance.ExecutePin;
         }
     }

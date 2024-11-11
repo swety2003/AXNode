@@ -14,7 +14,8 @@ namespace AXNode.SubSystem.NodeEditSystem.Control
         public void Init()
         {
             foreach (var item in Stack_ToolBar.Children)
-                if (item is Button button) button.Click += Tool_Click;
+                if (item is Button button)
+                    button.Click += Tool_Click;
         }
 
         private void Tool_Click(object sender, RoutedEventArgs e) => ToolClick?.Invoke(((Button)sender).Name);

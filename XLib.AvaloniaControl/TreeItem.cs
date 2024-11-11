@@ -42,7 +42,7 @@ namespace XLib.AvaloniaControl
         }
 
         /// <summary>图标</summary>
-        public IImage ? Icon { get; set; } = null;
+        public IImage? Icon { get; set; } = null;
 
         /// <summary>内容</summary>
         public ITreeItem Content => _content;
@@ -172,6 +172,7 @@ namespace XLib.AvaloniaControl
                 if (item.IsFolder) folderItemList.Add(item);
                 else fileItemList.Add(item);
             }
+
             // 排序文件夹项与文件项
             folderItemList.Sort();
             fileItemList.Sort();

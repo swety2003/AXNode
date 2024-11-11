@@ -117,7 +117,7 @@ namespace AXNode.SubSystem.NodeEditSystem.Panel.Component
         public void HandleDrop(List<ITreeItem> itemList)
         {
             // 获取屏幕坐标
-            var screenPoint = Mouse.GetPosition(_host.OperateArea,true);
+            var screenPoint = Mouse.GetPosition(_host.OperateArea, true);
             // 获取节点组件
             var component = GetComponent<NodeComponent>();
             // 放下节点
@@ -290,6 +290,7 @@ namespace AXNode.SubSystem.NodeEditSystem.Panel.Component
                         break;
                 }
             }
+
             // 更新选中框
             GetComponent<DrawingComponent>().UpdateSelectedBox();
             // 更新工具栏
@@ -322,9 +323,9 @@ namespace AXNode.SubSystem.NodeEditSystem.Panel.Component
             // offset = new (0,0) ;
 
             // 对齐网格
-            offset = new(Math.Round(offset.X / 10) * 10,offset.Y) ;
-            offset =  new(offset.X,Math.Round(offset.Y / 10) * 10);
-            
+            offset = new(Math.Round(offset.X / 10) * 10, offset.Y);
+            offset = new(offset.X, Math.Round(offset.Y / 10) * 10);
+
             // 获取世界中心
             Point center = GetComponent<DrawingComponent>().WorldCenter;
             // 设置节点偏移并更新坐标
@@ -334,6 +335,7 @@ namespace AXNode.SubSystem.NodeEditSystem.Panel.Component
                 Canvas.SetLeft(card, center.X + card.Point.X - 12);
                 Canvas.SetTop(card, center.Y + card.Point.Y - 1);
             }
+
             // 更新选中框、连接线
             GetComponent<DrawingComponent>().UpdateSelectedBox();
             GetComponent<DrawingComponent>().UpdateConnectLine();
@@ -383,6 +385,7 @@ namespace AXNode.SubSystem.NodeEditSystem.Panel.Component
                 // 计算引脚连接点坐标
                 _mousePoint = new Point(_mousePoint.X + offset.X, _mousePoint.Y + offset.Y);
             }
+
             // 根据起始引脚类型更新连接线的起点或终点
             if (_startPin.Flow == PinFlow.Input)
                 GetComponent<DrawingComponent>().UpdateTempLineStart(_mousePoint);
@@ -423,11 +426,13 @@ namespace AXNode.SubSystem.NodeEditSystem.Panel.Component
                     // 添加连接线
                     GetComponent<DrawingComponent>().AddConnectLine(_startPin, endPin);
                 }
+
                 // 更新引脚图标
                 UpdateAllPinIcon();
 
                 ProjectManager.Instance.Saved = false;
             }
+
             _startPin = null;
         }
 
@@ -495,7 +500,8 @@ namespace AXNode.SubSystem.NodeEditSystem.Panel.Component
         public void DragViewport()
         {
             _mousePoint = Mouse.GetPosition(_host.OperateArea);
-            GetComponent<DrawingComponent>().DragViewport(new Point(_mousePoint.X - _mouseDown.X, _mousePoint.Y - _mouseDown.Y));
+            GetComponent<DrawingComponent>()
+                .DragViewport(new Point(_mousePoint.X - _mouseDown.X, _mousePoint.Y - _mouseDown.Y));
             UpdateHoverToolBar();
         }
 
@@ -544,7 +550,7 @@ namespace AXNode.SubSystem.NodeEditSystem.Panel.Component
         }
 
         private void OperateArea_MouseUp(object? sender, PointerReleasedEventArgs e)
-        {            
+        {
             var point = e.GetCurrentPoint(sender as Avalonia.Controls.Control);
 
             _tool?.OnMouseUp(ToMouseBtn(point));
@@ -602,6 +608,7 @@ namespace AXNode.SubSystem.NodeEditSystem.Panel.Component
                 GetComponent<DrawingComponent>().UpdateHoverBox();
                 return;
             }
+
             // 当前目标已选中，不绘制悬停框
             if (GetComponent<CardComponent>().SelectedCardList.Contains(_hoveredNodeView)) return;
 
@@ -625,7 +632,9 @@ namespace AXNode.SubSystem.NodeEditSystem.Panel.Component
             _hoverToolBar.IsVisible = selectedCount == 0 ? false : true;
 
             // 无选中
-            if (selectedCount == 0) { }
+            if (selectedCount == 0)
+            {
+            }
             // 选中一个
             else if (selectedCount == 1)
             {
@@ -644,6 +653,7 @@ namespace AXNode.SubSystem.NodeEditSystem.Panel.Component
                 {
                     rect = rect.Union(selectedList[index].GetHittableRect());
                 }
+
                 double left = Math.Round((rect.Right - rect.Left - _hoverToolBar.Bounds.Width) / 2) + rect.Left;
                 double top = rect.Top - 10 - _hoverToolBar.Bounds.Height;
                 Canvas.SetLeft(_hoverToolBar, left + 1);
@@ -722,6 +732,7 @@ namespace AXNode.SubSystem.NodeEditSystem.Panel.Component
                 GetComponent<NodeComponent>().DeleteNode(card.NodeInstance);
                 GetComponent<CardComponent>().DeleteNodeCard(card);
             }
+
             // 更新引脚图标
             UpdateAllPinIcon();
             // 清空选择
@@ -771,11 +782,13 @@ namespace AXNode.SubSystem.NodeEditSystem.Panel.Component
 
         /// <summary>当前鼠标坐标</summary>
         private Point _mousePoint = new Point();
+
         /// <summary>鼠标按下坐标</summary>
         private Point _mouseDown = new Point();
 
         /// <summary>起始引脚</summary>
         private PinBase? _startPin;
+
         /// <summary>右键命中引脚</summary>
         private PinBase? _rightHitedPin = null;
 

@@ -137,6 +137,7 @@ namespace XLib.Avalonia.Behavior
                 nodeList.RemoveAt(0);
                 return FindNode(node, nodeList);
             }
+
             return null;
         }
 
@@ -146,7 +147,8 @@ namespace XLib.Avalonia.Behavior
         private BehaviorNode? FindSubNode(BehaviorNode parent, string name)
         {
             foreach (var item in parent.SubNodeList)
-                if (item.Name == name) return item;
+                if (item.Name == name)
+                    return item;
             return null;
         }
 

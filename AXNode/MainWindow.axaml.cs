@@ -46,17 +46,13 @@ public partial class MainWindow : Window
         base.OnLoaded(e);
         Closing += OnClosing;
         WindowLoaded();
-        AddHandler(KeyDownEvent, (sender, args) =>
-        {
-            Keyboard.RegisterModifiers(args.KeyModifiers);
-        }, RoutingStrategies.Tunnel);
+        AddHandler(KeyDownEvent, (sender, args) => { Keyboard.RegisterModifiers(args.KeyModifiers); },
+            RoutingStrategies.Tunnel);
         AddHandler(PointerMovedEvent, (sender, args) =>
         {
             Mouse.RegisterPointerEventArgs(args);
             Mouse.RegisterDirectlyOver(args);
-            
         }, RoutingStrategies.Tunnel);
-        
     }
 
     private async void OnClosing(object? sender, WindowClosingEventArgs e)
@@ -78,7 +74,7 @@ public partial class MainWindow : Window
 
         // 初始化工具栏
         // InitToolBar();
-        
+
         // 加载核心编辑器
         LoadCoreEditer();
 
@@ -135,7 +131,9 @@ public partial class MainWindow : Window
         WindowState = CacheManager.Instance.Cache.MainWindow.State;
         var screenFromVisual = this.Screens.ScreenFromVisual(this);
         // 居中窗口
-        Bounds = new Rect((screenFromVisual.WorkingArea.Width - Width) / 2, (screenFromVisual.WorkingArea.Height - Height) / 2, CacheManager.Instance.Cache.MainWindow.Width, CacheManager.Instance.Cache.MainWindow.Height);
+        Bounds = new Rect((screenFromVisual.WorkingArea.Width - Width) / 2,
+            (screenFromVisual.WorkingArea.Height - Height) / 2, CacheManager.Instance.Cache.MainWindow.Width,
+            CacheManager.Instance.Cache.MainWindow.Height);
     }
 
     /// <summary>
@@ -143,7 +141,6 @@ public partial class MainWindow : Window
     /// </summary>
     private void ListenWindowState()
     {
-        
         // StateChanged += (s, e) =>
         // {
         //     if (WindowState is WindowState.Normal or WindowState.Maximized)

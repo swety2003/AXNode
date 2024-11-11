@@ -13,7 +13,10 @@ namespace AXNode.SubSystem.CacheSystem
     {
         #region 单例
 
-        private CacheManager() { }
+        private CacheManager()
+        {
+        }
+
         public static CacheManager Instance { get; } = new CacheManager();
 
         #endregion
@@ -37,9 +40,13 @@ namespace AXNode.SubSystem.CacheSystem
             LoadCacheFile();
         }
 
-        public void Reset() { }
+        public void Reset()
+        {
+        }
 
-        public void Clear() { }
+        public void Clear()
+        {
+        }
 
         #endregion
 

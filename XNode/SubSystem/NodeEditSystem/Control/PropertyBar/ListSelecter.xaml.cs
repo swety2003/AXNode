@@ -21,6 +21,7 @@ namespace XNode.SubSystem.NodeEditSystem.Control.PropertyBar
                 };
                 Box_ItemList.Items.Add(boxItem);
             }
+
             Box_ItemList.SelectedIndex = list.IndexOf(value);
         }
 

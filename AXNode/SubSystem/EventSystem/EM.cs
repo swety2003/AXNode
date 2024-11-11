@@ -9,7 +9,10 @@ namespace AXNode.SubSystem.EventSystem
     {
         #region 单例
 
-        private EM() { }
+        private EM()
+        {
+        }
+
         public static EM Instance { get; } = new EM();
 
         #endregion

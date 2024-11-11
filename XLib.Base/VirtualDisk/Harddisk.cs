@@ -92,6 +92,7 @@ namespace XLib.Base.VirtualDisk
                 currentFolder = folder;
                 nodeList.RemoveAt(0);
             }
+
             // 返回当前文件夹
             return currentFolder;
         }
@@ -207,6 +208,7 @@ namespace XLib.Base.VirtualDisk
                 path = parent.Name + "/" + path;
                 parent = parent.Parent;
             }
+
             return path;
         }
 
@@ -238,7 +240,8 @@ namespace XLib.Base.VirtualDisk
         protected Folder? FindSubFolder(Folder parent, string name)
         {
             foreach (var item in parent.FolderList)
-                if (item.Name == name) return item;
+                if (item.Name == name)
+                    return item;
             return null;
         }
 

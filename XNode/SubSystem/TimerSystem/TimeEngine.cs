@@ -69,7 +69,9 @@ namespace XNode.SubSystem.TimerSystem
             {
                 foreach (var item in _handlerList) item.Tick();
             }
-            catch (Exception) { }
+            catch (Exception)
+            {
+            }
         }
 
         #endregion
@@ -78,6 +80,7 @@ namespace XNode.SubSystem.TimerSystem
 
         /// <summary>秒表：用作应用程序的精确时间参考</summary>
         private readonly Stopwatch _stopwatch = new Stopwatch();
+
         /// <summary>定时器：定时驱动引擎</summary>
         private readonly IHighPrecisionTimer _timer = new HighPrecisionTimerW();
 

@@ -17,6 +17,7 @@ using AXNode.SubSystem.NodeEditSystem.Define;
 using AXNode.SubSystem.ResourceSystem;
 using AXNode.SubSystem.TimerSystem;
 using AXNode.SubSystem.WindowSystem;
+
 // using ProgressBar = XLib.AvaloniaControl.ProgressBar;
 
 namespace AXNode.SubSystem.NodeEditSystem.Control
@@ -40,7 +41,8 @@ namespace AXNode.SubSystem.NodeEditSystem.Control
                 _nodeColor = value;
                 // Color_Start.Color = Color.FromArgb(255, _nodeColor.R, _nodeColor.G, _nodeColor.B);
                 // Color_End.Color = Color.FromArgb(0, _nodeColor.R, _nodeColor.G, _nodeColor.B);
-                NodeFillColor.Background = new SolidColorBrush(Color.FromArgb(48, _nodeColor.R, _nodeColor.G, _nodeColor.B));
+                NodeFillColor.Background =
+                    new SolidColorBrush(Color.FromArgb(48, _nodeColor.R, _nodeColor.G, _nodeColor.B));
             }
         }
 
@@ -55,7 +57,8 @@ namespace AXNode.SubSystem.NodeEditSystem.Control
             get
             {
                 foreach (var item in _pinGroupViewList)
-                    if (item.HoveredPin != null) return item.HoveredPin;
+                    if (item.HoveredPin != null)
+                        return item.HoveredPin;
                 return null;
             }
         }
@@ -97,6 +100,7 @@ namespace AXNode.SubSystem.NodeEditSystem.Control
                 _pinGroupViewList.Add(pinView);
                 pinView.Init();
             }
+
             if (_pinGroupViewList.Count > 0)
                 _pinGroupViewList[0].Margin = new Thickness(0);
             // 设置节点委托
@@ -134,6 +138,7 @@ namespace AXNode.SubSystem.NodeEditSystem.Control
                 if (groupView.HoveredPin != null)
                     return groupView.GetHoveredPinOffset();
             }
+
             return new Point();
         }
 
@@ -153,7 +158,8 @@ namespace AXNode.SubSystem.NodeEditSystem.Control
         /// <summary>
         /// 获取可命中矩形区域
         /// </summary>
-        public Rect GetHittableRect() => new Rect(Canvas.GetLeft(this) + 11, Canvas.GetTop(this), Bounds.Width - 22, Bounds.Height);
+        public Rect GetHittableRect() =>
+            new Rect(Canvas.GetLeft(this) + 11, Canvas.GetTop(this), Bounds.Width - 22, Bounds.Height);
 
         #endregion
 
@@ -217,13 +223,17 @@ namespace AXNode.SubSystem.NodeEditSystem.Control
             AppDelegate.Invoke(() =>
             {
                 if (NodeInstance.State == NodeState.Enable)
-                    Image_Light.Source = ImageResManager.Instance.GetSubSystemImage("NodeEditSystem", "Control/Image", "Light_Green");
+                    Image_Light.Source =
+                        ImageResManager.Instance.GetSubSystemImage("NodeEditSystem", "Control/Image", "Light_Green");
                 else
                 {
                     if (NodeInstance.RunError)
-                        Image_Light.Source = ImageResManager.Instance.GetSubSystemImage("NodeEditSystem", "Control/Image", "Light_Red");
+                        Image_Light.Source =
+                            ImageResManager.Instance.GetSubSystemImage("NodeEditSystem", "Control/Image", "Light_Red");
                     else
-                        Image_Light.Source = ImageResManager.Instance.GetSubSystemImage("NodeEditSystem", "Control/Image", "Light_Black");
+                        Image_Light.Source =
+                            ImageResManager.Instance.GetSubSystemImage("NodeEditSystem", "Control/Image",
+                                "Light_Black");
                 }
             });
         }
@@ -251,6 +261,7 @@ namespace AXNode.SubSystem.NodeEditSystem.Control
                 _pinGroupViewList.Add(pinView);
                 pinView.Init();
             }
+
             if (_pinGroupViewList.Count > 0)
                 _pinGroupViewList[0].Margin = new Thickness(0);
 
@@ -276,7 +287,8 @@ namespace AXNode.SubSystem.NodeEditSystem.Control
         private PinGroupBase? FindPinGroup(string title)
         {
             foreach (var pinGroup in NodeInstance.PinGroupList)
-                if (pinGroup.GetTitle() == title) return pinGroup;
+                if (pinGroup.GetTitle() == title)
+                    return pinGroup;
             return null;
         }
 
@@ -316,6 +328,7 @@ namespace AXNode.SubSystem.NodeEditSystem.Control
                         Instance = (ControlPinGroup)pinGroup,
                     };
             }
+
             return null;
         }
 
@@ -327,6 +340,7 @@ namespace AXNode.SubSystem.NodeEditSystem.Control
 
         /// <summary>引脚组列表</summary>
         private readonly List<PinGroupViewBase> _pinGroupViewList = new List<PinGroupViewBase>();
+
         /// <summary>引脚信息列表</summary>
         private readonly List<PinConnectInfo> _connectInfoList = new List<PinConnectInfo>();
 
@@ -334,8 +348,10 @@ namespace AXNode.SubSystem.NodeEditSystem.Control
 
         /// <summary>进度条控件</summary>
         private ProgressBar? _progressBar = null;
+
         /// <summary>进度获取器</summary>
         private IProgressGetter? _progressGetter = null;
+
         /// <summary>定时器处理器</summary>
         private readonly TimerHandler _timerHandler = new TimerHandler();
 

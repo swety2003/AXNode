@@ -386,9 +386,8 @@ public partial class TreeView : UserControl
     {
         base.OnPointerReleased(e);
         _selectTool?.OnMouseUp(e.InitialPressMouseButton);
-
     }
-    
+
 
     private void TreeView_SizeChanged(object sender, SizeChangedEventArgs e)
     {
@@ -399,6 +398,7 @@ public partial class TreeView : UserControl
             UpdateScrollBar();
         }
     }
+
     private void MainGrid_OnPointerPressed(object? sender, PointerPressedEventArgs e)
     {
         if (!e.Pointer.IsPrimary) return;
@@ -408,108 +408,109 @@ public partial class TreeView : UserControl
             UpdateVisibleView();
         }
     }
-    
-        private void OnItemHited(TreeItem treeItem,KeyModifiers keyModifiers)
-        {
-            bool selectChanged = false;
 
-            if (MultiSelect)
+    private void OnItemHited(TreeItem treeItem, KeyModifiers keyModifiers)
+    {
+        bool selectChanged = false;
+
+        if (MultiSelect)
+        {
+            // 未按下“Ctrl”与“Shift”键
+            if (keyModifiers != KeyModifiers.Control && keyModifiers != KeyModifiers.Shift &&
+                keyModifiers != (KeyModifiers.Control | KeyModifiers.Shift))
             {
-                // 未按下“Ctrl”与“Shift”键
-                if (keyModifiers != KeyModifiers.Control && keyModifiers != KeyModifiers.Shift &&
-                    keyModifiers!= (KeyModifiers.Control | KeyModifiers.Shift))
-                {
-                    if (!treeItem.Selected)
-                    {
-                        selectChanged = true;
-                        // 清空已选中项
-                        ClearSelectedItem(true);
-                        // 选中命中项
-                        treeItem.Selected = true;
-                        if (_selectedItemList.Count == 1) _firstSelectedItem = treeItem;
-                    }
-                }
-                // 加选或减选
-                else if (Keyboard.Modifiers == KeyModifiers.Control)
+                if (!treeItem.Selected)
                 {
                     selectChanged = true;
-                    // 命中项未选中
-                    if (!treeItem.Selected)
-                    {
-                        treeItem.Selected = true;
-                        if (_selectedItemList.Count == 1) _firstSelectedItem = treeItem;
-                    }
-                    // 命中项已选中
-                    else
-                    {
-                        treeItem.Selected = false;
-                        if (_selectedItemList.Count == 0) _firstSelectedItem = null;
-                    }
-                }
-                // 范围选择
-                else if (Keyboard.Modifiers == KeyModifiers.Shift)
-                {
-                    selectChanged = true;
-                    // 第一个选中项不为空
-                    if (_firstSelectedItem != null)
-                    {
-                        // 与第一个选中项为同一层级
-                        if (treeItem.Parent == _firstSelectedItem.Parent)
-                        {
-                            // 移除除第一个选中项之外的选中项
-                            var tempList = new List<TreeItem>(_selectedItemList);
-                            foreach (var item in tempList)
-                                if (item != _firstSelectedItem) item.Selected = false;
-                            // 确定范围
-                            int index_first = _firstSelectedItem.Index;
-                            int index_second = treeItem.Index;
-                            if (index_second > index_first)
-                            {
-                                for (int index = index_first + 1; index <= index_second; index++)
-                                    _firstSelectedItem.Parent.ItemList[index].Selected = true;
-                            }
-                            else if (index_first > index_second)
-                            {
-                                for (int index = index_first - 1; index >= index_second; index--)
-                                    _firstSelectedItem.Parent.ItemList[index].Selected = true;
-                            }
-                        }
-                    }
-                    else
-                    {
-                        treeItem.Selected = true;
-                        if (_selectedItemList.Count == 1) _firstSelectedItem = treeItem;
-                    }
+                    // 清空已选中项
+                    ClearSelectedItem(true);
+                    // 选中命中项
+                    treeItem.Selected = true;
+                    if (_selectedItemList.Count == 1) _firstSelectedItem = treeItem;
                 }
             }
-            else
+            // 加选或减选
+            else if (Keyboard.Modifiers == KeyModifiers.Control)
             {
                 selectChanged = true;
-                // 清空已选中项
-                ClearSelectedItem(true);
-                // 选中命中项
-                treeItem.Selected = true;
-                if (_selectedItemList.Count == 1) _firstSelectedItem = treeItem;
+                // 命中项未选中
+                if (!treeItem.Selected)
+                {
+                    treeItem.Selected = true;
+                    if (_selectedItemList.Count == 1) _firstSelectedItem = treeItem;
+                }
+                // 命中项已选中
+                else
+                {
+                    treeItem.Selected = false;
+                    if (_selectedItemList.Count == 0) _firstSelectedItem = null;
+                }
             }
-
-            // 更新视图
-            if (selectChanged) UpdateVisibleView();
-            // 触发鼠标按下
-            _selectTool.OnMouseDown(MouseButton.Left);
+            // 范围选择
+            else if (Keyboard.Modifiers == KeyModifiers.Shift)
+            {
+                selectChanged = true;
+                // 第一个选中项不为空
+                if (_firstSelectedItem != null)
+                {
+                    // 与第一个选中项为同一层级
+                    if (treeItem.Parent == _firstSelectedItem.Parent)
+                    {
+                        // 移除除第一个选中项之外的选中项
+                        var tempList = new List<TreeItem>(_selectedItemList);
+                        foreach (var item in tempList)
+                            if (item != _firstSelectedItem)
+                                item.Selected = false;
+                        // 确定范围
+                        int index_first = _firstSelectedItem.Index;
+                        int index_second = treeItem.Index;
+                        if (index_second > index_first)
+                        {
+                            for (int index = index_first + 1; index <= index_second; index++)
+                                _firstSelectedItem.Parent.ItemList[index].Selected = true;
+                        }
+                        else if (index_first > index_second)
+                        {
+                            for (int index = index_first - 1; index >= index_second; index--)
+                                _firstSelectedItem.Parent.ItemList[index].Selected = true;
+                        }
+                    }
+                }
+                else
+                {
+                    treeItem.Selected = true;
+                    if (_selectedItemList.Count == 1) _firstSelectedItem = treeItem;
+                }
+            }
         }
+        else
+        {
+            selectChanged = true;
+            // 清空已选中项
+            ClearSelectedItem(true);
+            // 选中命中项
+            treeItem.Selected = true;
+            if (_selectedItemList.Count == 1) _firstSelectedItem = treeItem;
+        }
+
+        // 更新视图
+        if (selectChanged) UpdateVisibleView();
+        // 触发鼠标按下
+        _selectTool.OnMouseDown(MouseButton.Left);
+    }
 
     private void OnDoubleClick(TreeItem treeItem) => ItemDoubleClick?.Invoke(treeItem.Content);
 
 
-        protected override void OnPointerWheelChanged(PointerWheelEventArgs e)
-        {
-            base.OnPointerWheelChanged(e);
-            
-            MainScrollBar.Value = e.Delta.Y / 120 ;
-            _selectTool.OnMouseMove();
-        }
+    protected override void OnPointerWheelChanged(PointerWheelEventArgs e)
+    {
+        base.OnPointerWheelChanged(e);
 
-        private void MainScrollBar_OnValueChanged(object? sender, RangeBaseValueChangedEventArgs e)
+        MainScrollBar.Value = e.Delta.Y / 120;
+        _selectTool.OnMouseMove();
+    }
+
+    private void MainScrollBar_OnValueChanged(object? sender, RangeBaseValueChangedEventArgs e)
     {
         // 更新滚动条当前值
         var scrollBar = (ScrollBar)sender;
@@ -521,7 +522,7 @@ public partial class TreeView : UserControl
         // 更新视图
         UpdateVisibleView();
     }
-    
+
     #endregion
 
     #region 私有方法
@@ -533,7 +534,7 @@ public partial class TreeView : UserControl
     {
         var uri = new Uri($"avares://AXNode/{cursorPath}");
         var bmp = new Bitmap(AssetLoader.Open(uri));
-        return new Cursor(bmp,new PixelPoint());
+        return new Cursor(bmp, new PixelPoint());
     }
 
     /// <summary>
@@ -674,7 +675,7 @@ public partial class TreeView : UserControl
             TreeItem item = _visibleData[itemIndex];
             // 更新目标
             _dragTargetItem = item.IsFolder && !item.Selected ? item : null;
-            TargetBorder.IsVisible = _dragTargetItem != null ;
+            TargetBorder.IsVisible = _dragTargetItem != null;
         }
         else
         {

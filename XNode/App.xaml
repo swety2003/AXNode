@@ -6,12 +6,12 @@
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="pack://Application:,,,/XLib.WPFStyle;component/ConverterSet.xaml"/>
-                <ResourceDictionary Source="pack://Application:,,,/XLib.WPFStyle;component/ButtonStyle.xaml"/>
-                <ResourceDictionary Source="pack://Application:,,,/XLib.WPFStyle;component/ScrollBarStyle.xaml"/>
-                <ResourceDictionary Source="pack://Application:,,,/XLib.WPFStyle;component/WindowStyle.xaml"/>
-                <ResourceDictionary Source="pack://Application:,,,/XLib.WPFStyle;component/ToolTipStyle.xaml"/>
-                <ResourceDictionary Source="pack://Application:,,,/XLib.WPFStyle;component/TextBoxStyle.xaml"/>
+                <ResourceDictionary Source="pack://Application:,,,/XLib.WPFStyle;component/ConverterSet.xaml" />
+                <ResourceDictionary Source="pack://Application:,,,/XLib.WPFStyle;component/ButtonStyle.xaml" />
+                <ResourceDictionary Source="pack://Application:,,,/XLib.WPFStyle;component/ScrollBarStyle.xaml" />
+                <ResourceDictionary Source="pack://Application:,,,/XLib.WPFStyle;component/WindowStyle.xaml" />
+                <ResourceDictionary Source="pack://Application:,,,/XLib.WPFStyle;component/ToolTipStyle.xaml" />
+                <ResourceDictionary Source="pack://Application:,,,/XLib.WPFStyle;component/TextBoxStyle.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

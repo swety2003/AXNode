@@ -45,10 +45,10 @@
                         <Setter Property="Foreground" Value="White"></Setter>
                     </Style>
                 </UniformGrid.Styles>
-                
-                <Button x:Name="Yes" Content="是(_Y)" IsDefault="True"  />
+
+                <Button x:Name="Yes" Content="是(_Y)" IsDefault="True" />
                 <Button x:Name="No" Content="否(_N)" />
-                <Button x:Name="Cancel" Content="取消" IsCancel="True"   />
+                <Button x:Name="Cancel" Content="取消" IsCancel="True" />
             </UniformGrid>
         </Grid>
     </Grid>

@@ -42,7 +42,8 @@ namespace AXNode.SubSystem.NodeEditSystem.Control
             HoveredPin = null;
         }
 
-        public override Point GetPinOffset(NodeView card, int pinIndex) => PinArea.TranslatePoint(new Point(14, 8), card) ?? new Point(0, 0);
+        public override Point GetPinOffset(NodeView card, int pinIndex) =>
+            PinArea.TranslatePoint(new Point(14, 8), card) ?? new Point(0, 0);
 
         public override void UpdatePinIcon()
         {

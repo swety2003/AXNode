@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using Avalonia;
 using Avalonia.Controls.Shapes;
@@ -17,7 +16,10 @@ namespace AXNode.SubSystem.ResourceSystem
     {
         #region 单例
 
-        private PinIconManager() { }
+        private PinIconManager()
+        {
+        }
+
         public static PinIconManager Instance { get; } = new PinIconManager();
 
         #endregion
@@ -27,6 +29,7 @@ namespace AXNode.SubSystem.ResourceSystem
         public string Name { get; set; } = "引脚图标管理器";
 
         private readonly SolidColorBrush ExecuteBrush = new SolidColorBrush(Color.FromRgb(196, 126, 255));
+
         public Shape ExecutePinIcon
         {
             get
@@ -34,11 +37,13 @@ namespace AXNode.SubSystem.ResourceSystem
                 App.Current.TryGetResource("PinIcons.ExecutePin", null, out var pinIcon);
                 if (pinIcon is Polygon s)
                 {
-                    return new Polygon{ Points = s.Points ,StrokeThickness = 1};
+                    return new Polygon { Points = s.Points, StrokeThickness = 1 };
                 }
+
                 throw new ArgumentNullException();
             }
         }
+
         public Shape DataPinIcon
         {
             get
@@ -46,11 +51,13 @@ namespace AXNode.SubSystem.ResourceSystem
                 App.Current.TryGetResource("PinIcons.DataPin", null, out var pinIcon);
                 if (pinIcon is Polygon s)
                 {
-                    return new Polygon{ Points = s.Points ,StrokeThickness = 1};
+                    return new Polygon { Points = s.Points, StrokeThickness = 1 };
                 }
+
                 throw new ArgumentNullException();
             }
         }
+
         public Shape ExecutePin_Null
         {
             get
@@ -60,6 +67,7 @@ namespace AXNode.SubSystem.ResourceSystem
                 return s;
             }
         }
+
         public Shape ExecutePin
         {
             get
@@ -106,7 +114,7 @@ namespace AXNode.SubSystem.ResourceSystem
         #endregion
 
         Dictionary<string, Color> _colors = new();
-        
+
         /// <summary>
         /// 生成数据引脚图标
         /// </summary>
@@ -117,8 +125,6 @@ namespace AXNode.SubSystem.ResourceSystem
             _colors.Add("double", PinColorSet.Double);
             _colors.Add("string", PinColorSet.String);
             _colors.Add("byte[]", PinColorSet.ByteArray);
-
         }
-
     }
 }

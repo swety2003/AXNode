@@ -15,10 +15,13 @@ namespace AXNode.SubSystem.WindowSystem
     {
         /// <summary>信息</summary>
         Info,
+
         /// <summary>中断</summary>
         Break,
+
         /// <summary>警告</summary>
         Warning,
+
         /// <summary>错误</summary>
         Error,
     }
@@ -78,36 +81,37 @@ namespace AXNode.SubSystem.WindowSystem
             // Border? clientBorder = GetTemplateChild("ClientBorder") as Border;
             // // 设置提示图标
             Icon_Info.IsVisible = false;
-            Icon_Warning.IsVisible  = false;
-            Icon_Error.IsVisible  = false;
+            Icon_Warning.IsVisible = false;
+            Icon_Error.IsVisible = false;
             switch (Level)
             {
                 case TipLevel.Info:
-                    Icon_Info.IsVisible  = true;
+                    Icon_Info.IsVisible = true;
                     _currentBrush = _info;
                     break;
                 case TipLevel.Break:
                     Title = "中断";
-                    Icon_Break.IsVisible  = true;
+                    Icon_Break.IsVisible = true;
                     _currentBrush = _break;
                     break;
                 case TipLevel.Warning:
                     Title = "警告";
-                    Icon_Warning.IsVisible  = true;
+                    Icon_Warning.IsVisible = true;
                     _currentBrush = _warning;
                     break;
                 case TipLevel.Error:
                     Title = "错误";
-                    Icon_Error.IsVisible  = true;
+                    Icon_Error.IsVisible = true;
                     _currentBrush = _error;
                     break;
             }
+
             // // 设置边框颜色
             // titleBorder.BorderBrush = _currentBrush;
             // clientBorder.BorderBrush = _currentBrush;
             // // 设置提示文本
             TipTextBlock.Inlines.Add(new Run(Message) { Foreground = _tip });
-            if (!UseCancel) Cancel.IsVisible  = false;
+            if (!UseCancel) Cancel.IsVisible = false;
             // // 设置“是”按钮文本
             Yes.Content = YesText + "(_Y)";
         }

@@ -25,13 +25,16 @@ namespace XLib.Sample.Layer
             AnimationEngine.Instance.AddAnimation(_group);
         }
 
-        private AnimationQueue CreatQueue(string property, double leftDelay, double x1, double x2, double x3, double rightDelay)
+        private AnimationQueue CreatQueue(string property, double leftDelay, double x1, double x2, double x3,
+            double rightDelay)
         {
             AnimationQueue queue = new AnimationQueue { Loop = true };
             queue.AnimationList.Add(new AnimationDelay { Duration = leftDelay });
-            queue.AnimationList.Add(this.CreateAnimation(property, x1, x2, 1000, EasingType.QuinticEase, EasingMode.EaseOut));
+            queue.AnimationList.Add(this.CreateAnimation(property, x1, x2, 1000, EasingType.QuinticEase,
+                EasingMode.EaseOut));
             queue.AnimationList.Add(new AnimationDelay { Duration = 500 });
-            queue.AnimationList.Add(this.CreateAnimation(property, x2, x3, 1000, EasingType.QuinticEase, EasingMode.EaseIn));
+            queue.AnimationList.Add(this.CreateAnimation(property, x2, x3, 1000, EasingType.QuinticEase,
+                EasingMode.EaseIn));
             queue.AnimationList.Add(new AnimationDelay { Duration = 1000 });
             queue.AnimationList.Add(new AnimationDelay { Duration = rightDelay });
             queue.Init();
@@ -84,6 +87,7 @@ namespace XLib.Sample.Layer
                     _x5 = value;
                     break;
             }
+
             Dispatcher.Invoke(Update);
         }
 
@@ -94,7 +98,7 @@ namespace XLib.Sample.Layer
         private double _x4 = 0;
         private double _x5 = 0;
 
-        private AnimationGroup _group= new AnimationGroup();
+        private AnimationGroup _group = new AnimationGroup();
 
         private readonly Brush _brush = new SolidColorBrush(Colors.Black);
     }

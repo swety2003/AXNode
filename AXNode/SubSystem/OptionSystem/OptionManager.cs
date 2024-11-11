@@ -11,7 +11,10 @@ namespace AXNode.SubSystem.OptionSystem
     {
         #region 单例
 
-        private OptionManager() { }
+        private OptionManager()
+        {
+        }
+
         public static OptionManager Instance { get; } = new OptionManager();
 
         #endregion
@@ -38,9 +41,13 @@ namespace AXNode.SubSystem.OptionSystem
             if (!Directory.Exists(NodeLibPath)) Directory.CreateDirectory(NodeLibPath);
         }
 
-        public void Reset() { }
+        public void Reset()
+        {
+        }
 
-        public void Clear() { }
+        public void Clear()
+        {
+        }
 
         #endregion
 

@@ -16,6 +16,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\XLib.Base\XLib.Base.csproj" />
+        <ProjectReference Include="..\XLib.Base\XLib.Base.csproj"/>
     </ItemGroup>
 </Project>

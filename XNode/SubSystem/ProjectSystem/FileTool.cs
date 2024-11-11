@@ -14,6 +14,7 @@ namespace XNode.SubSystem.ProjectSystem
             _projectFilter.TypeList.Add(new TypeInfo("节点项目", "xnode"));
             _projectFilter.TypeList.Add(new TypeInfo("节点项目", "json"));
         }
+
         public static FileTool Instance { get; } = new FileTool();
 
         /// <summary>

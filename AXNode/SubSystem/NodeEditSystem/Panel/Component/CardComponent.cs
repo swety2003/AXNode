@@ -111,7 +111,8 @@ namespace AXNode.SubSystem.NodeEditSystem.Panel.Component
         public NodeView GetNodeCard(int nodeID)
         {
             foreach (var card in _cardList)
-                if (card.NodeInstance.ID == nodeID) return card;
+                if (card.NodeInstance.ID == nodeID)
+                    return card;
             throw new Exception("获取节点卡片失败");
         }
 
@@ -131,6 +132,7 @@ namespace AXNode.SubSystem.NodeEditSystem.Panel.Component
 
         /// <summary>卡片列表</summary>
         private readonly List<NodeView> _cardList = new List<NodeView>();
+
         /// <summary>选中卡片集</summary>
         private readonly HashSet<NodeView> _selectedCardSet = new HashSet<NodeView>();
 

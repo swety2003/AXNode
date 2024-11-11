@@ -53,7 +53,9 @@ namespace AXNode.SubSystem.NodeLibSystem.Define.Flows
             {
                 SetData(1, paraDict["Value"]);
             }
-            catch (Exception) { }
+            catch (Exception)
+            {
+            }
         }
 
         public override Dictionary<string, string> GetPropertyDict()
@@ -74,7 +76,9 @@ namespace AXNode.SubSystem.NodeLibSystem.Define.Flows
                 };
                 UpdateAllItem();
             }
-            catch (Exception) { }
+            catch (Exception)
+            {
+            }
         }
 
         protected override NodeBase CloneNode() => new Flow_Switch();

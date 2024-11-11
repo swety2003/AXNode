@@ -8,10 +8,11 @@
              Width="320">
     <Grid x:Name="MainGrid" Background="#2b2b2b" PointerWheelChanged="MainGrid_MouseWheel" ClipToBounds="True">
         <Grid Margin="10" ClipToBounds="True">
-            <StackPanel x:Name="MainStackPanel" VerticalAlignment="Top" SizeChanged="MainStackPanel_SizeChanged"/>
+            <StackPanel x:Name="MainStackPanel" VerticalAlignment="Top" SizeChanged="MainStackPanel_SizeChanged" />
         </Grid>
         <!-- 滚动条 -->
-        <ScrollBar x:Name="MainScrollBar" Orientation="Vertical" HorizontalAlignment="Right" Tag="0" Width="2" Opacity="0"
-               SmallChange="1" ViewportSize="0" Minimum="0" Maximum="0" ValueChanged="MainScrollBar_ValueChanged"/>
+        <ScrollBar x:Name="MainScrollBar" Orientation="Vertical" HorizontalAlignment="Right" Tag="0" Width="2"
+                   Opacity="0"
+                   SmallChange="1" ViewportSize="0" Minimum="0" Maximum="0" ValueChanged="MainScrollBar_ValueChanged" />
     </Grid>
 </UserControl>

@@ -48,7 +48,9 @@ namespace AXNode.SubSystem.NodeLibSystem.Define.Flows
             {
                 SetData(1, paraDict["LogicValue"]);
             }
-            catch (Exception) { }
+            catch (Exception)
+            {
+            }
         }
 
         protected override NodeBase CloneNode() => new Flow_If();

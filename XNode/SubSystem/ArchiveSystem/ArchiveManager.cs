@@ -16,7 +16,10 @@ namespace XNode.SubSystem.ArchiveSystem
     {
         #region 单例
 
-        private ArchiveManager() { }
+        private ArchiveManager()
+        {
+        }
+
         public static ArchiveManager Instance { get; } = new ArchiveManager();
 
         #endregion
@@ -95,7 +98,11 @@ namespace XNode.SubSystem.ArchiveSystem
             {
                 ArchiveVersion version = new ArchiveVersion(file.Version);
             }
-            catch (Exception) { return false; }
+            catch (Exception)
+            {
+                return false;
+            }
+
             return true;
         }
 
@@ -129,7 +136,10 @@ namespace XNode.SubSystem.ArchiveSystem
 
                 return true;
             }
-            catch (Exception) { return false; }
+            catch (Exception)
+            {
+                return false;
+            }
         }
 
         #endregion

@@ -48,6 +48,7 @@ namespace XNode.SubSystem.NodeLibSystem.Define.Functions
                     result = num1 != num2;
                     break;
             }
+
             // 更新结果
             ((DataPinGroup)PinGroupList[4]).Value = result == true ? "True" : "False";
 
@@ -77,7 +78,9 @@ namespace XNode.SubSystem.NodeLibSystem.Define.Functions
                 SetData(3, paraDict["Num2"]);
                 SetData(4, paraDict["Result"]);
             }
-            catch (Exception) { }
+            catch (Exception)
+            {
+            }
         }
 
         protected override NodeBase CloneNode() => new Func_Compare();

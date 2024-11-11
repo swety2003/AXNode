@@ -17,7 +17,10 @@ namespace XNode.SubSystem.NodeLibSystem
     {
         #region 单例
 
-        private NodeLibManager() { }
+        private NodeLibManager()
+        {
+        }
+
         public static NodeLibManager Instance { get; } = new NodeLibManager();
 
         #endregion
@@ -40,9 +43,13 @@ namespace XNode.SubSystem.NodeLibSystem
             LoadOutsideNodeLib();
         }
 
-        public void Reset() { }
+        public void Reset()
+        {
+        }
 
-        public void Clear() { }
+        public void Clear()
+        {
+        }
 
         #endregion
 
@@ -163,6 +170,7 @@ namespace XNode.SubSystem.NodeLibSystem
                     }
                 }
             }
+
             // 遍历节点库
             foreach (var libPair in NodeLibDict)
             {
@@ -186,6 +194,7 @@ namespace XNode.SubSystem.NodeLibSystem
             {
                 if (fileInfo.Extension == ".dll") result.Add(fileInfo.FullName);
             }
+
             return result;
         }
 
@@ -204,6 +213,7 @@ namespace XNode.SubSystem.NodeLibSystem
                 // 递归加载
                 LoadFolder(childFolder, oldChild);
             }
+
             // 加载文件
             foreach (var oldFile in oldFolder.FileList)
             {

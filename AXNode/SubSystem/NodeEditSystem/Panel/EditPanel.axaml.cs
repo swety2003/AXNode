@@ -31,9 +31,9 @@ public partial class EditPanel : UserControl, IDropable
     {
         InitializeComponent();
         // Mouse.InitDropable(this);
-        
+
         DragDrop.SetAllowDrop(this, true);
-        this.AddHandler(DragDrop.DropEvent,((sender, args) =>
+        this.AddHandler(DragDrop.DropEvent, ((sender, args) =>
         {
             Mouse.RegisterDragEventArgs(args);
             if (args.Data.Get("object") is ITreeItem treeItem)
@@ -42,7 +42,7 @@ public partial class EditPanel : UserControl, IDropable
                 {
                     try
                     {
-                        dropable.OnDrop(new List<ITreeItem>{ treeItem });
+                        dropable.OnDrop(new List<ITreeItem> { treeItem });
                     }
                     catch (Exception ex)
                     {
@@ -85,7 +85,9 @@ public partial class EditPanel : UserControl, IDropable
 
     #region IDropable 方法
 
-    public void OnDrag(List<ITreeItem> fileList) { }
+    public void OnDrag(List<ITreeItem> fileList)
+    {
+    }
 
     public void OnDrop(List<ITreeItem> fileList)
     {
@@ -114,7 +116,8 @@ public partial class EditPanel : UserControl, IDropable
     public PinBase? FindPin(PinPath path)
     {
         foreach (var node in _nodeComponent.NodeList)
-            if (node.ID == path.NodeID) return node.FindPin(path.NodeVersion, path.GroupIndex, path.PinIndex);
+            if (node.ID == path.NodeID)
+                return node.FindPin(path.NodeVersion, path.GroupIndex, path.PinIndex);
         return null;
     }
 
@@ -142,10 +145,13 @@ public partial class EditPanel : UserControl, IDropable
 
     /// <summary>绘图组件</summary>
     private DrawingComponent _drawingComponent;
+
     /// <summary>节点组件</summary>
     private NodeComponent _nodeComponent;
+
     /// <summary>卡片组件</summary>
     private CardComponent _cardComponent;
+
     /// <summary>交互组件</summary>
     private InteractionComponent _interactionComponent;
 

@@ -7,7 +7,10 @@ namespace AXNode.SubSystem.ResourceSystem
     {
         #region 单例
 
-        private ResourceManager() { }
+        private ResourceManager()
+        {
+        }
+
         public static ResourceManager Instance { get; } = new ResourceManager();
 
         #endregion
@@ -28,9 +31,13 @@ namespace AXNode.SubSystem.ResourceSystem
             PinIconManager.Instance.Init();
         }
 
-        public void Reset() { }
+        public void Reset()
+        {
+        }
 
-        public void Clear() { }
+        public void Clear()
+        {
+        }
 
         #endregion
     }

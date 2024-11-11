@@ -12,7 +12,6 @@ namespace AXNode.SubSystem.NodeEditSystem.Panel.Layer
 
         public override bool HitTest(Point point)
         {
-            
             // todo
             return false;
         }
@@ -55,7 +54,7 @@ namespace AXNode.SubSystem.NodeEditSystem.Panel.Layer
             // 设置起点并添加贝塞尔曲线
             figure.StartPoint = new Point(_left, _top);
             var bs = new BezierSegment();
-            (bs.Point1, bs.Point2,bs.Point3,bs.IsStroked) = (p1, p2, endPoint,true);
+            (bs.Point1, bs.Point2, bs.Point3, bs.IsStroked) = (p1, p2, endPoint, true);
             figure.Segments.Add(bs);
 
             // Pen pen = new Pen(new SolidColorBrush(Color), 1);

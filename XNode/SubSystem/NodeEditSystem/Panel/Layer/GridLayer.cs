@@ -99,11 +99,11 @@ namespace XNode.SubSystem.NodeEditSystem.Panel.Layer
             // 绘制细分线
             _currentPen = _microLine;
             for (line = 0; line < GridLineCount; line++)
-                for (subIndex = 1; subIndex < _subdivideHeight; subIndex++)
-                    DrawHorizontalLine(line * _gridHeight + _gridHeight / _subdivideHeight * subIndex);
+            for (subIndex = 1; subIndex < _subdivideHeight; subIndex++)
+                DrawHorizontalLine(line * _gridHeight + _gridHeight / _subdivideHeight * subIndex);
             for (list = 0; list < GridListCount; list++)
-                for (subIndex = 1; subIndex < _subdivideWidth; subIndex++)
-                    DrawVerticalLine(list * _gridWidth + _gridWidth / _subdivideWidth * subIndex);
+            for (subIndex = 1; subIndex < _subdivideWidth; subIndex++)
+                DrawVerticalLine(list * _gridWidth + _gridWidth / _subdivideWidth * subIndex);
 
             // 绘制网格线
             _currentPen = _normalLine;
@@ -112,6 +112,7 @@ namespace XNode.SubSystem.NodeEditSystem.Panel.Layer
                 if (_drawStart.Y + line * _gridHeight == GridCenter.Y) continue;
                 DrawHorizontalLine(line * _gridHeight);
             }
+
             for (list = 0; list < GridListCount; list++)
             {
                 if (_drawStart.X + list * _gridWidth == GridCenter.X) continue;
@@ -192,11 +193,13 @@ namespace XNode.SubSystem.NodeEditSystem.Panel.Layer
 
         /// <summary>格子宽度</summary>
         private readonly int _gridWidth = 120;
+
         /// <summary>宽度细分量</summary>
         private readonly int _subdivideWidth = 4;
 
         /// <summary>格子高度</summary>
         private readonly int _gridHeight = 120;
+
         /// <summary>高度细分量</summary>
         private readonly int _subdivideHeight = 4;
 

@@ -18,6 +18,8 @@
             foreach (var manager in ManagerList) manager.Clear();
         }
 
-        protected virtual void InitFinish() { }
+        protected virtual void InitFinish()
+        {
+        }
     }
 }

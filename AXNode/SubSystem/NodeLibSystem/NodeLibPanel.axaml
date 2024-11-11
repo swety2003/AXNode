@@ -6,25 +6,25 @@
              xmlns:avaloniaControl="clr-namespace:XLib.AvaloniaControl;assembly=XLib.AvaloniaControl"
              xmlns:base="clr-namespace:XLib.Base;assembly=XLib.Base"
              mc:Ignorable="d"
-Name="root"
+             Name="root"
              xmlns:i="clr-namespace:Avalonia.Xaml.Interactivity;assembly=Avalonia.Xaml.Interactivity"
              xmlns:interactivity="clr-namespace:AXNode.Interactivity"
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid Background="#181818" RowDefinitions="Auto,*">
-        
+
         <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Height="30" Background="#262626" IsVisible="True">
-            <Button x:Name="Tool_ExpandAll"  Width="30" Height="30" IsEnabled="False">
+            <Button x:Name="Tool_ExpandAll" Width="30" Height="30" IsEnabled="False">
                 <Button.Content>
-                    <Image Source="../../Assets/Icon16/ExpandAll.png" Height="16" Width="16"/>
+                    <Image Source="../../Assets/Icon16/ExpandAll.png" Height="16" Width="16" />
                 </Button.Content>
             </Button>
-            <Button x:Name="Tool_FurlAll"  Width="30" Height="30" IsEnabled="False">
+            <Button x:Name="Tool_FurlAll" Width="30" Height="30" IsEnabled="False">
                 <Button.Content>
-                    <Image Source="../../Assets/Icon16/FurlAll.png" Height="16" Width="16"/>
+                    <Image Source="../../Assets/Icon16/FurlAll.png" Height="16" Width="16" />
                 </Button.Content>
             </Button>
         </StackPanel>
-        <TreeView Grid.Row="1" x:Name="NodePresetTree"  >
+        <TreeView Grid.Row="1" x:Name="NodePresetTree">
             <TreeView.Resources>
                 <SolidColorBrush x:Key="TreeViewItemForeground">White</SolidColorBrush>
             </TreeView.Resources>
@@ -36,14 +36,15 @@ Name="root"
             </TreeView.ItemContainerTheme>
             <TreeView.DataTemplates>
                 <TreeDataTemplate DataType="base:ITreeItem" ItemsSource="{Binding Childs}">
-                    <Grid DragDrop.AllowDrop="True" ColumnDefinitions="32,auto" Background="#01000000" PointerPressed="InputElement_OnPointerPressed">
+                    <Grid DragDrop.AllowDrop="True" ColumnDefinitions="32,auto" Background="#01000000"
+                          PointerPressed="InputElement_OnPointerPressed">
                         <Grid.Styles>
-                                <Style Selector="Image.folder">
-                                    <Setter Property="Source" Value="avares://AXNode/Assets/Icon15/Folder.png"></Setter>
-                                </Style>
-                                <Style Selector="Image">
-                                    <Setter Property="Source" Value="avares://AXNode/Assets/Icon15/File.png"></Setter>
-                                </Style>
+                            <Style Selector="Image.folder">
+                                <Setter Property="Source" Value="avares://AXNode/Assets/Icon15/Folder.png"></Setter>
+                            </Style>
+                            <Style Selector="Image">
+                                <Setter Property="Source" Value="avares://AXNode/Assets/Icon15/File.png"></Setter>
+                            </Style>
                         </Grid.Styles>
                         <Image Stretch="None">
                             <i:Interaction.Behaviors>
@@ -52,7 +53,7 @@ Name="root"
                                 </DataTriggerBehavior>
                                 <DataTriggerBehavior Binding="{Binding IsFolder}" Value="False">
                                     <RemoveClassAction ClassName="folder"></RemoveClassAction>
-                            
+
                                 </DataTriggerBehavior>
                             </i:Interaction.Behaviors>
                         </Image>

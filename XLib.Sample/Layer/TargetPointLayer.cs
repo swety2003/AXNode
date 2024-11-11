@@ -39,6 +39,7 @@ namespace XLib.Sample.Layer
                     _opacity = value;
                     break;
             }
+
             Dispatcher.Invoke(Update);
         }
 
@@ -47,7 +48,8 @@ namespace XLib.Sample.Layer
             TargetPoint = point;
             // 创建动画组
             AnimationGroup group = new AnimationGroup();
-            group.Add(this.CreateAnimation("Size", 0, 400, 2800, EasingType.QuinticEase, EasingMode.EaseOut, loop: true));
+            group.Add(
+                this.CreateAnimation("Size", 0, 400, 2800, EasingType.QuinticEase, EasingMode.EaseOut, loop: true));
             group.Add(this.CreateAnimation("Alpha", 1, 0, 2800, loop: true));
             // 添加动画组
             AnimationEngine.Instance.AddAnimation(group);

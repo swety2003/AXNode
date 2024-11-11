@@ -5,7 +5,9 @@
 /// </summary>
 public class NodePoint
 {
-    public NodePoint() { }
+    public NodePoint()
+    {
+    }
 
     public NodePoint(int x, int y)
     {

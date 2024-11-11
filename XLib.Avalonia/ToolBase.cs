@@ -5,7 +5,7 @@ using Avalonia.Input;
 using Avalonia.Input.Raw;
 using XLib.Avalonia.Behavior;
 
-namespace XLib.Avalonia 
+namespace XLib.Avalonia
 {
     /// <summary>
     /// 鼠标滚轮行为参数
@@ -39,7 +39,9 @@ namespace XLib.Avalonia
         /// <summary>
         /// 清理
         /// </summary>
-        public virtual void Clear() { }
+        public virtual void Clear()
+        {
+        }
 
         #region 输入事件
 
@@ -146,9 +148,11 @@ namespace XLib.Avalonia
 
         #region 行为处理
 
-        protected BehaviorNode NewTree(string name, Action<BehaviorArgs?>? action) => _handler.NewBehaviorTree(name, action);
+        protected BehaviorNode NewTree(string name, Action<BehaviorArgs?>? action) =>
+            _handler.NewBehaviorTree(name, action);
 
-        protected BehaviorNode NewNode(string name, Action<BehaviorArgs?>? action) => _handler.AddBehaviorNode(name, action);
+        protected BehaviorNode NewNode(string name, Action<BehaviorArgs?>? action) =>
+            _handler.AddBehaviorNode(name, action);
 
         protected void BackToRoot() => _handler.BackToRoot();
 
@@ -178,7 +182,11 @@ namespace XLib.Avalonia
             Init();
         }
 
-        public THost Host { get => _host; set => _host = value; }
+        public THost Host
+        {
+            get => _host;
+            set => _host = value;
+        }
 
         protected THost _host;
     }

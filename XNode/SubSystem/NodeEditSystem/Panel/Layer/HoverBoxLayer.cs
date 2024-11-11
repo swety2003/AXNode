@@ -34,6 +34,7 @@ namespace XNode.SubSystem.NodeEditSystem.Panel.Layer
                     Box.BoxOffset = value;
                     break;
             }
+
             Dispatcher.Invoke(Update);
         }
 

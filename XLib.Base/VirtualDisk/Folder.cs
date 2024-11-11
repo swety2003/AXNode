@@ -21,8 +21,7 @@
 
         /// <summary>所在文件夹</summary>
         public Folder? Parent { get; set; } = null;
-        
-        
+
 
         /// <summary>文件夹列表</summary>
         public List<Folder> FolderList => Childs.OfType<Folder>().ToList();
@@ -67,6 +66,7 @@
                 reason = "已存在同名文件夹";
                 return false;
             }
+
             reason = "";
             return true;
         }
@@ -113,6 +113,7 @@
                     nameID++;
                     continue;
                 }
+
                 return name;
             }
         }
@@ -134,6 +135,7 @@
                     nameID++;
                     continue;
                 }
+
                 return name;
             }
         }
@@ -144,7 +146,8 @@
         public bool FolderNameUsed(string name)
         {
             foreach (var folder in FolderList)
-                if (folder.Name == name) return true;
+                if (folder.Name == name)
+                    return true;
             return false;
         }
 
@@ -154,7 +157,8 @@
         public bool FileNameUsed(string name)
         {
             foreach (var file in FileList)
-                if (file.Name == name) return true;
+                if (file.Name == name)
+                    return true;
             return false;
         }
 
@@ -204,7 +208,8 @@
         public Folder? FindFoder(string name)
         {
             foreach (var folder in FolderList)
-                if (folder.Name == name) return folder;
+                if (folder.Name == name)
+                    return folder;
             return null;
         }
 
@@ -214,7 +219,8 @@
         public File? FindFile(string name)
         {
             foreach (var file in FileList)
-                if (file.Name == name) return file;
+                if (file.Name == name)
+                    return file;
             return null;
         }
 

@@ -42,14 +42,16 @@ namespace AXNode.SubSystem.NodeLibSystem.Define.Functions
                     result = num1 * num2;
                     break;
                 case "/":
-                    result = num1 / num2 ;
+                    result = num1 / num2;
                     break;
             }
+
             // 更新结果
-            ((DataPinGroup)PinGroupList[4]).Value = result.ToString() ;
+            ((DataPinGroup)PinGroupList[4]).Value = result.ToString();
 
             ((ExecutePinGroup)PinGroupList[0]).Execute();
         }
+
         public override Dictionary<string, string> GetParaDict()
         {
             Dictionary<string, string> result = new Dictionary<string, string>
@@ -73,7 +75,9 @@ namespace AXNode.SubSystem.NodeLibSystem.Define.Functions
                 SetData(3, paraDict["Num2"]);
                 SetData(4, paraDict["Result"]);
             }
-            catch (Exception) { }
+            catch (Exception)
+            {
+            }
         }
 
 

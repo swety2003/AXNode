@@ -39,7 +39,7 @@ public partial class TreeItemView : UserControl
     public Action? OnItemFurl { get; set; }
 
     /// <summary>当命中项时</summary>
-    public Action<TreeItem,KeyModifiers>? OnItemHited { get; set; }
+    public Action<TreeItem, KeyModifiers>? OnItemHited { get; set; }
 
     /// <summary>双击项时</summary>
     public Action<TreeItem>? OnDoubleClick { get; set; }
@@ -91,7 +91,7 @@ public partial class TreeItemView : UserControl
     {
         if (Instance != null)
         {
-            OnItemHited?.Invoke(Instance,e.KeyModifiers);
+            OnItemHited?.Invoke(Instance, e.KeyModifiers);
             // 双击时切换折叠按钮
             if (e.ClickCount == 2 && Instance.ItemList.Count > 0)
             {
