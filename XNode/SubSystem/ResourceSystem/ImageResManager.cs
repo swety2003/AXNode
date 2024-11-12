@@ -7,7 +7,10 @@ namespace XNode.SubSystem.ResourceSystem
     {
         #region 单例
 
-        private ImageResManager() { }
+        private ImageResManager()
+        {
+        }
+
         public static ImageResManager Instance { get; } = new ImageResManager();
 
         #endregion

@@ -59,7 +59,9 @@ namespace XNode.SubSystem.NodeLibSystem.Define.Functions
                 SetData(3, paraDict["Current"]);
                 SetData(4, paraDict["Result"]);
             }
-            catch (Exception) { }
+            catch (Exception)
+            {
+            }
         }
 
         protected override NodeBase CloneNode() => new Func_RatioToInt();

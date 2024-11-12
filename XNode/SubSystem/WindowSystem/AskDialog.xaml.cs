@@ -14,10 +14,13 @@ namespace XNode.SubSystem.WindowSystem
     {
         /// <summary>信息</summary>
         Info,
+
         /// <summary>中断</summary>
         Break,
+
         /// <summary>警告</summary>
         Warning,
+
         /// <summary>错误</summary>
         Error,
     }
@@ -71,7 +74,8 @@ namespace XNode.SubSystem.WindowSystem
         {
             // 获取标题栏
             Grid? titleBar = GetTemplateChild("TitleBar") as Grid;
-            titleBar.MouseLeftButtonDown += TitleBar_MouseLeftButtonDown; ;
+            titleBar.MouseLeftButtonDown += TitleBar_MouseLeftButtonDown;
+            ;
             // 获取边框对象
             Border? titleBorder = GetTemplateChild("TitleBorder") as Border;
             Border? clientBorder = GetTemplateChild("ClientBorder") as Border;
@@ -101,6 +105,7 @@ namespace XNode.SubSystem.WindowSystem
                     _currentBrush = _error;
                     break;
             }
+
             // 设置边框颜色
             titleBorder.BorderBrush = _currentBrush;
             clientBorder.BorderBrush = _currentBrush;

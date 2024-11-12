@@ -17,7 +17,10 @@ namespace XNode.SubSystem.NodeLibSystem
     {
         #region 单例
 
-        private NodeLibManager() { }
+        private NodeLibManager()
+        {
+        }
+
         public static NodeLibManager Instance { get; } = new NodeLibManager();
 
         #endregion
@@ -40,9 +43,13 @@ namespace XNode.SubSystem.NodeLibSystem
             LoadOutsideNodeLib();
         }
 
-        public void Reset() { }
+        public void Reset()
+        {
+        }
 
-        public void Clear() { }
+        public void Clear()
+        {
+        }
 
         #endregion
 
@@ -70,6 +77,7 @@ namespace XNode.SubSystem.NodeLibSystem
                 nameof(Flow_Switch) => new Flow_Switch(),
 
                 nameof(Func_Compare) => new Func_Compare(),
+                nameof(Func_BinOP) => new Func_BinOP(),
                 nameof(Func_NumberToRatio) => new Func_NumberToRatio(),
                 nameof(Func_RatioToInt) => new Func_RatioToInt(),
                 nameof(Func_SendNetMessage) => new Func_SendNetMessage(),
@@ -120,6 +128,7 @@ namespace XNode.SubSystem.NodeLibSystem
             _nodeLibRoot.CreateFile(事件节点, "按键", "nt", new NodeType<Event_Keyboard>());
 
             _nodeLibRoot.CreateFile(运算函数, "关系运算", "nt", new NodeType<Func_Compare>());
+            _nodeLibRoot.CreateFile(运算函数, "四则运算", "nt", new NodeType<Func_BinOP>());
             _nodeLibRoot.CreateFile(转换器, "比例转整数", "nt", new NodeType<Func_RatioToInt>());
             _nodeLibRoot.CreateFile(转换器, "数值转比例", "nt", new NodeType<Func_NumberToRatio>());
             _nodeLibRoot.CreateFile(函数节点, "发送网络消息", "nt", new NodeType<Func_SendNetMessage>());
@@ -161,6 +170,7 @@ namespace XNode.SubSystem.NodeLibSystem
                     }
                 }
             }
+
             // 遍历节点库
             foreach (var libPair in NodeLibDict)
             {
@@ -184,6 +194,7 @@ namespace XNode.SubSystem.NodeLibSystem
             {
                 if (fileInfo.Extension == ".dll") result.Add(fileInfo.FullName);
             }
+
             return result;
         }
 
@@ -202,6 +213,7 @@ namespace XNode.SubSystem.NodeLibSystem
                 // 递归加载
                 LoadFolder(childFolder, oldChild);
             }
+
             // 加载文件
             foreach (var oldFile in oldFolder.FileList)
             {

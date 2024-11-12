@@ -1,0 +1,26 @@
+﻿<local:PinGroupViewBase x:Class="AXNode.SubSystem.NodeEditSystem.Control.ActionPinGroupView"
+                        xmlns="https://github.com/avaloniaui"
+                        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                        xmlns:local="clr-namespace:AXNode.SubSystem.NodeEditSystem.Control"
+                        mc:Ignorable="d"
+                        d:DesignWidth="264" Height="25">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition Width="25" />
+        </Grid.ColumnDefinitions>
+        <!-- 动作 -->
+        <TextBlock x:Name="Title_Pin" Text="动作名称" Foreground="#C47EFF" HorizontalAlignment="Right"
+                   VerticalAlignment="Center" Margin="26,0,0,0" />
+        <!-- 引脚 -->
+        <!-- <Image IsVisible="False" x:Name="Icon_Pin" Stretch="None" Grid.Column="1" IsHitTestVisible="False"/> -->
+
+        <ContentPresenter x:Name="Icon_Pin" IsHitTestVisible="False" VerticalAlignment="Center" Margin="6 0 0 0"
+                          Grid.Column="1">
+        </ContentPresenter>
+        <!-- 引脚区域 -->
+        <Grid x:Name="PinArea" Background="Transparent" Grid.Column="1" Width="17" Height="17" />
+    </Grid>
+</local:PinGroupViewBase>

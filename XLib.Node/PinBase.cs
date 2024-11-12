@@ -43,7 +43,9 @@ public abstract class PinBase
 /// </summary>
 public class ExecutePin : PinBase
 {
-    public ExecutePin(PinGroupBase group) : base(group) { }
+    public ExecutePin(PinGroupBase group) : base(group)
+    {
+    }
 
     public void Execute()
     {
@@ -53,9 +55,11 @@ public class ExecutePin : PinBase
             OwnerGroup.OwnerNode.Execute();
             return;
         }
+
         // 输出引脚，执行目标引脚列表
         foreach (var item in TargetList)
-            if (item is ExecutePin executePin) executePin.Execute();
+            if (item is ExecutePin executePin)
+                executePin.Execute();
     }
 }
 
@@ -64,7 +68,9 @@ public class ExecutePin : PinBase
 /// </summary>
 public class DataPin : PinBase
 {
-    public DataPin(PinGroupBase group) : base(group) { }
+    public DataPin(PinGroupBase group) : base(group)
+    {
+    }
 
     public override void AddSource(PinBase source)
     {
@@ -74,6 +80,7 @@ public class DataPin : PinBase
             SourceList[0].TargetList.Remove(this);
             SourceList.Clear();
         }
+
         // 添加新的连接
         SourceList.Add(source);
     }

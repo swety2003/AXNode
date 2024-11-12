@@ -72,6 +72,7 @@ public class Extracter
                 foreach (var target in pin.TargetList) connectInfo[pin].Add(target);
             }
         }
+
         // 遍历连接信息，填充连接线数据
         foreach (var pair in connectInfo)
         {

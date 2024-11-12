@@ -13,7 +13,8 @@ namespace XNode.SubSystem.NodeLibSystem.Define.Events
             SetViewProperty(NodeColorSet.Event, "Key", "按键");
 
             PinGroupList.Add(new DataPinGroup(this, "string", "当前按键", "") { BoxWidth = 120, Writeable = false });
-            PinGroupList.Add(new DataPinGroup(this, "string", "监听按键", "Space") { BoxWidth = 120, Readable = false, Writeable = false });
+            PinGroupList.Add(new DataPinGroup(this, "string", "监听按键", "Space")
+                { BoxWidth = 120, Readable = false, Writeable = false });
             PinGroupList.Add(new ActionPinGroup(this, "按下"));
             PinGroupList.Add(new ActionPinGroup(this, "松开"));
 
@@ -49,7 +50,9 @@ namespace XNode.SubSystem.NodeLibSystem.Define.Events
             {
                 SetData(1, paraDict["ListenKey"]);
             }
-            catch (Exception) { }
+            catch (Exception)
+            {
+            }
         }
 
         protected override NodeBase CloneNode() => new Event_Keyboard();

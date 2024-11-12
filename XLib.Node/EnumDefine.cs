@@ -7,6 +7,7 @@ public enum NodeState
 {
     /// <summary>禁用</summary>
     Disable,
+
     /// <summary>启用</summary>
     Enable,
 }
@@ -18,10 +19,13 @@ public enum PinGroupType
 {
     /// <summary>执行引脚组</summary>
     Execute,
+
     /// <summary>数据引脚组</summary>
     Data,
+
     /// <summary>动作引脚组</summary>
     Action,
+
     /// <summary>控件引脚组</summary>
     Control,
 }
@@ -33,6 +37,7 @@ public enum PinFlow
 {
     /// <summary>输入</summary>
     Input,
+
     /// <summary>输出</summary>
     Output,
 }

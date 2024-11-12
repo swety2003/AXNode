@@ -28,6 +28,7 @@ namespace XNode.SubSystem.NodeLibSystem.Define.Flows
                 context = new SynchronizationContext();
                 SynchronizationContext.SetSynchronizationContext(context);
             }
+
             Task.Run(() => ExecuteWhileSync(logicValueGroup, loopBodyGroup, context));
         }
 
@@ -38,7 +39,8 @@ namespace XNode.SubSystem.NodeLibSystem.Define.Flows
 
         protected override NodeBase CloneNode() => new Flow_While();
 
-        private void ExecuteWhileSync(DataPinGroup logicValueGroup, ActionPinGroup loopBodyGroup, SynchronizationContext context)
+        private void ExecuteWhileSync(DataPinGroup logicValueGroup, ActionPinGroup loopBodyGroup,
+            SynchronizationContext context)
         {
             try
             {
@@ -55,6 +57,7 @@ namespace XNode.SubSystem.NodeLibSystem.Define.Flows
                     // 执行循环体
                     loopBodyGroup.Invoke();
                 }
+
                 context.Post(_ => GetPinGroup<ExecutePinGroup>().Execute(), null);
             }
             catch (Exception ex)

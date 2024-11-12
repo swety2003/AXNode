@@ -516,7 +516,7 @@ namespace XLib.WPFControl
         /// </summary>
         private Cursor LoadCursor(string cursorPath)
         {
-            StreamResourceInfo resourceInfo = Application.GetResourceStream(new Uri(cursorPath, UriKind.Relative));
+            StreamResourceInfo resourceInfo = Application.GetResourceStream(new Uri($"pack://application:,,,/XNode;component/{cursorPath}", UriKind.Absolute));
             return new Cursor(resourceInfo.Stream);
         }
 

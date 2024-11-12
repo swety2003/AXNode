@@ -5,7 +5,9 @@
 /// </summary>
 public class NodeColor
 {
-    public NodeColor() { }
+    public NodeColor()
+    {
+    }
 
     public NodeColor(byte r, byte g, byte b, byte a = 255)
     {

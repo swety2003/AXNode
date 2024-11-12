@@ -95,11 +95,14 @@ namespace XLib.Animate
 
         /// <summary>秒表，提供精确时间</summary>
         private readonly Stopwatch _stopwatch = new Stopwatch();
+
         /// <summary>当前时间</summary>
         private double _currentTime = 0;
 
         /// <summary>定时器：定时驱动</summary>
-        private readonly HighPrecisionTimer _timer = new HighPrecisionTimer();
+        private readonly IHighPrecisionTimer _timer = Environment.OSVersion.Platform == PlatformID.Unix
+            ? new HighPrecisionTimerL()
+            : new HighPrecisionTimerW();
 
         /// <summary>动画列表</summary>
         private List<IAnimation> _animationList = new List<IAnimation>();

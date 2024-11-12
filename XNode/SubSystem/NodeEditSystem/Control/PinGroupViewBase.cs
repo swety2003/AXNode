@@ -16,7 +16,9 @@ namespace XNode.SubSystem.NodeEditSystem.Control
         /// <summary>
         /// 初始化
         /// </summary>
-        public virtual void Init() { }
+        public virtual void Init()
+        {
+        }
 
         /// <summary>
         /// 获取引脚区域控件
@@ -40,6 +42,7 @@ namespace XNode.SubSystem.NodeEditSystem.Control
                 offset.X = 14 - offset.X;
                 offset.Y = 8 - offset.Y;
             }
+
             return offset;
         }
 
@@ -51,6 +54,8 @@ namespace XNode.SubSystem.NodeEditSystem.Control
         /// <summary>
         /// 更新引脚图标
         /// </summary>
-        public virtual void UpdatePinIcon() { }
+        public virtual void UpdatePinIcon()
+        {
+        }
     }
 }

@@ -1,0 +1,24 @@
+﻿<UserControl x:Class="AXNode.CoreEditer"
+             xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:AXNode"
+             xmlns:nesp="clr-namespace:AXNode.SubSystem.NodeEditSystem.Panel"
+             xmlns:nls="clr-namespace:AXNode.SubSystem.NodeLibSystem"
+             mc:Ignorable="d"
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid RowDefinitions="Auto,*">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition Width="2" />
+            <ColumnDefinition Width="300" />
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Row="1" x:Name="LeftPanel" Background="#262626">
+            <nesp:EditPanel x:Name="Panel_NodeEditer" />
+        </Grid>
+        <Grid Grid.Row="1" x:Name="RightPanel" Background="#262626" Grid.Column="2">
+            <nls:NodeLibPanel x:Name="Panel_NodeLib" />
+        </Grid>
+    </Grid>
+</UserControl>

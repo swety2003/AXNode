@@ -61,7 +61,9 @@ namespace XNode.SubSystem.NodeLibSystem.Define.Functions
                 SetData(3, paraDict["Current"]);
                 SetData(4, paraDict["Result"]);
             }
-            catch (Exception) { }
+            catch (Exception)
+            {
+            }
         }
 
         public override Dictionary<string, string> GetPropertyDict()
@@ -78,7 +80,9 @@ namespace XNode.SubSystem.NodeLibSystem.Define.Functions
             {
                 PropertyList[0].Value = propertyDict["Precision"];
             }
-            catch (Exception) { }
+            catch (Exception)
+            {
+            }
         }
 
         protected override NodeBase CloneNode() => new Func_NumberToRatio();

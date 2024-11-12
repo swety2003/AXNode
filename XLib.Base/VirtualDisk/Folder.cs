@@ -17,14 +17,17 @@
         /// <summary>名称</summary>
         public string Name { get; set; } = "未命名文件夹";
 
+        public List<ITreeItem> Childs { get; set; } = new List<ITreeItem>();
+
         /// <summary>所在文件夹</summary>
         public Folder? Parent { get; set; } = null;
 
+
         /// <summary>文件夹列表</summary>
-        public List<Folder> FolderList { get; set; } = new List<Folder>();
+        public List<Folder> FolderList => Childs.OfType<Folder>().ToList();
 
         /// <summary>文件列表</summary>
-        public List<File> FileList { get; set; } = new List<File>();
+        public List<File> FileList => Childs.OfType<File>().ToList();
 
         /// <summary>路径</summary>
         public List<string> Path
@@ -63,6 +66,7 @@
                 reason = "已存在同名文件夹";
                 return false;
             }
+
             reason = "";
             return true;
         }
@@ -109,6 +113,7 @@
                     nameID++;
                     continue;
                 }
+
                 return name;
             }
         }
@@ -130,6 +135,7 @@
                     nameID++;
                     continue;
                 }
+
                 return name;
             }
         }
@@ -140,7 +146,8 @@
         public bool FolderNameUsed(string name)
         {
             foreach (var folder in FolderList)
-                if (folder.Name == name) return true;
+                if (folder.Name == name)
+                    return true;
             return false;
         }
 
@@ -150,7 +157,8 @@
         public bool FileNameUsed(string name)
         {
             foreach (var file in FileList)
-                if (file.Name == name) return true;
+                if (file.Name == name)
+                    return true;
             return false;
         }
 
@@ -200,7 +208,8 @@
         public Folder? FindFoder(string name)
         {
             foreach (var folder in FolderList)
-                if (folder.Name == name) return folder;
+                if (folder.Name == name)
+                    return folder;
             return null;
         }
 
@@ -210,7 +219,8 @@
         public File? FindFile(string name)
         {
             foreach (var file in FileList)
-                if (file.Name == name) return file;
+                if (file.Name == name)
+                    return file;
             return null;
         }
 

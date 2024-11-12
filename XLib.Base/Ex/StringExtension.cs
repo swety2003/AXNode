@@ -168,6 +168,7 @@ namespace XLib.Base.Ex
                     nodePath.NodeList[^1] = newName;
                 return nodePath.ToString();
             }
+
             throw new Exception("重命名路径失败：参数不能为空");
         }
 
@@ -217,6 +218,7 @@ namespace XLib.Base.Ex
                 if (path.Contains(split)) return path.Split(split).ToList();
                 return new List<string> { path };
             }
+
             return new List<string>();
         }
 

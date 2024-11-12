@@ -7,7 +7,9 @@ namespace XLib.Node;
 /// </summary>
 public class NodeProperty
 {
-    public NodeProperty() { }
+    public NodeProperty()
+    {
+    }
 
     public NodeProperty(string type, string name, string value)
     {

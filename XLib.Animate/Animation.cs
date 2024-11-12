@@ -122,6 +122,7 @@ namespace XLib.Animate
 
         /// <summary>时间起点</summary>
         private double _timeStart = 0;
+
         /// <summary>时长</summary>
         private double _timeLength = 0;
 

@@ -11,23 +11,26 @@
             <EventTrigger RoutedEvent="MouseEnter">
                 <BeginStoryboard>
                     <Storyboard>
-                        <DoubleAnimation Duration="0:0:0.5" To="1" Storyboard.TargetName="MainScrollBar" Storyboard.TargetProperty="Opacity"/>
+                        <DoubleAnimation Duration="0:0:0.5" To="1" Storyboard.TargetName="MainScrollBar"
+                                         Storyboard.TargetProperty="Opacity" />
                     </Storyboard>
                 </BeginStoryboard>
             </EventTrigger>
             <EventTrigger RoutedEvent="MouseLeave">
                 <BeginStoryboard>
                     <Storyboard>
-                        <DoubleAnimation Duration="0:0:0.5" To="0" Storyboard.TargetName="MainScrollBar" Storyboard.TargetProperty="Opacity" BeginTime="0:0:2"/>
+                        <DoubleAnimation Duration="0:0:0.5" To="0" Storyboard.TargetName="MainScrollBar"
+                                         Storyboard.TargetProperty="Opacity" BeginTime="0:0:2" />
                     </Storyboard>
                 </BeginStoryboard>
             </EventTrigger>
         </Grid.Triggers>
         <Grid Margin="10" ClipToBounds="True">
-            <StackPanel x:Name="MainStackPanel" VerticalAlignment="Top" SizeChanged="MainStackPanel_SizeChanged"/>
+            <StackPanel x:Name="MainStackPanel" VerticalAlignment="Top" SizeChanged="MainStackPanel_SizeChanged" />
         </Grid>
         <!-- 滚动条 -->
-        <ScrollBar x:Name="MainScrollBar" Orientation="Vertical" HorizontalAlignment="Right" Tag="0" Width="2" Opacity="0"
-               SmallChange="1" ViewportSize="0" Minimum="0" Maximum="0" ValueChanged="MainScrollBar_ValueChanged"/>
+        <ScrollBar x:Name="MainScrollBar" Orientation="Vertical" HorizontalAlignment="Right" Tag="0" Width="2"
+                   Opacity="0"
+                   SmallChange="1" ViewportSize="0" Minimum="0" Maximum="0" ValueChanged="MainScrollBar_ValueChanged" />
     </Grid>
 </UserControl>

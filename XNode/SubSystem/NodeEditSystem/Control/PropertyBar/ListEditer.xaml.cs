@@ -24,6 +24,7 @@ namespace XNode.SubSystem.NodeEditSystem.Control.PropertyBar
                 };
                 Stack_CaseList.Children.Add(listItem);
             }
+
             if (Stack_CaseList.Children.Count > 0)
                 ((CustomListItem)Stack_CaseList.Children[0]).Margin = new Thickness();
             else Grid_Tool.Margin = new Thickness();
@@ -85,6 +86,7 @@ namespace XNode.SubSystem.NodeEditSystem.Control.PropertyBar
                     nameID++;
                     continue;
                 }
+
                 return name;
             }
         }

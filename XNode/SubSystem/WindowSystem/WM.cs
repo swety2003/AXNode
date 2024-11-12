@@ -41,6 +41,7 @@ namespace XNode.SubSystem.WindowSystem
             {
                 dialog.Owner = null;
             }
+
             if (level is TipLevel.Info or TipLevel.Warning) SystemSounds.Asterisk.Play();
             else SystemSounds.Hand.Play();
 
@@ -60,7 +61,8 @@ namespace XNode.SubSystem.WindowSystem
         /// <summary>
         /// 显示询问框
         /// </summary>
-        public static bool? ShowAsk(string message, string yesText = "是", bool useCancel = true, TipLevel level = TipLevel.Info)
+        public static bool? ShowAsk(string message, string yesText = "是", bool useCancel = true,
+            TipLevel level = TipLevel.Info)
         {
             AskDialog dialog = new AskDialog
             {

@@ -28,6 +28,7 @@ namespace XNode.SubSystem.NodeLibSystem.Define.Drivers
 
             InitPinGroup();
         }
+
         public override void Enable()
         {
             ControlEngine.Instance.Connect(this);
@@ -49,7 +50,8 @@ namespace XNode.SubSystem.NodeLibSystem.Define.Drivers
 
         public override string GetTypeString() => nameof(FrameDriver);
 
-        public override Dictionary<string, string> GetParaDict() => new Dictionary<string, string> { { "Fps", GetData(0) } };
+        public override Dictionary<string, string> GetParaDict() =>
+            new Dictionary<string, string> { { "Fps", GetData(0) } };
 
         public override void LoadParaDict(string version, Dictionary<string, string> paraDict)
         {
@@ -57,7 +59,9 @@ namespace XNode.SubSystem.NodeLibSystem.Define.Drivers
             {
                 SetData(0, paraDict["Fps"]);
             }
-            catch (Exception) { }
+            catch (Exception)
+            {
+            }
         }
 
         #endregion
@@ -92,7 +96,9 @@ namespace XNode.SubSystem.NodeLibSystem.Define.Drivers
                 if (fps > 120) fps = 120;
                 if (fps > 0) _frameLength = 1000 / fps;
             }
-            catch (Exception) { }
+            catch (Exception)
+            {
+            }
         }
 
         #endregion
@@ -101,6 +107,7 @@ namespace XNode.SubSystem.NodeLibSystem.Define.Drivers
 
         /// <summary>单帧时长：毫秒</summary>
         private double _frameLength = 40;
+
         /// <summary>当前延迟</summary>
         private double _delay = 0;
 

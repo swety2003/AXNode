@@ -1,0 +1,18 @@
+﻿<UserControl x:Class="AXNode.SubSystem.NodeEditSystem.Control.NodePropertyPanel"
+             xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:AXNode.SubSystem.NodeEditSystem.Control"
+             mc:Ignorable="d"
+             Width="320">
+    <Grid x:Name="MainGrid" Background="#2b2b2b" PointerWheelChanged="MainGrid_MouseWheel" ClipToBounds="True">
+        <Grid Margin="10" ClipToBounds="True">
+            <StackPanel x:Name="MainStackPanel" VerticalAlignment="Top" SizeChanged="MainStackPanel_SizeChanged" />
+        </Grid>
+        <!-- 滚动条 -->
+        <ScrollBar x:Name="MainScrollBar" Orientation="Vertical" HorizontalAlignment="Right" Tag="0" Width="2"
+                   Opacity="0"
+                   SmallChange="1" ViewportSize="0" Minimum="0" Maximum="0" ValueChanged="MainScrollBar_ValueChanged" />
+    </Grid>
+</UserControl>

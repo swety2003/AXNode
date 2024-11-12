@@ -9,12 +9,20 @@
         public List<T> Data { get; set; } = new List<T>();
 
         /// <summary>窗口高度</summary>
-        public int WindowHeight { get => _windowHeight; set => _windowHeight = value; }
+        public int WindowHeight
+        {
+            get => _windowHeight;
+            set => _windowHeight = value;
+        }
 
         /// <summary>数据量</summary>
         public int DataCount => Data.Count;
 
-        public int Top { get => _top; set => _top = value; }
+        public int Top
+        {
+            get => _top;
+            set => _top = value;
+        }
 
         /// <summary>
         /// 重置
@@ -46,6 +54,7 @@
                 _startIndex -= endSpace;
                 if (_startIndex < 0) _startIndex = 0;
             }
+
             // 插入可见数据
             for (int counter = 0; counter < WindowHeight; counter++)
             {
@@ -71,6 +80,7 @@
                 if (index > Data.Count - 1) break;
                 result.Add(Data[index]);
             }
+
             return result;
         }
 

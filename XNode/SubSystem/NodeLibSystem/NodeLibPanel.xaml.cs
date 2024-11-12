@@ -37,13 +37,15 @@ namespace XNode.SubSystem.NodeLibSystem
                 // 添加文件夹项
                 TreeItem folderTreeItem = AddTreeItem(parentItem, currentFolder, icon);
                 // 恢复折叠状态
-                folderTreeItem.IsExpanded = CacheManager.Instance.Cache.NodeLib.IsExpanded(folderTreeItem.GetFullPath());
+                folderTreeItem.IsExpanded =
+                    CacheManager.Instance.Cache.NodeLib.IsExpanded(folderTreeItem.GetFullPath());
                 folderTreeItem.ItemExpanded = TreeItem_Expanded;
                 folderTreeItem.ItemCollapsed = TreeItem_Collapsed;
                 // 加载文件
                 if (currentFolder.FolderList.Count > 0 || currentFolder.FileList.Count > 0)
                     LoadNodeLib(currentFolder, folderTreeItem);
             }
+
             // 加载文件
             foreach (var currentFile in folder.FileList)
             {
@@ -54,12 +56,14 @@ namespace XNode.SubSystem.NodeLibSystem
         /// <summary>
         /// 树项展开
         /// </summary>
-        private void TreeItem_Expanded(TreeItem treeItem) => CacheManager.Instance.Cache.NodeLib.Expand(treeItem.GetFullPath());
+        private void TreeItem_Expanded(TreeItem treeItem) =>
+            CacheManager.Instance.Cache.NodeLib.Expand(treeItem.GetFullPath());
 
         /// <summary>
         /// 树项折叠
         /// </summary>
-        private void TreeItem_Collapsed(TreeItem treeItem) => CacheManager.Instance.Cache.NodeLib.Fold(treeItem.GetFullPath());
+        private void TreeItem_Collapsed(TreeItem treeItem) =>
+            CacheManager.Instance.Cache.NodeLib.Fold(treeItem.GetFullPath());
 
         /// <summary>
         /// 包含子项

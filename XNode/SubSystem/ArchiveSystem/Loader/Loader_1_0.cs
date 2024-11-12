@@ -21,6 +21,7 @@ namespace XNode.SubSystem.ArchiveSystem.Loader
                 WM.ShowError("加载存档失败：" + ex.Message);
                 return false;
             }
+
             return true;
         }
 

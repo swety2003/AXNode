@@ -1,5 +1,6 @@
-﻿using System.Windows.Media;
-using System.Windows.Media.Imaging;
+﻿using System.Windows;
+using System.Windows.Media;
+using System.Windows.Shapes;
 using XNode.SubSystem.NodeEditSystem.Define;
 
 namespace XNode.SubSystem.ResourceSystem
@@ -11,7 +12,10 @@ namespace XNode.SubSystem.ResourceSystem
     {
         #region 单例
 
-        private PinIconManager() { }
+        private PinIconManager()
+        {
+        }
+
         public static PinIconManager Instance { get; } = new PinIconManager();
 
         #endregion
@@ -20,9 +24,56 @@ namespace XNode.SubSystem.ResourceSystem
 
         public string Name { get; set; } = "引脚图标管理器";
 
-        public ImageSource ExecutePin_Null => _executePin_Null;
+        private readonly SolidColorBrush ExecuteBrush = new SolidColorBrush(Color.FromRgb(196, 126, 255));
 
-        public ImageSource ExecutePin => _executePin;
+        public Shape ExecutePinIcon
+        {
+            get
+            {
+                var pinIcon = Application.Current.MainWindow.FindResource("PinIcons.ExecutePin");
+                if (pinIcon is Polygon s)
+                {
+                    return new Polygon { Points = s.Points, StrokeThickness = 1 };
+                }
+
+                throw new ArgumentNullException();
+            }
+        }
+
+        public Shape DataPinIcon
+        {
+            get
+            {
+                var pinIcon = Application.Current.MainWindow.FindResource("PinIcons.DataPin");
+
+                if (pinIcon is Polygon s)
+                {
+                    return new Polygon { Points = s.Points, StrokeThickness = 1 };
+                }
+
+                throw new ArgumentNullException();
+            }
+        }
+
+        public Shape ExecutePin_Null
+        {
+            get
+            {
+                var s = ExecutePinIcon;
+                s.Stroke = ExecuteBrush;
+                return s;
+            }
+        }
+
+        public Shape ExecutePin
+        {
+            get
+            {
+                var s = ExecutePin_Null;
+                s.Fill = ExecuteBrush;
+                return s;
+            }
+        }
 
         #endregion
 
@@ -30,7 +81,7 @@ namespace XNode.SubSystem.ResourceSystem
 
         public void Init()
         {
-            GenerateExecutePinIcon();
+            // GenerateExecutePinIcon();
             GenerateDataPinIcon();
         }
 
@@ -41,70 +92,36 @@ namespace XNode.SubSystem.ResourceSystem
         /// <summary>
         /// 获取数据引脚图标
         /// </summary>
-        public BitmapSource GetDataPinIcon(string dataType, bool solid)
+        public Shape GetDataPinIcon(string dataType, bool solid)
         {
-            if (solid) return _dataPinIconDict[dataType];
-            return _dataPinIconDict[$"{dataType}_null"];
+            if (solid)
+            {
+                var s = DataPinIcon;
+                s.Fill = new SolidColorBrush(_colors[dataType]);
+                return s;
+            }
+            else
+            {
+                var s = DataPinIcon;
+                s.Stroke = new SolidColorBrush(_colors[dataType]);
+                return s;
+            }
         }
 
         #endregion
 
-        #region 私有方法
-
-        /// <summary>
-        /// 生成执行引脚图标
-        /// </summary>
-        private void GenerateExecutePinIcon()
-        {
-            byte[] iconData = PinIconTool.CreatePinIcon(PinType.Execute, 196, 126, 255);
-            _executePin_Null = CreateSource(11, iconData);
-            iconData = PinIconTool.CreatePinIcon(PinType.Execute, 196, 126, 255, PinStyle.Solid);
-            _executePin = CreateSource(11, iconData);
-        }
+        Dictionary<string, Color> _colors = new();
 
         /// <summary>
         /// 生成数据引脚图标
         /// </summary>
         private void GenerateDataPinIcon()
         {
-            GenerateDataPinIcon("bool_null", PinColorSet.Bool);
-            GenerateDataPinIcon("int_null", PinColorSet.Int);
-            GenerateDataPinIcon("double_null", PinColorSet.Double);
-            GenerateDataPinIcon("string_null", PinColorSet.String);
-            GenerateDataPinIcon("byte[]_null", PinColorSet.ByteArray);
-
-            GenerateDataPinIcon("bool", PinColorSet.Bool, PinStyle.Solid);
-            GenerateDataPinIcon("int", PinColorSet.Int, PinStyle.Solid);
-            GenerateDataPinIcon("double", PinColorSet.Double, PinStyle.Solid);
-            GenerateDataPinIcon("string", PinColorSet.String, PinStyle.Solid);
-            GenerateDataPinIcon("byte[]", PinColorSet.ByteArray, PinStyle.Solid);
+            _colors.Add("bool", PinColorSet.Bool);
+            _colors.Add("int", PinColorSet.Int);
+            _colors.Add("double", PinColorSet.Double);
+            _colors.Add("string", PinColorSet.String);
+            _colors.Add("byte[]", PinColorSet.ByteArray);
         }
-
-        /// <summary>
-        /// 生成数据引脚图标
-        /// </summary>
-        private void GenerateDataPinIcon(string key, Color color, PinStyle style = PinStyle.Hollow)
-        {
-            byte[] iconData = PinIconTool.CreatePinIcon(PinType.Data, color.R, color.G, color.B, style);
-            _dataPinIconDict.Add(key, CreateSource(11, iconData));
-        }
-
-        /// <summary>
-        /// 创建图源
-        /// </summary>
-        private BitmapSource CreateSource(int size, byte[] iconData) =>
-            BitmapSource.Create(size, size, 96, 96, PixelFormats.Bgra32, null, iconData, size * 4);
-
-        #endregion
-
-        #region 字段
-
-        private BitmapSource _executePin_Null;
-        private BitmapSource _executePin;
-
-        /// <summary>数据引脚图标字典</summary>
-        public Dictionary<string, BitmapSource> _dataPinIconDict = new Dictionary<string, BitmapSource>();
-
-        #endregion
     }
 }

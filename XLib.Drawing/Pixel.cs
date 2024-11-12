@@ -7,7 +7,9 @@
     {
         #region 构造方法
 
-        public Pixel() { }
+        public Pixel()
+        {
+        }
 
         public Pixel(byte r, byte g, byte b, byte a = 255)
         {
@@ -21,13 +23,29 @@
 
         #region 属性
 
-        public byte R { get => _r; set => _r = value; }
+        public byte R
+        {
+            get => _r;
+            set => _r = value;
+        }
 
-        public byte G { get => _g; set => _g = value; }
+        public byte G
+        {
+            get => _g;
+            set => _g = value;
+        }
 
-        public byte B { get => _b; set => _b = value; }
+        public byte B
+        {
+            get => _b;
+            set => _b = value;
+        }
 
-        public byte A { get => _a; set => _a = value; }
+        public byte A
+        {
+            get => _a;
+            set => _a = value;
+        }
 
         #endregion
 

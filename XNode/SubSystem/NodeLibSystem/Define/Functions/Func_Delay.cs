@@ -42,7 +42,9 @@ namespace XNode.SubSystem.NodeLibSystem.Define.Functions
             {
                 SetData(1, paraDict["Time"]);
             }
-            catch (Exception) { }
+            catch (Exception)
+            {
+            }
         }
 
         protected override NodeBase CloneNode() => new Func_Delay();

@@ -7,8 +7,10 @@
     {
         /// <summary>缓入缓出</summary>
         EaseInOut,
+
         /// <summary>缓入</summary>
         EaseIn,
+
         /// <summary>缓出</summary>
         EaseOut,
     }

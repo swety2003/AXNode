@@ -16,7 +16,8 @@ namespace XNode.SubSystem.NodeLibSystem.Define.Drivers
         {
             SetViewProperty(NodeColorSet.Driver, "Timer", "定时驱动器");
 
-            DataPinGroup time = new DataPinGroup(this, "double", "间隔毫秒", "5000") { Readable = false, Writeable = false };
+            DataPinGroup time = new DataPinGroup(this, "double", "间隔毫秒", "5000")
+                { Readable = false, Writeable = false };
             time.ValueChanged += Time_ValueChanged;
             PinGroupList.Add(time);
             PinGroupList.Add(new ActionPinGroup(this, "更新"));
@@ -64,7 +65,9 @@ namespace XNode.SubSystem.NodeLibSystem.Define.Drivers
             {
                 SetData(0, paraDict["Time"]);
             }
-            catch (Exception) { }
+            catch (Exception)
+            {
+            }
         }
 
         protected override NodeBase CloneNode() => new TimerDriver();
@@ -99,7 +102,9 @@ namespace XNode.SubSystem.NodeLibSystem.Define.Drivers
             {
                 _frameLength = double.Parse(GetData(0)).Limit(1000 / 120.0, double.MaxValue);
             }
-            catch (Exception) { }
+            catch (Exception)
+            {
+            }
         }
 
         #endregion
@@ -108,6 +113,7 @@ namespace XNode.SubSystem.NodeLibSystem.Define.Drivers
 
         /// <summary>单帧时长：毫秒</summary>
         private double _frameLength = 5000;
+
         /// <summary>当前延迟</summary>
         private double _delay = 0;
 

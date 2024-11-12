@@ -73,9 +73,13 @@ namespace XLib.Base.ID
             {
                 // 查找可用格子
                 foreach (var grid in _gridList)
-                    if (!grid.Used) return grid;
+                    if (!grid.Used)
+                        return grid;
 
-                try { GenerateGrid(); }
+                try
+                {
+                    GenerateGrid();
+                }
                 catch (Exception ex)
                 {
                     ErrorInfo = ex.Message;
@@ -106,6 +110,7 @@ namespace XLib.Base.ID
 
         /// <summary>格子列表</summary>
         private readonly List<IDGrid> _gridList = new List<IDGrid>();
+
         /// <summary>已使用的编号列表</summary>
         private readonly List<int> _usedIDList = new List<int>();
 

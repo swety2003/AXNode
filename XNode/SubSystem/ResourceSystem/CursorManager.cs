@@ -11,7 +11,10 @@ namespace XNode.SubSystem.ResourceSystem
     {
         #region 单例
 
-        private CursorManager() { }
+        private CursorManager()
+        {
+        }
+
         public static CursorManager Instance { get; } = new CursorManager();
 
         #endregion
